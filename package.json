@@ -1,0 +1,17 @@
+{
+  "name": "atom-dominions",
+  "version": "1.0.0",
+  "description": "Language support for Dominions 5 mod data files in Atom.",
+  "engines": {
+    "atom": "*"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lambda-dom/atom-dominions"
+  },
+  "bugs": {
+    "url": "https://github.com/lambda-dom/atom-dominions/issues"
+  },
+  "license": "MIT"
+}
