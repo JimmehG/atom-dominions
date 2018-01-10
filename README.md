@@ -9,7 +9,7 @@ Anyway, this opens the door to edit Dominions 5 mod data files in Atom, with all
 
 ## Some Issues.
 
-The syntax highlighting was tested not only on my mods, but also on the latest versions of Worthy Heroes and Red Rob's Extra Pretenders, and all the provably false negatives expunged. Which reminds me, those two mods have a few bugs. Needless to say, with a grammar file this large, there are bound to be some bugs. Furthermore, most of the new mod commands for Dominions 5 are still not in, as well as some undocumented commands currently in use (e.g. #transform).
+The syntax highlighting was tested not only on my mods, but also on the latest versions of Worthy Heroes and Red Rob's Extra Pretenders, and all the provably false negatives expunged. Which reminds me, those two mods have a few bugs. Needless to say, with a grammar file this large, there are bound to be some bugs. Furthermore, most of the new mod commands for Dominions 5 are still not in.
 
 ## Future Plans.
 

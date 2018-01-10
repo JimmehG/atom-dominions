@@ -3100,7 +3100,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#gold)\\s+(-?\\d+)'
+                match: '^\\s*(#gold|#exactgold)\\s+(-?\\d+)'
                 captures:
                     1:
                         name: "keyword.control.event.effect.dominions"
@@ -3191,7 +3191,7 @@ repository:
 
             #C. 5. Monster.
             {
-                match: '^\\s*((?:#(?:2|4|5)?com)|#assassin|#stealthcom)\\s+(?:("[^"]+")|(\\d+))'
+                match: '^\\s*((?:#(?:2|4|5)?com)|#assassin|#stealthcom|#transform)\\s+(?:("[^"]+")|(\\d+))'
                 captures:
                     1:
                         name: "keyword.control.event.effect.dominions"
