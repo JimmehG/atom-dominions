@@ -1,8 +1,8 @@
 scopeName: "source.dom"
 name: "Dominions"
 fileTypes: ["dm"]
-foldingStartMarker: "^\\s*#()"
-foldingStopMarker: "^\\s*#end"
+foldingStartMarker: "^#(selectweapon|newweapon|selectarmor|newarmor|selectmonster|newmonster|selectspell|newspell|selectitem|newitem|selectnametype|newmerc|selectsite|newsite|selectnation|newnation|selectpoptype|newevent)"
+foldingStopMarker: "^#end"
 patterns: [
     #A. Mod properties.
     {
@@ -173,7 +173,6 @@ patterns: [
     #B. 3. Monsters.
     {
         begin: '^\\s*(#selectmonster)\\s+(?:("[^"]+")|(\\d+))'
-        comment: "#newmonster only accepts numbers for argument, but it is optional."
         beginCaptures:
             1:
                 name: "keyword.control.monster.begin.dominions"
