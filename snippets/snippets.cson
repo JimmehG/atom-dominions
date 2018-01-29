@@ -2,7 +2,7 @@
     "selectweapon":
         prefix: "slctwpn"
         body: """
-        #selectweapon $(1:0)
+        #selectweapon ${1:0}
             $2
         #end
         """
@@ -10,7 +10,103 @@
     "newweapon":
         prefix: "nwwpn"
         body: """
-        #newweapon $(1:0)
-            #name $(2: "New Weapon")
+        #newweapon ${1:0}
+            #name ${2:"Weapon Name"}
+        #end
+        """
+
+    "selectarmor":
+        prefix: "slctrmr"
+        body: """
+        #selectarmor ${1:0}
+            $2
+        #end
+        """
+
+    "newweapon":
+        prefix: "nwrmr"
+        body: """
+        #newweapon ${1:0}
+            #name ${2:"Armor Name"}
+        #end
+        """
+
+    "selectmonster":
+        prefix: "slctmnstr"
+        body: """
+        #selectmonster ${1:0}
+            $2
+        #end
+        """
+
+    "newmonster":
+        prefix: "nwmnstr"
+        body: """
+        #newmonster ${1:0}
+            #name ${2:"Monster Name"}
+            #descr ${3:"Monster Description"}
+            #gcost ${4:10000}
+            #rpcost ${5:1}
+        #end
+        """
+
+    "selectspell":
+        prefix: "slctspll"
+        body: """
+        #selectspell ${1:0}
+            $2
+        #end
+        """
+
+    "newspell":
+        prefix: "nwspll"
+        body: """
+        #newmonster ${1:0}
+            #name ${2:"Spell Name"}
+            #descr ${3:"Spell Description"}
+            #school ${4:-1}
+            #researchlevel ${5:0}
+            #path ${6:0} ${7:-1}
+            #pathlevel ${6:0} ${8:-1}
+        #end
+        """
+
+    "selectitem":
+        prefix: "slcttm"
+        body: """
+        #selectitem ${1:0}
+            $2
+        #end
+        """
+
+    "newitem":
+        prefix: "nwtm"
+        body: """
+        #newmonster ${1:0}
+            #name ${2:"Item Name"}
+            #descr ${3:"Item Description"}
+            #constlevel ${4:0}
+            #mainpath ${5:0}
+            #mainlevel ${6:0}
+        #end
+        """
+
+    "selectsite":
+        prefix: "slctst"
+        body: """
+        #selectsite ${1:0}
+            $2
+        #end
+        """
+
+    "newsite":
+        prefix: "nwst"
+        body: """
+        #newsite ${1:0}
+            #name ${2:"Item Name"}
+            #path ${3:0}
+            #level ${4:0}
+            #rarity ${5:0}
+            #loc ${6:223}
         #end
         """
