@@ -1,0 +1,16 @@
+".source.dom":
+    "selectweapon":
+        prefix: "slctwpn"
+        body: """
+        #selectweapon $(1:0)
+            $2
+        #end
+        """
+
+    "newweapon":
+        prefix: "nwwpn"
+        body: """
+        #newweapon $(1:0)
+            #name $(2: "New Weapon")
+        #end
+        """
