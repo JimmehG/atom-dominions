@@ -954,6 +954,15 @@ repository:
                     2:
                         name: "constant.numeric.enum.dominions"
                 name: "meta.armor.property.dominions"
+            },
+
+            #New dominion 5 commands.
+            {
+                match: "^\\s*(#magicarmor|#ironarmor|#woodenarmor)"
+                captures:
+                    1:
+                        name: "keyword.control.armor.property.dominions"
+                name: "meta.armor.property.dominions"
             }
         ]
 
