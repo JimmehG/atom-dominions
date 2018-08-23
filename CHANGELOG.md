@@ -24,3 +24,6 @@
 * Reorganize monster and monster_item repositories.
 * fixed #explspr.
 * Added missing documented spell commands.
+* Completed spells repositories.
+* Completed items repositories.
+* Completed sites repositories.
