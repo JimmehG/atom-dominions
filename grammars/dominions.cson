@@ -187,11 +187,11 @@ patterns: [
         name: "meta.monster.dominions"
         patterns: [
             {
-                include: "#monsters"
+                include: "#monster_items"
             },
 
             {
-                include: "#monster_item"
+                include: "#monsters"
             },
 
             {
@@ -222,7 +222,7 @@ patterns: [
         name: "meta.monster.dominions"
         patterns: [
             {
-                include: "#monster_item"
+                include: "#monster_items"
             },
 
             {
@@ -531,7 +531,7 @@ patterns: [
         name: "meta.item.dominions"
         patterns: [
             {
-                include: "#monster_item"
+                include: "#monster_items"
             },
 
             {
@@ -566,7 +566,7 @@ patterns: [
         name: "meta.item.dominions"
         patterns: [
             {
-                include: "#monster_item"
+                include: "#monster_items"
             },
 
             {
@@ -956,7 +956,6 @@ repository:
                 name: "meta.armor.property.dominions"
             },
 
-            #New dominion 5 commands.
             {
                 match: "^\\s*(#magicarmor|#ironarmor|#woodenarmor)"
                 captures:
@@ -967,23 +966,23 @@ repository:
         ]
 
     #Rules that apply to monsters or items.
-    monster_item:
+    monster_items:
         patterns: [
-            #A. Recruit properties.
+            #A. Basic Attributes.
             {
-                match: "^\\s*(#chaosrec|#deathrec)\\s+([1-3])"
+                match: "^\\s*(#hp|#str|#att|#def|#prec|#prot|#mr|#mor|#enc|#mapmove|#ap|#eyes|#voidsanity)\\s+(-?\\d+)"
                 captures:
                     1:
-                        name: "keyword.control.monster_item.property.recruit.dominions"
+                        name: "keyword.control.monster_item.property.attribute.dominions"
                     2:
-                        name: "constant.numeric.enum.dominions"
-                name: "meta.monster_item.property.recruit.dominions"
+                        name: "constant.numeric.integer.dominions"
+                name: "meta.monster_item.property.attribute.dominions"
             },
 
             #B. Abilities.
             #B. 1. Movement.
             {
-                match: "^\\s*(#unteleportable|#noriverpass|#float|#stormimmune)"
+                match: "^\\s*(#float|#stormimmune|#unteleportable|#noriverpass)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.ability.dominions"
@@ -1020,8 +1019,19 @@ repository:
                 name: "meta.monster_item.property.ability.dominions"
             },
 
+            #TODO: hpoverslow is capped at 1000%.
             {
-                match: "^\\s*(#uwdamage|#landdamage|#healer|#homesick|#autohealer|#autodishealer|#autodisgrinder|#diseaseres|#woundfend|#hpoverslow)\\s+(\\d+)"
+                match: "^\\s*(#uwdamage|#landdamage|#healer|#homesick|#diseaseres|#hpoverslow)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.ability.dominions"
+                    2:
+                        name: "constant.numeric.percentage.dominions"
+                name: "meta.monster_item.property.ability.dominions"
+            },
+
+            {
+                match: "^\\s*(#autohealer|#autodishealer|#autodisgrinder|#woundfend)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.ability.dominions"
@@ -1049,7 +1059,17 @@ repository:
             },
 
             {
-                match: "^\\s*(#invulnerable|#regeneration|#airshield)\\s+(\\d+)"
+                match: "^\\s*(#regeneration|#airshield)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.ability.dominions"
+                    2:
+                        name: "constant.numeric.percentage.dominions"
+                name: "meta.monster_item.property.ability.dominions"
+            },
+
+            {
+                match: "^\\s*(#invulnerable)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.ability.dominions"
@@ -1059,7 +1079,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#iceprot|#coldres|#fireres|#shockres|#poisonres|#reinvigoration)\\s+(-?\\d+)"
+                match: "^\\s*(#coldres|#fireres|#poisonres|#shockres|#iceprot|#reinvigoration)\\s+(-?\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.ability.dominions"
@@ -1070,15 +1090,19 @@ repository:
 
             #B. 4. Auras.
             {
-                match: "^\\s*(#entangle|#horrormark|#eyeloss|#poisonarmor)"
+                match: "^\\s*(#entangle|#eyeloss|#horrormark)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.ability.dominions"
                 name: "meta.monster_item.property.ability.dominions"
             },
 
+            #TODO: uwheat has values 0-100.
+            #TODO: poisonskin has values 0-500.
+            #TODO: clouds have a size value.
+            #TODO: minbdslime has an area value.
             {
-                match: "^\\s*(#cold|#heat|#uwheat|#poisonskin|#poisoncloud|#diseasecloud|#animalawe|#awe|#fear|#fireshield|#banefireshield|#acidshield|#damagerev|#bloodvengeance|#slimer|#mindslime|#overcharged)\\s+(\\d+)"
+                match: "^\\s*(#heat|#cold|#uwheat|#poisonskin|#poisoncloud|#diseasecloud|#animalawe|#awe|#fear|#fireshield|#uwfireshield|#banefireshield|#acidshield|#damagerev|#bloodvengeance|#slimer|#poisonarmor|#mindslime|#overcharged)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.ability.dominions"
@@ -1094,7 +1118,17 @@ repository:
                     1:
                         name: "keyword.control.monster_item.property.ability.dominions"
                     2:
-                        name: "constant.numeric.positive.dominions"
+                        name: "constant.numeric.percentage.dominions"
+                name: "meta.monster_item.property.ability.dominions"
+            },
+
+            {
+                match: "^\\s*(#chaospower|#coldpower|#firepower|#deathpower|#darkpower|#stormpower|#magicpower|#slothpower)\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.ability.dominions"
+                    2:
+                        name: "constant.numeric.integer.dominions"
                 name: "meta.monster_item.property.ability.dominions"
             },
 
@@ -1108,12 +1142,25 @@ repository:
             },
 
             {
-                match: "^\\s*(#ambidextrous|#berserk|#darkvision|#deathdisease|#deathparalyze|#deathfire|#guardspiritbonus|#raiseonkill|#digest|#aciddigest|#incorporate)\\s+(\\d+)"
+                #TODO: deathdisease, etc. have area values.
+                #TODO: raiseonkill has chance value.
+                #TODO: tattoo commands may be monster only.
+                match: "^\\s*(#ambidextrous|#berserk|#deathdisease|#deathparalyze|#deathfire|#guardspiritbonus|#raiseonkill|#digest|#aciddigest|#incorporate|#beartattoo|#horsetattoo|#wolftattoo|#boartattoo|#snaketattoo)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.ability.dominions"
                     2:
                         name: "constant.numeric.positive.dominions"
+                name: "meta.monster_item.property.ability.dominions"
+            },
+
+            {
+                match: "^\\s*(#darkvision)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.ability.dominions"
+                    2:
+                        name: "constant.numeric.percentage.dominions"
                 name: "meta.monster_item.property.ability.dominions"
             },
 
@@ -1139,12 +1186,34 @@ repository:
             },
 
             {
-                match: "^\\s*(#castledef|#siegebonus|#heretic|#elegist|#spreaddom|#nobadevents|#shatteredsoul|#incprovdef|#addupkeep|#leper|#popkill)\\s+(\\d+)"
+                #TODO: spreaddom is a candles value.
+                #TODO: nobadevents is a chance value.
+                match: "^\\s*(#castledef|#siegebonus|#elegist|#spreaddom|#nobadevents|#incprovdef|#addupkeep|#popkill)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.ability.dominions"
                     2:
                         name: "constant.numeric.positive.dominions"
+                name: "meta.monster_item.property.ability.dominions"
+            },
+
+            {
+                match: "^\\s*(#shatteredsoul|#leper|#insanify)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.ability.dominions"
+                    2:
+                        name: "constant.numeric.percentage.dominions"
+                name: "meta.monster_item.property.ability.dominions"
+            },
+
+            {
+                match: "^\\s*(#heretic)\\s+([1-5])"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.ability.dominions"
+                    2:
+                        name: "constant.numeric.enum.dominions"
                 name: "meta.monster_item.property.ability.dominions"
             },
 
@@ -1158,18 +1227,9 @@ repository:
                 name: "meta.monster_item.property.ability.dominions"
             },
 
-            #B. 8. Dominions 5.
+            #B. 8. Summoning.
             {
-                match: "^\\s*(#spiritsight|#invisible|#mason)"
-                captures:
-                    1:
-                        name: "keyword.control.monster_item.property.ability.dominions"
-                name: "meta.monster_item.property.ability.dominions"
-            },
-
-            #C. Summoning.
-            {
-                match: '^\\s*((?:#domsummon\\d{1,2})|#domsummon|#raredomsummon|(?:#makemonsters[1-5])|(?:#summon[1-5])|(?:#battlesum[1-5])|(?:#batstartsum[1-9]d6)|(?:#batstartsum[1-5]))\\s+(?:("[^"]+")|(-?\\d+))'
+                match: '^\\s*((?:#domsummon2|#domsummon20|#domsummon|#raredomsummon|#templetrainer|(?:#makemonsters[1-5])|(?:#summon[1-5])|(?:#battlesum[1-5])|(?:#batstartsum[1-9]d6)|(?:#batstartsum[1-5]))\\s+(?:("[^"]+")|(-?\\d+))'
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.summon.dominions"
@@ -1180,17 +1240,9 @@ repository:
                 name: "meta.monster_item.property.summon.dominions"
             },
 
-            #D. Leadership.
+            #B. 9. Leadership.
             {
-                match: "^\\s*(#undisciplined)"
-                captures:
-                    1:
-                        name: "keyword.control.monster_item.property.leadership.dominions"
-                name: "meta.monster_item.property.leadership.dominions"
-            },
-
-            {
-                match: "^\\s*(#command|#magiccommand|#undcommand|#inspirational)\\s+(-?\\d+)"
+                match: "^\\s*(#command|#magiccommand|#undcommand)\\s+(-?\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.leadership.dominions"
@@ -1199,27 +1251,36 @@ repository:
                 name: "meta.monster_item.property.leadership.dominions"
             },
 
+            #B. 10. Morale properties.
             {
-                match: "^\\s*(#beastmaster|#taskmaster|#formationfighter|#bodyguard|#standard)\\s+(\\d+)"
+                match: "^\\s*(#slave|#undisciplined)"
                 captures:
                     1:
-                        name: "keyword.control.monster_item.property.leadership.dominions"
+                        name: "keyword.control.monster_item.property.morale.dominions"
+                name: "meta.monster_item.property.morale.dominions"
+            },
+
+            {
+                match: "^\\s*(#inspirational|#beastmaster|#taskmaster)\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.morale.dominions"
+                    2:
+                        name: "constant.numeric.integer.dominions"
+                name: "meta.monster_item.property.morale.dominions"
+            },
+
+            {
+                match: "^\\s*(#formationfighter|#bodyguard|#standard)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.morale.dominions"
                     2:
                         name: "constant.numeric.positive.dominions"
-                name: "meta.monster_item.property.leadership.dominions"
+                name: "meta.monster_item.property.morale.dominions"
             },
 
-            #E. Magic.
-            {
-                match:"^\\s*(#fastcast)\\s+(-?\\d+)"
-                captures:
-                    1:
-                        name: "keyword.control.monster_item.property.magic.dominions"
-                    2:
-                        name: "constant.numeric.integer.dominions"
-                name: "meta.monster_item.property.magic.dominions"
-            },
-
+            #B. 11. Magic.
             {
                 match:"^\\s*(#magicboost)\\s+([0-8]|5[0-3])\\s+(-?[0-5])"
                 captures:
@@ -1232,17 +1293,17 @@ repository:
                 name: "meta.monster_item.property.magic.dominions"
             },
 
+            #B. 12. Rituals.
             {
-                match:"^\\s*(#randomspell)\\s+(\\d+)"
+                match:"^\\s*(#masterrit)\\s+(-?\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.magic.dominions"
                     2:
-                        name: "constant.numeric.positive.dominions"
+                        name: "constant.numeric.integer.dominions"
                 name: "meta.monster_item.property.magic.dominions"
             },
 
-            #E. 1. Rituals.
             {
                 match:"^\\s*(#firerange|#airrange|#waterrange|#earthrange|#astralrange|#deathrange|#naturerange|#bloodrange|#elementrange|#sorceryrange|#allrange)\\s+(\\d+)"
                 captures:
@@ -1253,7 +1314,7 @@ repository:
                 name: "meta.monster_item.property.magic.dominions"
             },
 
-            #E. 2. Research.
+            #B. 13. Research.
             {
                 match: "^\\s*(#drainimmune|#magicimmune|#divineins)"
                 captures:
@@ -1282,7 +1343,19 @@ repository:
                 name: "meta.monster_item.property.magic.dominions"
             },
 
-            #E. 3. Gem production.
+            #B. 14. Gem production.
+            {
+                match:"^\\s*(#gemprod)\\s+([0-7])\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.magic.dominions"
+                    2:
+                        name: "constant.numeric.enum.dominions"
+                    3:
+                        name: "constant.numeric.positive.dominions"
+                name: "meta.monster_item.property.magic.dominions"
+            },
+
             {
                 match:"^\\s*(#tmpfiregems|#tmpairgems|#tmpwatergems|#tmpearthgems|#tmpastralgems|#tmpdeathgems|#tmpnaturegems|#tmpbloodslaves|#douse|#makepearls)\\s+(\\d+)"
                 captures:
@@ -1293,22 +1366,24 @@ repository:
                 name: "meta.monster_item.property.magic.dominions"
             },
 
-            #E. 4. Other.
+            #B. 15. Other magic abilities.
             {
-                match:"^\\s*(#comslave)"
-                captures:
-                    1:
-                        name: "keyword.control.monster_item.property.magic.dominions"
-                name: "meta.monster_item.property.magic.dominions"
-            },
-
-            {
-                match:"^\\s*(#bonusspells|#crossbreeder|#kokytosret|#infernoret|#voidret|#allret|#tainted|#forgebonus|#fixforgebonus)\\s+(\\d+)"
+                match:"^\\s*(#bonusspells|#crossbreeder|#kokytosret|#infernoret|#voidret|#allret|#tainted|#fixforgebonus)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.magic.dominions"
                     2:
                         name: "constant.numeric.positive.dominions"
+                name: "meta.monster_item.property.magic.dominions"
+            },
+
+            {
+                match:"^\\s*(#randomspell|#forgebonus)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.magic.dominions"
+                    2:
+                        name: "constant.numeric.percent.dominions"
                 name: "meta.monster_item.property.magic.dominions"
             },
 
@@ -1322,26 +1397,88 @@ repository:
                 name: "meta.monster_item.property.magic.dominions"
             },
 
-            #E. 5. Dominions 5.
             {
-                match:"^\\s*(#spellsinger)"
+                match:"^\\s*(#mastersmith)\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.property.magic.dominions"
+                    2:
+                        name: "constant.numeric.integer.dominions"
+                name: "meta.monster.property.magic.dominions"
+            },
+
+            {
+                match:"^\\s*(#comslave|#commaster)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.magic.dominions"
                 name: "meta.monster_item.property.magic.dominions"
             },
 
-            #F. Attributes,
+            #B. 16. Undocumented dom5 abilities.
             {
-                match: "^\\s*(#hp|#str|#att|#def|#prec|#prot|#mr|#mor|#enc|#mapmove|#ap|#eyes|#voidsanity)\\s+(-?\\d+)"
+                match:"^\\s*(#mason|#spiritsight|#invisible|#doheal|#spellsinger|#reanimpriest|#norange|#polyimmune|#unify|#triple3mon|#combatcaster)"
                 captures:
                     1:
-                        name: "keyword.control.monster_item.property.attribute.dominions"
+                        name: "keyword.control.monster_item.property.magic.dominions"
+                name: "meta.monster_item.property.magic.dominions"
+            },
+
+            #TODO: all command arguments vary between -1000 and 1000 except as follows:
+            #TODO: triplegodmag varies between -10 and 10.
+            #TODO: bringeroffortune varies between -100 and 100.
+            #TODO: skirmisher varies between -25 and 25.
+            {
+                match:"^\\s*(#onisummon|#curseluckshield|#sunawe|#fastcast|#undregen|#magicstudy|#yearturn|#fortkill|#thronekill|#farthronekill|#triplegodmag|#bringeroffortune|#skirmisher)\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.magic.dominions"
                     2:
                         name: "constant.numeric.integer.dominions"
-                name: "meta.monster_item.property.attribute.dominions"
-            }
+                name: "meta.monster_item.property.magic.dominions"
+            },
 
+            #TODO: startmajoraff, unsurr varies between 0 and 1000.
+            #TODO: triplegod, indepstay varies between 0 and 10.
+            {
+                match:"^\\s*(#startmajoraff|#triplegod|#indepstay|#unsurr)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.magic.dominions"
+                    2:
+                        name: "constant.numeric.positive.dominions"
+                name: "meta.monster_item.property.magic.dominions"
+            },
+
+            {
+                match:"^\\s*(#indepmove)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.magic.dominions"
+                    2:
+                        name: "constant.numeric.percentage.dominions"
+                name: "meta.monster_item.property.magic.dominions"
+            },
+
+            {
+                match:"^\\s*(#minprison)\\s+([0-2])"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.magic.dominions"
+                    2:
+                        name: "constant.numeric.enum.dominions"
+                name: "meta.monster_item.property.magic.dominions"
+            },
+
+            {
+                match:"^\\s*(#minsizeleader)\\s+([0-6])"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.magic.dominions"
+                    2:
+                        name: "constant.numeric.enum.dominions"
+                name: "meta.monster_item.property.magic.dominions"
+            }
         ]
 
     monsters:
@@ -1376,7 +1513,7 @@ repository:
                 name: "meta.monster.property.dominions"
             },
 
-            #Path-argument properties.
+            #Visual properties.
             {
                 match: '^\\s*(#spr1|#spr2)\\s+("[^"]+")'
                 captures:
@@ -1387,20 +1524,8 @@ repository:
                 name: "meta.monster.property.dominions"
             },
 
-            #Visual properties.
             {
                 match: "^\\s*(#speciallook)\\s+(\\d+)"
-                captures:
-                    1:
-                        name: "keyword.control.monster.property.dominions"
-                    2:
-                        name: "constant.numeric.positive.dominions"
-                name: "meta.monster.property.dominions"
-            },
-
-            #Cost properties.
-            {
-                match: "^\\s*(#gcost|#rcost|#rpcost|#ressize)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster.property.dominions"
@@ -1430,9 +1555,9 @@ repository:
                 name: "meta.monster.property.god.dominions"
             },
 
-            #D. Recruitment and desertion rules.
+            #D. Recruitment rules.
             {
-                match: "^\\s*(#slowrec|#noslowrec|#reqlab|#reqtemple|#aisinglerec|#ainorec|#singlebattle|#nowish)"
+                match: "^\\s*(#slowrec|#noslowrec|#reqlab|#reqtemple|#aisinglerec|#ainorec)"
                 captures:
                     1:
                         name: "keyword.control.monster.property.recruit.dominions"
@@ -1440,7 +1565,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#reclimit|#enchrebate50|#deserter|#horrordeserter|#defector)\\s+(\\d+)"
+                match: "^\\s*(#reclimit|#enchrebate50)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster.property.recruit.dominions"
@@ -1458,7 +1583,7 @@ repository:
                     2:
                         name: "string.quoted.double.dominions"
                     3:
-                        name: "constant.numeric.positive.dominions"
+                        name: "constant.numeric.integer.dominions"
                 name: "meta.monster.property.recruit.dominions"
             },
 
@@ -1472,7 +1597,48 @@ repository:
                 name: "meta.monster.property.recruit.dominions"
             },
 
-            #E. Attributes.
+            {
+                match: "^\\s*(#chaosrec|#deathrec)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.property.recruit.dominions"
+                    2:
+                        name: "constant.numeric.positive.dominions"
+                name: "meta.monster.property.recruit.dominions"
+            },
+
+            #E. Desertion rules.
+            {
+                match: "^\\s*(#singlebattle|#nowish)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.property.desertion.dominions"
+                name: "meta.monster.property.desertion.dominions"
+            },
+
+            {
+                match: "^\\s*(#deserter|#horrordeserter|#defector)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.property.recruit.dominions"
+                    2:
+                        name: "constant.numeric.percentage.dominions"
+                name: "meta.monster.property.recruit.dominions"
+            },
+
+            #F. Cost properties.
+            {
+                match: "^\\s*(#gcost|#rcost|#rpcost|#ressize)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.property.dominions"
+                    2:
+                        name: "constant.numeric.positive.dominions"
+                name: "meta.monster.property.dominions"
+            },
+
+            #G. Attributes.
+            #note: see monster_items for other attributes.
             {
                 match: "^\\s*(#size)\\s+([1-6])"
                 captures:
@@ -1483,7 +1649,29 @@ repository:
                 name: "meta.monster.property.attribute.dominions"
             },
 
-            #F. Equipment.
+            #H. Weapons and armor.
+            {
+                match: '^\\s*(#weapon|#armor)\\s+(?:("[^"]+")|(\\d+))'
+                captures:
+                    1:
+                        name: "keyword.control.monster.property.equipment.dominions"
+                    2:
+                        name: "string.quoted.double.dominions"
+                    3:
+                        name: "constant.numeric.positive.dominions"
+                name: "meta.monster.property.equipment.dominions"
+            },
+
+            #I. Bodytype.
+            {
+                match: "^\\s*(#humanoid|#mountedhumanoid|#quadruped|#lizard|#naga|#snake|#bird|#djinn|#troglodyte|#miscshape)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.property.bodytype.dominions"
+                name: "meta.monster.property.bodytype.dominions"
+            },
+
+            #J. Item slots.
             {
                 match: "^\\s*(#noitem)"
                 captures:
@@ -1492,6 +1680,7 @@ repository:
                 name: "meta.monster.property.equipment.dominions"
             },
 
+            #TODO: itemslots really uses an enum value.
             {
                 match: "^\\s*(#userestricteditem|#itemslots)\\s+(\\d+)"
                 captures:
@@ -1504,7 +1693,7 @@ repository:
 
             #Bug: 5.09 startitem does not work with names.
             {
-                match: '^\\s*(#weapon|#armor|#startitem)\\s+(?:("[^"]+")|(\\d+))'
+                match: '^\\s*(#startitem)\\s+(?:("[^"]+")|(\\d+))'
                 captures:
                     1:
                         name: "keyword.control.monster.property.equipment.dominions"
@@ -1525,22 +1714,23 @@ repository:
                 name: "meta.monster.property.ability.dominions"
             },
 
+            #G. 2. Movement.
+            #note: see monster_items for other movement properties shared with items.
             {
-                match: "^\\s*(#insane)\\s+(\\d+)"
+                match: "^\\s*(#immobile|#aquatic|#amphibian|#pooramphibian|#float|#flying|#swimming|#snow|#stormimmune|#teleport|#mapteleport|#blink|#unteleportable|#noriverpass|#forestsurvival|#mountainsurvival|#swampsurvival|#wastesurvival|#nomovepen)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.property.ability.dominions"
+                name: "meta.monster.property.ability.dominions"
+            },
+
+            {
+                match: "^\\s*(#farsail)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster.property.ability.dominions"
                     2:
                         name: "constant.numeric.positive.dominions"
-                name: "meta.monster.property.ability.dominions"
-            },
-
-            #G. 2. Movement.
-            {
-                match: "^\\s*(#immobile|#aquatic|#amphibian|#pooramphibian|#flying|#swimming|#snow|#teleport|#unteleportable|#noriverpass|#forestsurvival|#mountainsurvival|#swampsurvival|#wastesurvival)"
-                captures:
-                    1:
-                        name: "keyword.control.monster.property.ability.dominions"
                 name: "meta.monster.property.ability.dominions"
             },
 
@@ -1550,7 +1740,7 @@ repository:
                     1:
                         name: "keyword.control.monster.property.ability.dominions"
                     2:
-                        name: "constant.numeric.positive.dominions"
+                        name: "constant.numeric.percentage.dominions"
                 name: "meta.monster.property.ability.dominions"
             },
 
@@ -1567,6 +1757,7 @@ repository:
             },
 
             #G. 3. Stealth.
+            #note: see monster_items for other movement properties shared with items.
             {
                 match: "^\\s*(#illusion|#spy|#assassin|#scalewalls)"
                 captures:
@@ -1576,6 +1767,7 @@ repository:
             },
 
             #G. 4. Age, healing and afflictions.
+            #note: see monster_items for other age and healing properties shared with items.
             {
                 match: "^\\s*(#noheal)"
                 captures:
@@ -1584,6 +1776,7 @@ repository:
                 name: "meta.monster.property.ability.dominions"
             },
 
+            #TODO: startingaff argument is really a bitmask.
             {
                 match: "^\\s*(#startage|#maxage|#addrandomage|#startaff|#startingaff)\\s+(\\d+)"
                 captures:
@@ -1591,6 +1784,16 @@ repository:
                         name: "keyword.control.monster.property.ability.dominions"
                     2:
                         name: "constant.numeric.positive.dominions"
+                name: "meta.monster.property.ability.dominions"
+            },
+
+            {
+                match: "^\\s*(#startaff)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.property.ability.dominions"
+                    2:
+                        name: "constant.numeric.percentage.dominions"
                 name: "meta.monster.property.ability.dominions"
             },
 
@@ -1613,18 +1816,7 @@ repository:
                 name: "meta.monster.property.ability.dominions"
             },
 
-            #G. 7. Scales.
-            {
-                match: "^\\s*(#incscale|#decscale)\\s+([0-5])"
-                captures:
-                    1:
-                        name: "keyword.control.monster.property.ability.dominions"
-                    2:
-                        name: "constant.numeric.enum.dominions"
-                name: "meta.monster.property.ability.dominions"
-            },
-
-            #H. Shapechange.
+            #G. 7. Shapechanging.
             {
                 match: '^\\s*(#shapechange|#firstshape|#secondshape|#secondtmpshape|#forestshape|#plainshape|#foreignshape|#homeshape|#springshape|#summershape|#autumnshape|#wintershape|#landshape|#watershape)\\s+(?:("[^"]+")|(\\d+))'
                 captures:
@@ -1686,9 +1878,10 @@ repository:
                 name: "meta.monster.property.shape.dominions"
             },
 
-            #I. Summoning.
+            #G. 8. Summoning.
+            #note: see monster_items for other summoning properties shared with items.
             {
-                match: "^\\s*(#reanimator|#montag|#nametype)\\s+(\\d+)"
+                match: "^\\s*(#reanimator|#montag)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster.property.summon.dominions"
@@ -1697,16 +1890,33 @@ repository:
                 name: "meta.monster.property.summon.dominions"
             },
 
-            #J. Leadership.
+            #G. 9. Nametypes.
             {
-                match: "^\\s*(#noleader|#poorleader|#okleader|#goodleader|#expertleader|#superiorleader|#nomagicleader|#poormagicleader|#okmagicleader|#goodmagicleader|#expertmagicleader|#superiormagicleader|#noundeadleader|#poorundeadleader|#okundeadleader|#goodundeadleader|#expertundeadleader|#superiorundeadleader|#almostundead|#almostliving|#slave)"
+                #TODO: value is atm capped at 299.
+                match: "^\\s*(#nametype)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.property.nametype.dominions"
+                    2:
+                        name: "constant.numeric.positive.dominions"
+                name: "meta.monster.property.nametype.dominions"
+            },
+
+            #G. 10. Leadership.
+            #note: see monster_items for other leadership properties shared with items.
+            {
+                match: "^\\s*(#noleader|#poorleader|#okleader|#goodleader|#expertleader|#superiorleader|#nomagicleader|#poormagicleader|#okmagicleader|#goodmagicleader|#expertmagicleader|#superiormagicleader|#noundeadleader|#poorundeadleader|#okundeadleader|#goodundeadleader|#expertundeadleader|#superiorundeadleader|#almostundead|#almostliving)"
                 captures:
                     1:
                         name: "keyword.control.monster.property.leadership.dominions"
                 name: "meta.monster.property.leadership.dominions"
             },
 
-            #K. Magic.
+            #G. 11. Morale.
+            #note: see monster_items for other leadership properties shared with items.
+
+            #G. 12. Magic.
+            #note: see monster_items for other magic properties shared with items.
             {
                 match:"^\\s*(#magicskill)\\s+([0-8]|5[0-3])\\s+([0-9]|10)"
                 captures:
@@ -1731,19 +1941,8 @@ repository:
                 name: "meta.monster.property.magic.dominions"
             },
 
-            #K. 1. Abilities.
-            #K. 1. 1. Rituals.
-            {
-                match:"^\\s*(#masterrit)\\s+(-?\\d+)"
-                captures:
-                    1:
-                        name: "keyword.control.monster.property.magic.dominions"
-                    2:
-                        name: "constant.numeric.integer.dominions"
-                name: "meta.monster.property.magic.dominions"
-            },
-
-            #K. 1. 2. Research.
+            #G. 13. Research.
+            #note: see monster_items for other research properties shared with items.
             {
                 match:"^\\s*(#fixedresearch)\\s+(\\d+)"
                 captures:
@@ -1754,30 +1953,8 @@ repository:
                 name: "meta.monster.property.magic.dominions"
             },
 
-            #K. 1. 3. Gem production.
-            {
-                match:"^\\s*(#gemprod)\\s+([0-7])\\s+(\\d+)"
-                captures:
-                    1:
-                        name: "keyword.control.monster.property.magic.dominions"
-                    2:
-                        name: "constant.numeric.enum.dominions"
-                    3:
-                        name: "constant.numeric.positive.dominions"
-                name: "meta.monster.property.magic.dominions"
-            },
-
-            #K. 1. 4. Other.
-            {
-                match:"^\\s*(#mastersmith)\\s+(-?\\d+)"
-                captures:
-                    1:
-                        name: "keyword.control.monster.property.magic.dominions"
-                    2:
-                        name: "constant.numeric.integer.dominions"
-                name: "meta.monster.property.magic.dominions"
-            },
-
+            #G. 14. Other magic abilities.
+            #note: see monster_items for other magic ability properties shared with items.
             {
                 match: '^\\s*(#onebattlespell)\\s+(?:("[^"]+")|(\\d+))'
                 captures:
@@ -1788,7 +1965,10 @@ repository:
                     3:
                         name: "constant.numeric.positive.dominions"
                 name: "meta.monster.property.magic.dominions"
-            }
+            },
+
+            #G. 15. Undocumented dom5 abilities.
+            #note: see monster_items for other dom5 undocumented properties shared with items.
         ]
 
     sites:
