@@ -10,3 +10,4 @@
 ## v0.3.0
 * Reordering of main blocks to follow Dominions parsing order.
 * Change repositories definitions and objects in more sensible ways.
+* Add new damage types.
