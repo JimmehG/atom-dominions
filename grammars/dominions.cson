@@ -75,7 +75,7 @@ patterns: [
             },
 
             {
-                include: "#definitions"
+                include: "#names"
             },
 
             {
@@ -103,7 +103,7 @@ patterns: [
             },
 
             {
-                include: "#definitions"
+                include: "#names"
             },
 
             {
@@ -133,7 +133,7 @@ patterns: [
             },
 
             {
-                include: "#definitions"
+                include: "#names"
             },
 
             {
@@ -161,7 +161,7 @@ patterns: [
             },
 
             {
-                include: "#definitions"
+                include: "#names"
             },
 
             {
@@ -195,11 +195,11 @@ patterns: [
             },
 
             {
-                include: "#definitions"
+                include: "#names"
             },
 
             {
-                include: "#objects"
+                include: "#descriptions"
             },
 
             {
@@ -230,11 +230,11 @@ patterns: [
             },
 
             {
-                include: "#definitions"
+                include: "#names"
             },
 
             {
-                include: "#objects"
+                include: "#descriptions"
             },
 
             {
@@ -302,7 +302,7 @@ patterns: [
             },
 
             {
-                include: "#definitions"
+                include: "#names"
             },
 
             {
@@ -330,7 +330,7 @@ patterns: [
             },
 
             {
-                include: "#definitions"
+                include: "#names"
             },
 
             {
@@ -383,11 +383,11 @@ patterns: [
             },
 
             {
-                include: "#definitions"
+                include: "#names"
             },
 
             {
-                include: "#objects"
+                include: "#descriptions"
             },
 
             {
@@ -417,11 +417,11 @@ patterns: [
             },
 
             {
-                include: "#definitions"
+                include: "#names"
             },
 
             {
-                include: "#objects"
+                include: "#descriptions"
             },
 
             {
@@ -460,11 +460,11 @@ patterns: [
             },
 
             {
-                include: "#definitions"
+                include: "#names"
             },
 
             {
-                include: "#objects"
+                include: "#descriptions"
             },
 
             {
@@ -491,11 +491,11 @@ patterns: [
             },
 
             {
-                include: "#definitions"
+                include: "#names"
             },
 
             {
-                include: "#objects"
+                include: "#descriptions"
             },
 
             {
@@ -539,11 +539,11 @@ patterns: [
             },
 
             {
-                include: "#definitions"
+                include: "#names"
             },
 
             {
-                include: "#objects"
+                include: "#descriptions"
             },
 
             {
@@ -574,11 +574,11 @@ patterns: [
             },
 
             {
-                include: "#definitions"
+                include: "#names"
             },
 
             {
-                include: "#objects"
+                include: "#descriptions"
             },
 
             {
@@ -721,7 +721,7 @@ patterns: [
 
             #Repositories.
             {
-                include: "#definitions"
+                include: "#names"
             },
 
             {
@@ -769,34 +769,33 @@ repository:
             }
         ]
 
-    definitions:
+    names:
         patterns: [
             {
                 match: '^\\s*(#name)\\s+("[^"]+")'
                 captures:
                     1:
-                        name: "keyword.control.definition.property.dominions"
+                        name: "keyword.control.name.property.dominions"
                     2:
                         name: "string.quoted.double.dominions"
-                name: "meta.definition.property.dominions"
+                name: "meta.name.property.dominions"
             }
         ]
 
-    #Objects are definitions that can have long descriptions.
-    objects:
+    descriptions:
         patterns: [
             {
                 begin: "^\\s*(#descr)\\s+(\")"
                 captures:
                     1:
-                        name: "keyword.control.object.property.multiline.dominions"
+                        name: "keyword.control.description.property.multiline.dominions"
                     2:
                         name: "punctuation.definition.string.begin.dominions"
                 end: "\""
                 endCaptures:
                     0:
                         name: "punctuation.definition.string.end.dominions"
-                name: "string.quoted.double.multiline.dominions"
+                name: "meta.description.property.dominions"
             }
         ]
 
