@@ -6,3 +6,6 @@
 * Added start and end folder markers.
 * Added new Dom5 v5.11 armor commands.
 * Added snippets file.
+
+## v0.3.0
+* Reordering of main blocks to follow Dominions parsing order.
