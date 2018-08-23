@@ -22,3 +22,5 @@
 * Split leadership and morale commands.
 * Added new, undocumented dom5 commands.
 * Reorganize monster and monster_item repositories.
+* fixed #explspr.
+* Added missing documented spell commands.

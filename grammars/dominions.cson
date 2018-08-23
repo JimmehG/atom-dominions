@@ -2553,17 +2553,7 @@ repository:
                 name: "meta.spell.command.dominions"
             },
 
-            #B. Properties.
-            {
-                match:"^\\s*(#fatiguecost)\\s+(\\d+)"
-                captures:
-                    1:
-                        name: "keyword.control.spell.property.dominions"
-                    2:
-                        name: "constant.numeric.positive.dominions"
-                name: "meta.spell.property.dominions"
-            },
-
+            #B. Basic Properties.
             {
                 match:"^\\s*(#school)\\s+(-1|[0-7])"
                 captures:
@@ -2596,9 +2586,21 @@ repository:
                 name: "meta.spell.property.dominions"
             },
 
-            #B. 1. Effects.
             {
-                match:"^\\s*(#aoe|#damage|#effect|#nreff|#range|#precision)\\s+(\\d+)"
+                match:"^\\s*(#fatiguecost)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.property.dominions"
+                    2:
+                        name: "constant.numeric.positive.dominions"
+                name: "meta.spell.property.dominions"
+            },
+
+            #C. Spell effects.
+            #TODO: aoe has an area argument.
+            #TODO: effect, nextingeo have (huge) enum arguments.
+            {
+                match:"^\\s*(#aoe|#damage|#nextingeo|#effect|#nreff|#range|#precision)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.spell.property.dominions"
@@ -2629,9 +2631,9 @@ repository:
                 name: "meta.spell.property.dominions"
             },
 
-            #B. 2. Visuals.
+            #C. Sound and visuals.
             {
-                match:"^\\s*(#flightspr|#explspr|#sound)\\s+(\\d+)"
+                match:"^\\s*(#flightspr|#sound)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.spell.property.dominions"
@@ -2660,9 +2662,10 @@ repository:
                 name: "meta.spell.property.dominions"
             },
 
-            #B. 3. Range and targeting.
+            #D. Range and targeting.
+            #TODO: onlygeosrc, nogeosrc, onlygeodst, nogeodst have terrain mask arguments.
             {
-                match:"^\\s*(#provrange|#onlygeosrc|#nogeosrc|#onlygeodst)\\s+(\\d+)"
+                match:"^\\s*(#provrange|#onlygeosrc|#nogeosrc|#onlygeodst|#nogeodst)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.spell.property.dominions"
@@ -2682,7 +2685,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#onlyfriendlydst|#onlyowndst|#nowatertrace|#nolandtrace|#walkable)\\s+(0|1)"
+                match:"^\\s*(#onlycoastsrc|#onlyfriendlydst|#onlyowndst|#nowatertrace|#nolandtrace|#walkable)\\s+(0|1)"
                 captures:
                     1:
                         name: "keyword.control.spell.property.dominions"
@@ -2691,9 +2694,12 @@ repository:
                 name: "meta.spell.property.dominions"
             },
 
-            #B. 4. Special attributes.
+            #E. Spell special attributes.
+            #TODO: spec has a (huge) spec enum argument.
+            #TODO: casttime argument varies between 1 and 1000.
+            #TODO: notfornation argument is a nation number.
             {
-                match:"^\\s*(#spec|#notfornation|#casttime)\\s+(\\d+)"
+                match:"^\\s*(#spec|#casttime|#notfornation|#maxbounces)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.spell.property.dominions"
@@ -2703,7 +2709,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#restricted|#farsumcom)\\s+(?:("[^"]+")|(\\d+))'
+                match: '^\\s*(#restricted|#farsumcom|#onlymnr)\\s+(?:("[^"]+")|(\\d+))'
                 captures:
                     1:
                         name: "keyword.control.spell.property.dominions"
@@ -2716,6 +2722,16 @@ repository:
 
             {
                 match:"^\\s*(#godpathspell)\\s+(-1|[0-7])"
+                captures:
+                    1:
+                        name: "keyword.control.spell.property.dominions"
+                    2:
+                        name: "constant.numeric.enum.dominions"
+                name: "meta.spell.property.dominions"
+            },
+
+            {
+                match:"^\\s*(#friendlyench|#hiddenench|#nocastmindless|#spellreqfly|#polygetmagic)\\s+([0-1])"
                 captures:
                     1:
                         name: "keyword.control.spell.property.dominions"
