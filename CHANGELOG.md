@@ -52,3 +52,4 @@
 * Fixed #req_maxdominion.
 * Fixed #req_domchance.
 * Added #extramsg event command.
+* Added #twiceborn monster command.

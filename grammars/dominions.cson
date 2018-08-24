@@ -1754,8 +1754,9 @@ repository:
 
             #L. Abilities.
             #L. 1. Type and Status.
+            #TODO: twiceborn is added experimentally.
             {
-                match: "^\\s*(#female|#coldblood|#immortal|#domimmortal|#drake|#plant|#lesserhorror|#greaterhorror|#doomhorror|#mounted|#holy|#animal|#unique|#undead|#bug|#demon|#magicbeing|#autocompete|#blind|#uwbug|#stonebeing|#inanimate|#dungeon)"
+                match: "^\\s*(#female|#coldblood|#immortal|#domimmortal|#drake|#plant|#lesserhorror|#greaterhorror|#doomhorror|#mounted|#holy|#animal|#unique|#undead|#bug|#demon|#magicbeing|#autocompete|#blind|#uwbug|#stonebeing|#inanimate|#dungeon|#twiceborn)"
                 captures:
                     1:
                         name: "keyword.control.monster.property.ability.dominions"
