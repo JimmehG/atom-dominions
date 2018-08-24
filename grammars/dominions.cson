@@ -3620,7 +3620,7 @@ repository:
 
             #C. 2. Treasure.
             {
-                match: '^\\s*(#magicitem)\\s+(0|1|2|3|4|9)'
+                match: '^\\s*(#magicitem)\\s+([0-4]|9)'
                 captures:
                     1:
                         name: "keyword.control.event.effect.dominions"
@@ -3742,14 +3742,14 @@ repository:
 
             #C. 5. Monster.
             {
-                match: '^\\s*((?:#(?:2|4|5)?com)|#assassin|#stealthcom|#transform)\\s+(?:("[^"]+")|(\\d+))'
+                match: '^\\s*((?:#(?:2|4|5)?com)|#assassin|#stealthcom|#transform)\\s+(?:("[^"]+")|(-?\\d+))'
                 captures:
                     1:
                         name: "keyword.control.event.effect.dominions"
                     2:
                         name: "string.quoted.double.dominions"
                     3:
-                        name: "constant.numeric.positive.dominions"
+                        name: "constant.numeric.integer.dominions"
                 name: "meta.event.effect.dominions"
             },
 
@@ -3764,19 +3764,19 @@ repository:
             },
 
             {
-                match: '^\\s*(#1unit)\\s+(?:("[^"]+")|(\\d+))'
+                match: '^\\s*(#1unit)\\s+(?:("[^"]+")|(-?\\d+))'
                 captures:
                     1:
                         name: "keyword.control.event.effect.dominions"
                     2:
                         name: "string.quoted.double.dominions"
                     3:
-                        name: "constant.numeric.positive.dominions"
+                        name: "constant.numeric.integer.dominions"
                 name: "meta.event.effect.dominions"
             },
 
             {
-                match: '^\\s*(#(?:1d3|(?:(?:1)?[0-9]d6))units)\\s+(?:("[^"]+")|(\\d+))'
+                match: '^\\s*(#(?:1d3|(?:(?:1)?[0-9]d6))units)\\s+(?:("[^"]+")|(-?\\d+))'
                 captures:
                     1:
                         name: "keyword.control.event.effect.dominions"

@@ -47,3 +47,4 @@
 * #flightspr accepts -1 as argument.
 * #onlyatsite accepts integer arguments.
 * #addequip accepts argument 9.
+* event gain commander and unit commands accept montag arguments.
