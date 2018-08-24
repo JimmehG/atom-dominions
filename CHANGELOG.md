@@ -4,7 +4,7 @@
 ## v0.2.0
 * Added two missing commands from Dominions 4, #exactgold and #transform.
 * Added start and end folder markers.
-* Added new Dom5 v5.11 armor commands.
+* Added new Dominions v5.11 armor commands.
 * Added snippets file.
 
 ## v0.3.0
@@ -20,10 +20,13 @@
 * Added new tattoo abilities.
 * Added summoning commands.
 * Split leadership and morale commands.
-* Added new, undocumented dom5 commands.
+* Added new, undocumented Dominions 5 commands.
 * Reorganize monster and monster_item repositories.
 * fixed #explspr.
 * Added missing documented spell commands.
-* Completed spells repositories.
-* Completed items repositories.
-* Completed sites repositories.
+* Completed spells repository.
+* Completed items repository.
+* Completed sites repository.
+* Added new nation commands.
+* Fixed #uwrec and #uwcom commands.
+* Completed nations and poptypes repositories.
