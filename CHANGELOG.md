@@ -38,3 +38,4 @@
 * Added 6 to #len argument.
 * Added #prec to weapons.
 * Added #mapspeed to items.
+* Added crown argument to #type.

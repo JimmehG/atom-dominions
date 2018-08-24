@@ -957,7 +957,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#type)\\s+([4-6])"
+                match: "^\\s*(#type)\\s+([4-6]|9)"
                 captures:
                     1:
                         name: "keyword.control.armor.property.dominions"
@@ -2982,7 +2982,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#type)\\s+([1-8])"
+                match:"^\\s*(#type)\\s+([1-9])"
                 captures:
                     1:
                         name: "keyword.control.item.property.dominions"
