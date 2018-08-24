@@ -1289,7 +1289,7 @@ repository:
 
             #TODO: skirmisher varies between -25 and 25.
             {
-                match: "^\\s*(#inspirational|#beastmaster|#taskmaster|#skirmisher)\\s+(-?\\d+)"
+                match: "^\\s*(#inspirational|#beastmaster|#taskmaster|#skirmisher|#bodyguard)\\s+(-?\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.morale.dominions"
@@ -1299,7 +1299,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#formationfighter|#bodyguard|#standard)\\s+(\\d+)"
+                match: "^\\s*(#formationfighter|#standard)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.morale.dominions"
