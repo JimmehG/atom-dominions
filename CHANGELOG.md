@@ -50,3 +50,4 @@
 * event gain commander and unit commands accept montag arguments.
 * Added #req_domchance to events.
 * Fixed #req_maxdominion.
+* Fixed #req_domchance.

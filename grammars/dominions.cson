@@ -3409,7 +3409,7 @@ repository:
 
             #TODO: percentage capped to 100.
             {
-                match: '^\\s*(req_domchance)\\s+(\\d+)'
+                match: '^\\s*(#req_domchance)\\s+(\\d+)'
                 captures:
                     1:
                         name: "keyword.control.event.requirement.dominions"
