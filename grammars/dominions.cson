@@ -1675,6 +1675,16 @@ repository:
                 name: "meta.monster.property.attribute.dominions"
             },
 
+            {
+                match: "^\\s*(#incscale|#decscale)\\s+([0-5])"
+                captures:
+                    1:
+                        name: "keyword.control.monster.property.dominions"
+                    2:
+                        name: "constant.numeric.enum.dominions"
+                name: "meta.monster.property.dominions"
+            },
+
             #H. Weapons and armor.
             {
                 match: '^\\s*(#weapon|#armor)\\s+(?:("[^"]+")|(\\d+))'

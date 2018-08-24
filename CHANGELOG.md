@@ -34,3 +34,4 @@
 * Completed events repository.
 * Added 0 to #heretic argument.
 * Added #insane.
+* Added #incscale and #decscale for monsters.
