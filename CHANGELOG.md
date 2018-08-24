@@ -54,3 +54,4 @@
 * Added #extramsg event command.
 * Added #twiceborn monster command.
 * Added #req_targminmorale and #req_targmaxmorale event commands.
+* Added #cleartag event command.

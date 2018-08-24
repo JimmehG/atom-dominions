@@ -3218,8 +3218,6 @@ repository:
                 name: "meta.event.property.dominions"
             },
 
-            #TODO: missing #cleartag
-
             #B. Requirements.
             #B. 1. Generic.
             {
@@ -3744,6 +3742,14 @@ repository:
             },
 
             #C. 5. Monster.
+            {
+                match: '^\\s*(#cleartag)'
+                captures:
+                    1:
+                        name: "keyword.control.event.effect.dominions"
+                name: "meta.event.effect.dominions"
+            },
+
             {
                 match: '^\\s*((?:#(?:2|4|5)?com)|#assassin|#stealthcom|#transform)\\s+(?:("[^"]+")|(-?\\d+))'
                 captures:
