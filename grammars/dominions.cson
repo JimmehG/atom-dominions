@@ -3171,10 +3171,9 @@ repository:
 
     events:
         patterns: [
-            #A. Properties.
+            #A. Basic.
             {
-                #Note: Worthy Heroes uses rarity 5, although not listed in the rarity table.
-                match: '^\\s*(#rarity)\\s+(10|11|12|13|-2|-1|0|1|2|5|99)'
+                match: '^\\s*(#rarity)\\s+(10|11|12|13|-2|-1|0|1|2|5)'
                 captures:
                     1:
                         name: "keyword.control.event.property.dominions"
@@ -3186,12 +3185,22 @@ repository:
             #B. Requirements.
             #B. 1. Generic.
             {
-                match: '^\\s*(#req_rare|#req_unique|#req_turn|#req_maxturn)\\s+(\\d+)'
+                match: '^\\s*(#req_unique|#req_turn|#req_maxturn|#req_pregame)\\s+(\\d+)'
                 captures:
                     1:
                         name: "keyword.control.event.requirement.dominions"
                     2:
                         name: "constant.numeric.positive.dominions"
+                name: "meta.event.requirement.dominions"
+            },
+
+            {
+                match: '^\\s*(#req_rare)\\s+(\\d+)'
+                captures:
+                    1:
+                        name: "keyword.control.event.requirement.dominions"
+                    2:
+                        name: "constant.numeric.percentage.dominions"
                 name: "meta.event.requirement.dominions"
             },
 
@@ -3206,7 +3215,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#req_era|#req_noera)\\s+(0|1|2)'
+                match: '^\\s*(#req_era|#req_noera)\\s+([0-2])'
                 captures:
                     1:
                         name: "keyword.control.event.requirement.dominions"
@@ -3216,7 +3225,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#req_season|#req_noseason)\\s+(0|1|2|3)'
+                match: '^\\s*(#req_season|#req_noseason)\\s+([0-3])'
                 captures:
                     1:
                         name: "keyword.control.event.requirement.dominions"
@@ -3225,6 +3234,19 @@ repository:
                 name: "meta.event.requirement.dominions"
             },
 
+            #B. 2. Nation.
+            #TODO: argument is a nation number.
+            {
+                match: '^\\s*(#req_nation|#req_nonation|#req_fornation|#req_notfornation|#req_notnation|#req_notforally)\\s+(\\d+)'
+                captures:
+                    1:
+                        name: "keyword.control.event.requirement.dominions"
+                    2:
+                        name: "constant.numeric.positive.dominions"
+                name: "meta.event.requirement.dominions"
+            },
+
+            #B. 3. Treasury.
             {
                 match: '^\\s*(#req_gem)\\s+([0-7])'
                 captures:
@@ -3235,9 +3257,8 @@ repository:
                 name: "meta.event.requirement.dominions"
             },
 
-            #B. 2. Nation.
             {
-                match: '^\\s*(#req_nation|#req_fornation|#req_notnation)\\s+(\\d+)'
+                match: '^\\s*(#req_gold)\\s+(\\d+)'
                 captures:
                     1:
                         name: "keyword.control.event.requirement.dominions"
@@ -3246,7 +3267,7 @@ repository:
                 name: "meta.event.requirement.dominions"
             },
 
-            #B. 3. Province.
+            #B. 4. Province.
             {
                 match: '^\\s*(#req_pop0ok)'
                 captures:
@@ -3265,17 +3286,7 @@ repository:
                 name: "meta.event.requirement.dominions"
             },
 
-            {
-                match: '^\\s*(#req_poptype|#req_maxpop|#req_minpop|#req_mindef|#req_maxdef|#req_minunrest|#req_maxunrest)\\s+(\\d+)'
-                captures:
-                    1:
-                        name: "keyword.control.event.requirement.dominions"
-                    2:
-                        name: "constant.numeric.positive.dominions"
-                name: "meta.event.requirement.dominions"
-            },
-
-            #B. 4. Terrain.
+            #Terrain.
             {
                 match: '^\\s*(#req_land|#req_coast|#req_mountain|#req_forest|#req_farm|#req_swamp|#req_waste|#req_cave|#req_freshwater)\\s+(0|1)'
                 captures:
@@ -3283,6 +3294,17 @@ repository:
                         name: "keyword.control.event.requirement.dominions"
                     2:
                         name: "constant.numeric.enum.dominions"
+                name: "meta.event.requirement.dominions"
+            },
+
+            #TODO: req_poptype argument is a poptype.
+            {
+                match: '^\\s*(#req_poptype|#req_maxpop|#req_minpop|#req_mindef|#req_maxdef|#req_minunrest|#req_maxunrest)\\s+(\\d+)'
+                captures:
+                    1:
+                        name: "keyword.control.event.requirement.dominions"
+                    2:
+                        name: "constant.numeric.positive.dominions"
                 name: "meta.event.requirement.dominions"
             },
 
@@ -3297,6 +3319,7 @@ repository:
                 name: "meta.event.requirement.dominions"
             },
 
+            #TODO: req_nositenbr argument is a site number.
             {
                 match: '^\\s*(#req_freesites|#req_nositenbr)\\s+(\\d+)'
                 captures:
@@ -3308,11 +3331,14 @@ repository:
             },
 
             #B. 6. Dominion.
+            #TODO: argument is a site number.
             {
-                match: '^\\s*(#req_fullowner)'
+                match: '^\\s*(#req_fullowner|#req_domowner)\\s+(\\d+)'
                 captures:
                     1:
                         name: "keyword.control.event.requirement.dominions"
+                    2:
+                        name: "constant.numeric.positive.dominions"
                 name: "meta.event.requirement.dominions"
             },
 
@@ -3343,6 +3369,17 @@ repository:
                         name: "keyword.control.event.requirement.dominions"
                     2:
                         name: "constant.numeric.enum.dominions"
+                name: "meta.event.requirement.dominions"
+            },
+
+            #TODO: percentage capped to 100.
+            {
+                match: '^\\s*(#req_maxdominion)\\s+(\\d+)'
+                captures:
+                    1:
+                        name: "keyword.control.event.requirement.dominions"
+                    2:
+                        name: "constant.numeric.percentage.dominions"
                 name: "meta.event.requirement.dominions"
             },
 
@@ -3387,7 +3424,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#req_monster|#req_nomonster|#req_nomnr)\\s+(?:("[^"]+")|(\\d+))'
+                match: '^\\s*(#req_monster|#req_2monsters|#req_5monsters|#req_nomonster|#req_mnr|#req_nomnr|#req_deadmnr)\\s+(?:("[^"]+")|(\\d+))'
                 captures:
                     1:
                         name: "keyword.control.event.requirement.dominions"
@@ -3411,7 +3448,7 @@ repository:
 
             #B. 10. Target requirements.
             {
-                match: '^\\s*(#req_targgod|#req_targhumanoid|#req_targmale)\\s+(0|1)'
+                match: '^\\s*(#req_targgod|#req_targhumanoid|#req_targmale|#req_targundead|#req_targdemon|#req_targanimal|#req_targinanimate|#req_targmindless|#req_targimmobile|#req_targmagicbeing)\\s+(0|1)'
                 captures:
                     1:
                         name: "keyword.control.event.requirement.dominions"
@@ -3443,7 +3480,22 @@ repository:
             },
 
             {
-                match: '^\\s*(#req_targaff|#req_targorder)\\s+(\\d+)'
+                match: '^\\s*(#req_targitem|#req_targnoitem)\\s+(?:("[^"]+")|(\\d+))'
+                captures:
+                    1:
+                        name: "keyword.control.event.requirement.dominions"
+                    2:
+                        name: "string.quoted.double.dominions"
+                    3:
+                        name: "constant.numeric.positive.dominions"
+                name: "meta.event.requirement.dominions"
+            },
+
+            #TODO: req_targaff argument is an affliction number.
+            #TODO: req_targorder argument is an order number.
+            #TODO: req_targowner argument is a nation number.
+            {
+                match: '^\\s*(#req_targaff|#req_targorder|#req_targowner)\\s+(\\d+)'
                 captures:
                     1:
                         name: "keyword.control.event.requirement.dominions"
@@ -3452,9 +3504,18 @@ repository:
                 name: "meta.event.requirement.dominions"
             },
 
-            #B. 11. Event code.
             {
-                match: '^\\s*(#req_code|#req_anycode|#req_nearbycode|#req_nearowncode)\\s+(-?\\d+)'
+                match: '^\\s*(#req_targforeignok)'
+                captures:
+                    1:
+                        name: "keyword.control.event.requirement.dominions"
+                name: "meta.event.requirement.dominions"
+            },
+
+            #B. 11. Event code.
+            #Argumnts are event id numbers.
+            {
+                match: '^\\s*(#req_code|#req_anycode|#req_notanycode|#req_nearbycode|#req_nearowncode)\\s+(-?\\d+)'
                 captures:
                     1:
                         name: "keyword.control.event.requirement.dominions"
@@ -3484,13 +3545,25 @@ repository:
                 name: "meta.event.effect.dominions"
             },
 
+            #TODO: argument is a nation number with -1 and -2 special cased. Default is independents.
             {
-                match: '^\\s*(#nation)\\s+(-?\\d+)'
+                match: '^\\s*(#nation)\\s+(-1|-2|\\d+)?'
                 captures:
                     1:
                         name: "keyword.control.event.effect.dominions"
                     2:
                         name: "constant.numeric.integer.dominions"
+                name: "meta.event.effect.dominions"
+            },
+
+            #TODO: argument is an active global number.
+            {
+                match: '^\\s*(#nationench)\\s+(\\d+)'
+                captures:
+                    1:
+                        name: "keyword.control.event.effect.dominions"
+                    2:
+                        name: "constant.numeric.positive.dominions"
                 name: "meta.event.effect.dominions"
             },
 
@@ -3522,22 +3595,22 @@ repository:
             },
 
             {
-                match: '^\\s*(#gemloss|#(?:(?:1d3|1d6|2d4|2d6|3d6|4d6)vis))\\s+([0-7])'
-                captures:
-                    1:
-                        name: "keyword.control.event.effect.dominions"
-                    2:
-                        name: "constant.numeric.enum.dominions"
-                name: "meta.event.effect.dominions"
-            },
-
-            {
                 match: '^\\s*(#gold|#exactgold)\\s+(-?\\d+)'
                 captures:
                     1:
                         name: "keyword.control.event.effect.dominions"
                     2:
                         name: "constant.numeric.integer.dominions"
+                name: "meta.event.effect.dominions"
+            },
+
+            {
+                match: '^\\s*(#gemloss|#(?:(?:1d3|1d6|2d4|2d6|3d6|4d6)vis))\\s+([0-7])'
+                captures:
+                    1:
+                        name: "keyword.control.event.effect.dominions"
+                    2:
+                        name: "constant.numeric.enum.dominions"
                 name: "meta.event.effect.dominions"
             },
 
@@ -3574,7 +3647,18 @@ repository:
             },
 
             {
-                match: '^\\s*(#kill|#emigration|#fort)\\s+(\\d+)'
+                match: '^\\s*(#taxboost|#kill|#emigration)\\s+(-?\\d+)'
+                captures:
+                    1:
+                        name: "keyword.control.event.effect.dominions"
+                    2:
+                        name: "constant.numeric.percentage.dominions"
+                name: "meta.event.effect.dominions"
+            },
+
+            #TODO: fort argument is a fort number.
+            {
+                match: '^\\s*(#killpop|#incpop|inccorpses|#fort)\\s+(\\d+)'
                 captures:
                     1:
                         name: "keyword.control.event.effect.dominions"
@@ -3604,7 +3688,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#newsite|#hiddensite)\\s+(-1|\\d+)'
+                match: '^\\s*(#addsite|#hiddensite|#removesite)\\s+(-1|\\d+)'
                 captures:
                     1:
                         name: "keyword.control.event.effect.dominions"
@@ -3614,7 +3698,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#revealsite|#visitors|#revolt|#revealprov)'
+                match: '^\\s*(#revealsite|#visitors|#revolt|#revealprov|#claimthrone)'
                 captures:
                     1:
                         name: "keyword.control.event.effect.dominions"
@@ -3668,8 +3752,9 @@ repository:
                 name: "meta.event.effect.dominions"
             },
 
+            #TODO: researchaff, gainaff arguments are affliction bitmasks.
             {
-                match: '^\\s*(#strikeunits|#curse|#disease|#reseacrhaff|#gainaff)\\s+(\\d+)'
+                match: '^\\s*(#strikeunits|#researchaff|#gainaff|#poison|#xp)\\s+(\\d+)'
                 captures:
                     1:
                         name: "keyword.control.event.effect.dominions"
@@ -3679,7 +3764,17 @@ repository:
             },
 
             {
-                match: '^\\s*(#killmon|#killcom)\\s+(?:("[^"]+")|(\\d+))'
+                match: '^\\s*(#curse|#disease)\\s+(\\d+)'
+                captures:
+                    1:
+                        name: "keyword.control.event.effect.dominions"
+                    2:
+                        name: "constant.numeric.percentage.dominions"
+                name: "meta.event.effect.dominions"
+            },
+
+            {
+                match: '^\\s*(#killmon|#kill2d6mon|#killcom)\\s+(?:("[^"]+")|(\\d+))'
                 captures:
                     1:
                         name: "keyword.control.event.effect.dominions"
@@ -3763,6 +3858,16 @@ repository:
             },
 
             {
+                match: '^\\s*(#worldritrebate)\\s+([0-7])'
+                captures:
+                    1:
+                        name: "keyword.control.event.effect.dominions"
+                    2:
+                        name: "constant.numeric.enum.dominions"
+                name: "meta.event.effect.dominions"
+            },
+
+            {
                 match: '^\\s*(#worldunrest|#worldage)\\s+(-?\\d+)'
                 captures:
                     1:
@@ -3773,12 +3878,32 @@ repository:
             },
 
             {
-                match: '^\\s*(#worldincdom|#worldcurse|#worlddisease|#worldmark|#worldheal|#linger)\\s+(\\d+)'
+                match: '^\\s*(#worldincdom)\\s+(-?10|[1-9])'
+                captures:
+                    1:
+                        name: "keyword.control.event.effect.dominions"
+                    2:
+                        name: "constant.numeric.enum.dominions"
+                name: "meta.event.effect.dominions"
+            },
+
+            {
+                match: '^\\s*(#linger)\\s+(\\d+)'
                 captures:
                     1:
                         name: "keyword.control.event.effect.dominions"
                     2:
                         name: "constant.numeric.positive.dominions"
+                name: "meta.event.effect.dominions"
+            },
+
+            {
+                match: '^\\s*(#worldcurse|#worlddisease|#worldmark|#worldheal)\\s+(\\d+)'
+                captures:
+                    1:
+                        name: "keyword.control.event.effect.dominions"
+                    2:
+                        name: "constant.numeric.percentage.dominions"
                 name: "meta.event.effect.dominions"
             },
 
@@ -3811,6 +3936,7 @@ repository:
                 name: "meta.event.effect.dominions"
             },
 
+            #TODO: order argument is an order bitmask.
             {
                 match: '^\\s*(#order)\\s+(\\d+)'
                 captures:

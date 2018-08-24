@@ -31,3 +31,4 @@
 * Fixed #uwrec and #uwcom commands.
 * Completed nations and poptypes repositories.
 * Completed global command repository.
+* Completed events repository.
