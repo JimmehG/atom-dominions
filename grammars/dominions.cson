@@ -2767,12 +2767,22 @@ repository:
             #TODO: aoe has an area argument.
             #TODO: effect, nextingeo have (huge) enum arguments.
             {
-                match:"^\\s*(#aoe|#damage|#nextingeo|#effect|#nreff|#range|#precision)\\s+(\\d+)"
+                match:"^\\s*(#aoe|#nextingeo|#effect|#nreff|#range|#precision)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.spell.property.dominions"
                     2:
                         name: "constant.numeric.positive.dominions"
+                name: "meta.spell.property.dominions"
+            },
+
+            {
+                match:"^\\s*(#damage)\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.property.dominions"
+                    2:
+                        name: "constant.numeric.integer.dominions"
                 name: "meta.spell.property.dominions"
             },
 
