@@ -51,3 +51,4 @@
 * Added #req_domchance to events.
 * Fixed #req_maxdominion.
 * Fixed #req_domchance.
+* Added #extramsg event command.

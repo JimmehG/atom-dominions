@@ -3217,6 +3217,8 @@ repository:
                 name: "meta.event.property.dominions"
             },
 
+            #TODO: missing #cleartag
+
             #B. Requirements.
             #B. 1. Generic.
             {
@@ -3603,7 +3605,7 @@ repository:
             },
 
             {
-                begin: "^\\s*(#msg)\\s+(\")"
+                begin: "^\\s*(#msg|#extramsg)\\s+(\")"
                 captures:
                     1:
                         name: "keyword.control.event.effect.multiline.dominions"
