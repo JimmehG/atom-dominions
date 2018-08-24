@@ -2130,7 +2130,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#homecom|#homemon|#com|#mon|(?:summonlvl[2-4])|#summon|#wallunit|#wallcom|#uwwallunit|#uwwallcom)\\s+(?:("[^"]+")|(\\d+))'
+                match: '^\\s*(#homecom|#homemon|#com|#mon|#summonlvl[2-4]|#summon|#wallunit|#wallcom|#uwwallunit|#uwwallcom)\\s+(?:("[^"]+")|(\\d+))'
                 captures:
                     1:
                         name: "keyword.control.site.property.dominions"

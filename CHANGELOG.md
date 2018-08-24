@@ -39,3 +39,4 @@
 * Added #prec to weapons.
 * Added #mapspeed to items.
 * Added crown argument to #type.
+* Fixed regexp error with summonlvl variants.
