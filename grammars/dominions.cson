@@ -590,12 +590,22 @@ patterns: [
     #B. 9. General.
     #Global commands.
     {
-        match: '^\\s*(#poppergold|#resourcemult|#supplymult|#unresthalfinc|#unresthalfres|#eventisrare|#turmoilincome|#turmoilevents|#deathincome|#deathsupply|#deathdeath|#slothincome|#slothresources|#coldincome|#coldsupply|#tempscalecap|#misfortune|#luckevents|#researchscale)\\s+(\\d+)'
+        match: '^\\s*(#poppergold|#unresthalfinc|#unresthalfres|#deathdeath|#tempscalecap|#researchscale)\\s+(\\d+)'
         captures:
             1:
                 name: "keyword.control.mod.property.dominions"
             2:
                 name: "constant.numeric.positive.dominions"
+        name: "meta.mod.property.dominions"
+    },
+
+    {
+        match: '^\\s*(#resourcemult|#supplymult|#eventisrare|#turmoilincome|#turmoilevents|#deathincome|#deathsupply|#slothincome|#slothresources|#coldincome|#coldsupply|#misfortune|#luckevents)\\s+(\\d+)'
+        captures:
+            1:
+                name: "keyword.control.mod.property.dominions"
+            2:
+                name: "constant.numeric.percentage.dominions"
         name: "meta.mod.property.dominions"
     },
 
