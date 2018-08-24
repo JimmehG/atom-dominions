@@ -35,3 +35,4 @@
 * Added 0 to #heretic argument.
 * Added #insane.
 * Added #incscale and #decscale for monsters.
+* Added 6 to #len argument.
