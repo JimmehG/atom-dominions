@@ -3398,7 +3398,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#req_maxdominion)\\s+(-?10|[0-9])'
+                match: '^\\s*(#req_maxdominion)\\s+(-?(?:10|[0-9]))'
                 captures:
                     1:
                         name: "keyword.control.event.requirement.dominions"
@@ -3409,7 +3409,7 @@ repository:
 
             #TODO: percentage capped to 100.
             {
-                match: '^\\s*(#req_maxdominion)\\s+(\\d+)'
+                match: '^\\s*(req_domchance)\\s+(\\d+)'
                 captures:
                     1:
                         name: "keyword.control.event.requirement.dominions"

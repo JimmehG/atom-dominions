@@ -48,3 +48,5 @@
 * #onlyatsite accepts integer arguments.
 * #addequip accepts argument 9.
 * event gain commander and unit commands accept montag arguments.
+* Added #req_domchance to events.
+* Fixed #req_maxdominion.
