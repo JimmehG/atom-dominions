@@ -795,17 +795,17 @@ repository:
     descriptions:
         patterns: [
             {
-                begin: "^\\s*(#descr)\\s+(\")"
+                begin: '^\\s*(#descr)\\s+(\")'
                 captures:
                     1:
                         name: "keyword.control.description.property.multiline.dominions"
                     2:
                         name: "punctuation.definition.string.begin.dominions"
-                end: "\""
+                end: '\"'
                 endCaptures:
                     0:
                         name: "punctuation.definition.string.end.dominions"
-                name: "meta.description.property.dominions"
+                name: "string.quoted.double.description.property.dominions"
             }
         ]
 
@@ -1127,7 +1127,7 @@ repository:
 
             #TODO: uwheat has values 0-100.
             #TODO: poisonskin has values 0-500.
-            #TODO: clouds have a size value.
+            #TODO: clouds has a size value.
             #TODO: minbdslime has an area value.
             {
                 match: "^\\s*(#heat|#cold|#uwheat|#poisonskin|#poisoncloud|#diseasecloud|#animalawe|#awe|#fear|#fireshield|#uwfireshield|#banefireshield|#acidshield|#damagerev|#bloodvengeance|#slimer|#poisonarmor|#mindslime|#overcharged)\\s+(\\d+)"
@@ -1139,7 +1139,7 @@ repository:
                 name: "meta.monster_item.property.ability.dominions"
             },
 
-            #B. 5. Powers.
+            #B. 6. Powers.
             {
                 match: "^\\s*(#springpower|#summerpower|#fallpower|#winterpower)\\s+(\\d+)"
                 captures:
@@ -1160,7 +1160,7 @@ repository:
                 name: "meta.monster_item.property.ability.dominions"
             },
 
-            #B. 6. Combat.
+            #B. 7. Combat.
             {
                 match: "^\\s*(#blessbers|#blessfly|#deathcurse|#trampswallow|#trample)"
                 captures:
@@ -1203,7 +1203,7 @@ repository:
                 name: "meta.monster_item.property.ability.dominions"
             },
 
-            #B. 7. Support.
+            #B. 8. Support.
             {
                 match: "^\\s*(#inquisitor|#taxcollector)"
                 captures:
@@ -1254,9 +1254,9 @@ repository:
                 name: "meta.monster_item.property.ability.dominions"
             },
 
-            #B. 8. Summoning.
+            #B. 9. Summoning.
             {
-                match: '^\\s*((?:#domsummon2|#domsummon20|#domsummon|#raredomsummon|#templetrainer|(?:#makemonsters[1-5])|(?:#summon[1-5])|(?:#battlesum[1-5])|(?:#batstartsum[1-9]d6)|(?:#batstartsum[1-5]))\\s+(?:("[^"]+")|(-?\\d+))'
+                match:               '\\s*(#domsummon2|#domsummon20|#domsummon|#raredomsummon|#templetrainer|(?:#makemonsters[1-5])|(?:#summon[1-5])|(?:#battlesum[1-5])|(?:#batstartsum[1-9]d6)|(?:#batstartsum[1-5]))\\s+(?:("[^"]+")|(-?\\d+))'
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.summon.dominions"
@@ -1267,7 +1267,7 @@ repository:
                 name: "meta.monster_item.property.summon.dominions"
             },
 
-            #B. 9. Leadership.
+            #B. 10. Leadership.
             {
                 match: "^\\s*(#command|#magiccommand|#undcommand)\\s+(-?\\d+)"
                 captures:
@@ -1278,7 +1278,7 @@ repository:
                 name: "meta.monster_item.property.leadership.dominions"
             },
 
-            #B. 10. Morale properties.
+            #B. 11. Morale properties.
             {
                 match: "^\\s*(#slave|#undisciplined)"
                 captures:
@@ -1308,7 +1308,7 @@ repository:
                 name: "meta.monster_item.property.morale.dominions"
             },
 
-            #B. 11. Magic.
+            #B. 12. Magic.
             {
                 match:"^\\s*(#magicboost)\\s+([0-8]|5[0-3])\\s+(-?[0-5])"
                 captures:
@@ -1321,7 +1321,7 @@ repository:
                 name: "meta.monster_item.property.magic.dominions"
             },
 
-            #B. 12. Rituals.
+            #B. 13. Rituals.
             {
                 match:"^\\s*(#masterrit)\\s+(-?\\d+)"
                 captures:
@@ -1342,7 +1342,7 @@ repository:
                 name: "meta.monster_item.property.magic.dominions"
             },
 
-            #B. 13. Research.
+            #B. 14. Research.
             {
                 match: "^\\s*(#drainimmune|#magicimmune|#divineins)"
                 captures:
@@ -1371,7 +1371,7 @@ repository:
                 name: "meta.monster_item.property.magic.dominions"
             },
 
-            #B. 14. Gem production.
+            #B. 15. Gem production.
             {
                 match:"^\\s*(#gemprod)\\s+([0-7])\\s+(\\d+)"
                 captures:
@@ -1394,7 +1394,7 @@ repository:
                 name: "meta.monster_item.property.magic.dominions"
             },
 
-            #B. 15. Other magic abilities.
+            #B. 16. Other magic abilities.
             {
                 match:"^\\s*(#bonusspells|#crossbreeder|#kokytosret|#infernoret|#voidret|#allret|#tainted|#fixforgebonus)\\s+(\\d+)"
                 captures:
@@ -1443,7 +1443,7 @@ repository:
                 name: "meta.monster_item.property.magic.dominions"
             },
 
-            #B. 16. Undocumented dom5 abilities.
+            #B. 17. Undocumented dom5 abilities.
             {
                 match:"^\\s*(#mason|#spiritsight|#invisible|#doheal|#spellsinger|#reanimpriest|#norange|#polyimmune|#combatcaster)"
                 captures:
@@ -1730,8 +1730,8 @@ repository:
                 name: "meta.monster.property.equipment.dominions"
             },
 
-            #G. Abilities.
-            #G. 1. Type and Status.
+            #L. Abilities.
+            #L. 1. Type and Status.
             {
                 match: "^\\s*(#female|#coldblood|#immortal|#domimmortal|#drake|#plant|#lesserhorror|#greaterhorror|#doomhorror|#mounted|#holy|#animal|#unique|#undead|#bug|#demon|#magicbeing|#autocompete|#blind|#uwbug|#stonebeing|#inanimate|#dungeon)"
                 captures:
@@ -1740,7 +1740,7 @@ repository:
                 name: "meta.monster.property.ability.dominions"
             },
 
-            #G. 2. Movement.
+            #L. 2. Movement.
             #note: see monster_items for other movement properties shared with items.
             {
                 match: "^\\s*(#immobile|#aquatic|#amphibian|#pooramphibian|#float|#flying|#swimming|#snow|#stormimmune|#teleport|#mapteleport|#blink|#unteleportable|#noriverpass|#forestsurvival|#mountainsurvival|#swampsurvival|#wastesurvival)"
@@ -1772,7 +1772,7 @@ repository:
                 name: "meta.monster.property.ability.dominions"
             },
 
-            #G. 3. Stealth.
+            #L. 3. Stealth.
             #note: see monster_items for other movement properties shared with items.
             {
                 match: "^\\s*(#illusion|#spy|#assassin)"
@@ -1782,7 +1782,7 @@ repository:
                 name: "meta.monster.property.ability.dominions"
             },
 
-            #G. 4. Age, healing and afflictions.
+            #L. 4. Age, healing and afflictions.
             #note: see monster_items for other age and healing properties shared with items.
             {
                 match: "^\\s*(#noheal)"
@@ -1823,7 +1823,7 @@ repository:
                 name: "meta.monster.property.ability.dominions"
             },
 
-            #G. 5. Tattoos.
+            #L. 5. Tattoos.
             {
                 match: "^\\s*(#beartattoo|#horsetattoo|#wolftattoo|#boartattoo|#snaketattoo)\\s+(\\d+)"
                 captures:
@@ -1834,7 +1834,7 @@ repository:
                 name: "meta.monster.property.tattoo.dominions"
             },
 
-            #G. 6. Support.
+            #L. 6. Support.
             {
                 match: "^\\s*(#neednoteat|#nohof)"
                 captures:
@@ -1843,7 +1843,7 @@ repository:
                 name: "meta.monster.property.ability.dominions"
             },
 
-            #G. 7. Shapechanging.
+            #L. 7. Shapechanging.
             {
                 match: '^\\s*(#shapechange|#firstshape|#secondshape|#secondtmpshape|#forestshape|#plainshape|#foreignshape|#homeshape|#springshape|#summershape|#autumnshape|#wintershape|#landshape|#watershape)\\s+(?:("[^"]+")|(\\d+))'
                 captures:
@@ -1905,7 +1905,7 @@ repository:
                 name: "meta.monster.property.shape.dominions"
             },
 
-            #G. 8. Summoning.
+            #L. 8. Summoning.
             #note: see monster_items for other summoning properties shared with items.
             {
                 match: "^\\s*(#reanimator|#montag)\\s+(\\d+)"
@@ -1917,7 +1917,7 @@ repository:
                 name: "meta.monster.property.summon.dominions"
             },
 
-            #G. 9. Nametypes.
+            #L. 9. Nametypes.
             {
                 #TODO: value is atm capped at 299.
                 match: "^\\s*(#nametype)\\s+(\\d+)"
@@ -1929,7 +1929,7 @@ repository:
                 name: "meta.monster.property.nametype.dominions"
             },
 
-            #G. 10. Leadership.
+            #L. 10. Leadership.
             #note: see monster_items for other leadership properties shared with items.
             {
                 match: "^\\s*(#noleader|#poorleader|#okleader|#goodleader|#expertleader|#superiorleader|#nomagicleader|#poormagicleader|#okmagicleader|#goodmagicleader|#expertmagicleader|#superiormagicleader|#noundeadleader|#poorundeadleader|#okundeadleader|#goodundeadleader|#expertundeadleader|#superiorundeadleader|#almostundead|#almostliving)"
@@ -1939,10 +1939,10 @@ repository:
                 name: "meta.monster.property.leadership.dominions"
             },
 
-            #G. 11. Morale.
+            #L. 11. Morale.
             #note: see monster_items for other leadership properties shared with items.
 
-            #G. 12. Magic.
+            #L. 12. Magic.
             #note: see monster_items for other magic properties shared with items.
             {
                 match:"^\\s*(#magicskill)\\s+([0-8]|5[0-3])\\s+([0-9]|10)"
@@ -1968,7 +1968,7 @@ repository:
                 name: "meta.monster.property.magic.dominions"
             },
 
-            #G. 13. Research.
+            #L. 13. Research.
             #note: see monster_items for other research properties shared with items.
             {
                 match:"^\\s*(#fixedresearch)\\s+(\\d+)"
@@ -1980,7 +1980,7 @@ repository:
                 name: "meta.monster.property.magic.dominions"
             },
 
-            #G. 14. Other magic abilities.
+            #L. 14. Other magic abilities.
             #note: see monster_items for other magic ability properties shared with items.
             {
                 match: '^\\s*(#onebattlespell)\\s+(?:("[^"]+")|(\\d+))'
@@ -1994,7 +1994,7 @@ repository:
                 name: "meta.monster.property.magic.dominions"
             },
 
-            #G. 15. Undocumented dom5 abilities.
+            #L. 15. Undocumented dom5 abilities.
             #note: see monster_items for other dom5 undocumented properties shared with items.
             {
                 match:"^\\s*(#unify|#triple3mon)"
@@ -2787,7 +2787,7 @@ repository:
                 name: "meta.spell.property.dominions"
             },
 
-            #C. Sound and visuals.
+            #D. Sound and visuals.
             {
                 match:"^\\s*(#flightspr|#sound)\\s+(\\d+)"
                 captures:
@@ -2818,7 +2818,7 @@ repository:
                 name: "meta.spell.property.dominions"
             },
 
-            #D. Range and targeting.
+            #E. Range and targeting.
             #TODO: onlygeosrc, nogeosrc, onlygeodst, nogeodst have terrain mask arguments.
             {
                 match:"^\\s*(#provrange|#onlygeosrc|#nogeosrc|#onlygeodst|#nogeodst)\\s+(\\d+)"
@@ -3023,7 +3023,7 @@ repository:
                 name: "meta.item.property.magic.dominions"
             },
 
-            #B. 2. Attributes.
+            #D. Attributes.
             {
                 match:"^\\s*(#luck|#quickness|#bless|#barkskin|#stoneskin|#ironskin|#bers|#extralife)"
                 captures:
@@ -3032,7 +3032,7 @@ repository:
                 name: "meta.item.property.attribute.dominions"
             },
 
-            #B. 3. Movement.
+            #E. Movement.
             {
                 match:"^\\s*(#waterbreathing|#fly|#run)"
                 captures:
@@ -3052,7 +3052,7 @@ repository:
                 name: "meta.item.property.attribute.dominions"
             },
 
-            #B. 4. Arena.
+            #F. Arena.
             {
                 match:"^\\s*(#champprize|#autocomplete)"
                 captures:
@@ -3061,7 +3061,7 @@ repository:
                 name: "meta.item.property.attribute.dominions"
             },
 
-            #B. 5. Restrictions.
+            #G. Restrictions.
             {
                 match:"^\\s*(#reqeyes|#nofind)"
                 captures:
@@ -3092,7 +3092,7 @@ repository:
                 name: "meta.item.property.attribute.dominions"
             }
 
-            #B. 6. Curses and afflictions.
+            #H. Curses and afflictions.
             {
                 match:"^\\s*(#cursed|#nomounted|#curse|#nocoldblood|#disease|#nodemon|#chestwound|#noundead|#noinanim|#noimmobile|#feeblemind|#mute|#onlymounted|#onlycoldblood|#nhwound|#onlydemon|#crippled|#onlyundead|#looseeye|#onlyinanim|#immobileonly)"
                 captures:
@@ -3101,7 +3101,7 @@ repository:
                 name: "meta.item.property.attribute.dominions"
             },
 
-            #B. 7. Undocumented dom5 commands.
+            #I. Undocumented dom5 commands.
             {
                 match:"^\\s*(#autobless)"
                 captures:
@@ -3147,7 +3147,7 @@ repository:
             },
 
             {
-                match: '^\\s*((?:#defcom1|(?:#defunit(?:1b|1c|1d|1)))\\s+(?:("[^"]+")|(\\d+))'
+                match: '^\\s*(#defcom1|#defunit(?:1b|1c|1d|1))\\s+(?:("[^"]+")|(\\d+))'
                 captures:
                     1:
                         name: "keyword.control.poptype.property.dominions"
@@ -3167,7 +3167,7 @@ repository:
                         name: "constant.numeric.positive.dominions"
                 name: "meta.poptype.property.dominions"
             }
-        ]
+       ]
 
     events:
         patterns: [
@@ -3513,7 +3513,7 @@ repository:
             },
 
             #B. 11. Event code.
-            #Argumnts are event id numbers.
+            #Arguments are event id numbers.
             {
                 match: '^\\s*(#req_code|#req_anycode|#req_notanycode|#req_nearbycode|#req_nearowncode)\\s+(-?\\d+)'
                 captures:
