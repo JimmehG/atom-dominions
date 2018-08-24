@@ -1396,7 +1396,7 @@ repository:
 
             #B. 16. Other magic abilities.
             {
-                match:"^\\s*(#bonusspells|#crossbreeder|#kokytosret|#infernoret|#voidret|#allret|#tainted|#fixforgebonus)\\s+(\\d+)"
+                match:"^\\s*(#bonusspells|#crossbreeder|#kokytosret|#infernoret|#voidret|#allret|#tainted)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.magic.dominions"
@@ -1426,7 +1426,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#mastersmith)\\s+(-?\\d+)"
+                match:"^\\s*(#mastersmith|#fixforgebonus)\\s+(-?\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster.property.magic.dominions"

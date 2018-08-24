@@ -40,3 +40,4 @@
 * Added #mapspeed to items.
 * Added crown argument to #type.
 * Fixed regexp error with summonlvl variants.
+* #fixforgebonus accepts negative arguments.
