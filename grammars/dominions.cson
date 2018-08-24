@@ -3533,7 +3533,7 @@ repository:
             #TODO: req_targorder argument is an order number.
             #TODO: req_targowner argument is a nation number.
             {
-                match: '^\\s*(#req_targaff|#req_targorder|#req_targowner)\\s+(\\d+)'
+                match: '^\\s*(#req_targaff|#req_targorder|#req_targowner|#req_targminmorale|#req_targmaxmorale)\\s+(\\d+)'
                 captures:
                     1:
                         name: "keyword.control.event.requirement.dominions"
