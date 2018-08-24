@@ -1235,7 +1235,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#heretic)\\s+([1-5])"
+                match: "^\\s*(#heretic)\\s+([0-5])"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.ability.dominions"

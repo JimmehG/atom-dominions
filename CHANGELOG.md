@@ -32,3 +32,4 @@
 * Completed nations and poptypes repositories.
 * Completed global command repository.
 * Completed events repository.
+* Added 0 to possible heretic argument.
