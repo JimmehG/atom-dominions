@@ -853,7 +853,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#dmg|#nratt|#att|#def|#range)\\s+(-?\\d+)"
+                match: "^\\s*(#dmg|#nratt|#att|#def|#prec|#range)\\s+(-?\\d+)"
                 captures:
                     1:
                         name: "keyword.control.weapon.property.dominions"
