@@ -3042,6 +3042,8 @@ repository:
                 name: "meta.item.property.attribute.dominions"
             },
 
+            #TODO: #reform command.
+
             #E. Movement.
             {
                 match:"^\\s*(#waterbreathing|#fly|#run)"
@@ -3049,6 +3051,16 @@ repository:
                     1:
                         name: "keyword.control.item.property.attribute.dominions"
                 name: "meta.item.property.attribute.dominions"
+            },
+
+            {
+                match:"^\\s*(#mapspeed)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.item.property.magic.dominions"
+                    2:
+                        name: "constant.numeric.positive.dominions"
+                name: "meta.item.property.magic.dominions"
             },
 
             #TODO: this probably should move elsewhere? Just following dom5 manual.

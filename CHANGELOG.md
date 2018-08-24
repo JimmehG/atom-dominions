@@ -37,3 +37,4 @@
 * Added #incscale and #decscale for monsters.
 * Added 6 to #len argument.
 * Added #prec to weapons.
+* Added #mapspeed to items.
