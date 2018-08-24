@@ -3839,7 +3839,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#addequip)\\s+([1-4])'
+                match: '^\\s*(#addequip)\\s+([1-4]|9)'
                 captures:
                     1:
                         name: "keyword.control.event.effect.dominions"

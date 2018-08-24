@@ -46,3 +46,4 @@
 * #damage accepts negative arguments.
 * #flightspr accepts -1 as argument.
 * #onlyatsite accepts integer arguments.
+* #addequip accepts argument 9.
