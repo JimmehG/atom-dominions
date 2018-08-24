@@ -44,3 +44,4 @@
 * Reorder tattoo commands so parser can pick them up.
 * #bodyguard accepts negative arguments.
 * #damage accepts negative arguments.
+* #flightspr accepts -1 as argument.
