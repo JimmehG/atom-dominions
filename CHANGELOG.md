@@ -41,3 +41,4 @@
 * Added crown argument to #type.
 * Fixed regexp error with summonlvl variants.
 * #fixforgebonus accepts negative arguments.
+* Reorder tattoo commands so parser can pick them up.
