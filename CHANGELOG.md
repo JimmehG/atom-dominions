@@ -45,3 +45,4 @@
 * #bodyguard accepts negative arguments.
 * #damage accepts negative arguments.
 * #flightspr accepts -1 as argument.
+* #onlyatsite accepts integer arguments.

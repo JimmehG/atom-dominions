@@ -2852,12 +2852,14 @@ repository:
             },
 
             {
-                match: '^\\s*(#onlyatsite)\\s+("[^"]+")'
+                match: '^\\s*(#onlyatsite)\\s+(?:("[^"]+")|(\\d+))'
                 captures:
                     1:
                         name: "keyword.control.spell.property.dominions"
                     2:
                         name: "string.quoted.double.dominions"
+                    3:
+                        name: "constant.numeric.positive.dominions"
                 name: "meta.spell.property.dominions"
             },
 
