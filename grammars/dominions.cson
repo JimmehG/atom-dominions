@@ -1000,7 +1000,17 @@ repository:
             },
 
             {
-                match: "^\\s*(#giftofwater|#farsail)\\s+(\\d+)"
+                match: "^\\s*(#giftofwater)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.ability.dominions"
+                    2:
+                        name: "constant.numeric.positive.dominions"
+                name: "meta.monster_item.property.ability.dominions"
+            },
+
+            {
+                match: "^\\s*(#farsail)\\s+(-?\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.property.ability.dominions"
