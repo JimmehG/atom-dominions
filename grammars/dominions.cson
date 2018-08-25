@@ -3090,7 +3090,7 @@ repository:
 
             #F. Arena.
             {
-                match:"^\\s*(#champprize|#autocomplete)"
+                match:"^\\s*(#champprize|#autocompete)"
                 captures:
                     1:
                         name: "keyword.control.item.property.attribute.dominions"

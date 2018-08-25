@@ -56,3 +56,4 @@
 * Added #req_targminmorale and #req_targmaxmorale event commands.
 * Added #cleartag event command.
 * Readme improvements.
+* Typo on #autocompete.
