@@ -61,3 +61,4 @@
 * Corrected arguments on #twiceborn.
 * #farsail accepts negative arguments.
 * Restricted arguments of #triplegod and #indepstay.
+* Shapechanging arguments accept montags.

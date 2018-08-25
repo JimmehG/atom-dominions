@@ -1137,7 +1137,6 @@ repository:
 
             #TODO: uwheat has values 0-100.
             #TODO: poisonskin has values 0-500.
-            #TODO: clouds has a size value.
             #TODO: minbdslime has an area value.
             {
                 match: "^\\s*(#heat|#cold|#uwheat|#poisonskin|#poisoncloud|#diseasecloud|#animalawe|#awe|#fear|#fireshield|#uwfireshield|#banefireshield|#acidshield|#damagerev|#bloodvengeance|#slimer|#poisonarmor|#mindslime|#overcharged)\\s+(\\d+)"
@@ -1773,7 +1772,6 @@ repository:
 
             #L. Abilities.
             #L. 1. Type and Status.
-            #TODO: twiceborn is added experimentally.
             {
                 match: "^\\s*(#female|#coldblood|#immortal|#domimmortal|#drake|#plant|#lesserhorror|#greaterhorror|#doomhorror|#mounted|#holy|#animal|#unique|#undead|#bug|#demon|#magicbeing|#autocompete|#blind|#uwbug|#stonebeing|#inanimate|#dungeon)"
                 captures:
@@ -1876,14 +1874,14 @@ repository:
 
             #L. 7. Shapechanging.
             {
-                match: '^\\s*(#shapechange|#firstshape|#secondshape|#secondtmpshape|#forestshape|#plainshape|#foreignshape|#homeshape|#springshape|#summershape|#autumnshape|#wintershape|#landshape|#watershape)\\s+(?:("[^"]+")|(\\d+))'
+                match: '^\\s*(#shapechange|#firstshape|#secondshape|#secondtmpshape|#forestshape|#plainshape|#foreignshape|#homeshape|#springshape|#summershape|#autumnshape|#wintershape|#landshape|#watershape)\\s+(?:("[^"]+")|(-?\\d+))'
                 captures:
                     1:
                         name: "keyword.control.monster.property.shape.dominions"
                     2:
                         name: "string.quoted.double.dominions"
                     3:
-                        name: "constant.numeric.positive.dominions"
+                        name: "constant.numeric.integer.dominions"
                 name: "meta.monster.property.shape.dominions"
             },
 
@@ -2035,9 +2033,8 @@ repository:
                 name: "meta.monster.property.magic.dominions"
             },
 
-            #TODO: triplegodmag varies between -10 and 10.
             {
-                match:"^\\s*(#triplegodmag)\\s+(-?\\d+)"
+                match:"^\\s*(#triplegodmag)\\s+(-?(?:10|[0-9]))"
                 captures:
                     1:
                         name: "keyword.control.monster.property.magic.dominions"
@@ -2604,6 +2601,7 @@ repository:
                 name: "meta.nation.property.dominions"
             },
 
+            #TODO: fortcost argument is a percentage.
             {
                 match: '^\\s*(#fortcost|#labcost|#templecost|#foresttemplecost|#forestlabcost)\\s+(\\d+)'
                 captures:
@@ -3049,10 +3047,12 @@ repository:
             #C. Magic and spells.
             #note: see monster_items for other magic and spell properties shared with items.
             {
-                match: "^\\s*(#autospellrepeat)"
+                match: "^\\s*(#autospellrepeat)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.item.property.magic.dominions"
+                    2:
+                        name: "constant.numeric.positive.dominions"
                 name: "meta.item.property.magic.dominions"
             },
 
@@ -3621,7 +3621,7 @@ repository:
                 name: "meta.event.effect.dominions"
             },
 
-            #TODO: argument is an active global number.
+            #TODO: argument is an active global enchantment number.
             {
                 match: '^\\s*(#nationench)\\s+(\\d+)'
                 captures:
