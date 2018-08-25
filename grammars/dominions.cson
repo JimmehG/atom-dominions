@@ -1756,7 +1756,7 @@ repository:
             #L. 1. Type and Status.
             #TODO: twiceborn is added experimentally.
             {
-                match: "^\\s*(#female|#coldblood|#immortal|#domimmortal|#drake|#plant|#lesserhorror|#greaterhorror|#doomhorror|#mounted|#holy|#animal|#unique|#undead|#bug|#demon|#magicbeing|#autocompete|#blind|#uwbug|#stonebeing|#inanimate|#dungeon|#twiceborn)"
+                match: "^\\s*(#female|#coldblood|#immortal|#domimmortal|#drake|#plant|#lesserhorror|#greaterhorror|#doomhorror|#mounted|#holy|#animal|#unique|#undead|#bug|#demon|#magicbeing|#autocompete|#blind|#uwbug|#stonebeing|#inanimate|#dungeon)"
                 captures:
                     1:
                         name: "keyword.control.monster.property.ability.dominions"
@@ -1869,7 +1869,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#prophetshape)\\s+(?:("[^"]+")|(-?\\d+))'
+                match: '^\\s*(#prophetshape|#twiceborn)\\s+(?:("[^"]+")|(-?\\d+))'
                 captures:
                     1:
                         name: "keyword.control.monster.property.shape.dominions"

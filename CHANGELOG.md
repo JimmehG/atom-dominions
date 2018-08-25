@@ -58,3 +58,4 @@
 * Readme improvements.
 * Typo on #autocompete.
 * Separated #domwar and #recallgod in site commands from bless throne effects.
+* Corrected arguments on #twiceborn.
