@@ -1475,8 +1475,17 @@ repository:
             },
 
             #TODO: startmajoraff varies between 0 and 1000.
-            #TODO: triplegod, indepstay varies between 0 and 10.
-            match:"^\\s*(#startmajoraff|#triplegod|#indepstay)\\s+(\\d+)"
+            match:"^\\s*(#startmajoraff)\\s+(\\d+)"
+            {
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.property.magic.dominions"
+                    2:
+                        name: "constant.numeric.positive.dominions"
+                name: "meta.monster_item.property.magic.dominions"
+            },
+
+            match:"^\\s*(#triplegod|#indepstay)\\s+(10|[0-9])"
             {
                 captures:
                     1:

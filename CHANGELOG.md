@@ -60,3 +60,4 @@
 * Separated #domwar and #recallgod in site commands from bless throne effects.
 * Corrected arguments on #twiceborn.
 * #farsail accepts negative arguments.
+* Restricted arguments of #triplegod and #indepstay.
