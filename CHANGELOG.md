@@ -57,3 +57,4 @@
 * Added #cleartag event command.
 * Readme improvements.
 * Typo on #autocompete.
+* Separated #domwar and #recallgod from bless throne effects.

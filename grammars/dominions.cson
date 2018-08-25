@@ -2225,7 +2225,17 @@ repository:
 
             #H. Throne bless effects.
             {
-                match: "^\\s*(#blesshp|#blessanimawe|#blessmr|#blessawe|#blessmor|#blessstr|#blessdarkvis|#blessatt|#blessdef|#blessprec|#blessfireres|#blesscoldres|#blessshockres|#blesspoisres|#blessairshld|#blessreinvig|#blessdtv|#recallgod|#domwar)\\s+(\\d+)"
+                match: "^\\s*(#blesshp|#blessanimawe|#blessmr|#blessawe|#blessmor|#blessstr|#blessdarkvis|#blessatt|#blessdef|#blessprec|#blessfireres|#blesscoldres|#blessshockres|#blesspoisres|#blessairshld|#blessreinvig|#blessdtv)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.site.property.dominions"
+                    2:
+                        name: "constant.numeric.positive.dominions"
+                name: "meta.site.property.dominions"
+            },
+
+            {
+                match: "^\\s*(#recallgod|#domwar)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.site.property.dominions"
