@@ -16,3 +16,4 @@
 * Several grammar fixes.
 * Added language settings file.
 * Readme improvements.
+* Snippets improvements.

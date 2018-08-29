@@ -1,6 +1,6 @@
-".source.dom":
+".source.dominions":
     "selectweapon":
-        prefix: "slctwpn"
+        prefix: "selectweapon"
         body: """
         #selectweapon ${1:0}
             $2
@@ -8,15 +8,15 @@
         """
 
     "newweapon":
-        prefix: "nwwpn"
+        prefix: "newweapon"
         body: """
-        #newweapon ${1:0}
+        #newweapon${1}
             #name ${2:"Weapon Name"}
         #end
         """
 
     "selectarmor":
-        prefix: "slctrmr"
+        prefix: "selectarmor"
         body: """
         #selectarmor ${1:0}
             $2
@@ -24,15 +24,15 @@
         """
 
     "newweapon":
-        prefix: "nwrmr"
+        prefix: "newarmor"
         body: """
-        #newweapon ${1:0}
+        #newweapon${1}
             #name ${2:"Armor Name"}
         #end
         """
 
     "selectmonster":
-        prefix: "slctmnstr"
+        prefix: "selectmonster"
         body: """
         #selectmonster ${1:0}
             $2
@@ -40,18 +40,18 @@
         """
 
     "newmonster":
-        prefix: "nwmnstr"
+        prefix: "newmonster"
         body: """
-        #newmonster ${1:0}
+        #newmonster${1}
             #name ${2:"Monster Name"}
             #descr ${3:"Monster Description"}
             #gcost ${4:10000}
-            #rpcost ${5:1}
+            #rpcost ${5:0}
         #end
         """
 
     "selectspell":
-        prefix: "slctspll"
+        prefix: "selectspell"
         body: """
         #selectspell ${1:0}
             $2
@@ -59,7 +59,7 @@
         """
 
     "newspell":
-        prefix: "nwspll"
+        prefix: "newspell"
         body: """
         #newmonster ${1:0}
             #name ${2:"Spell Name"}
@@ -72,7 +72,7 @@
         """
 
     "selectitem":
-        prefix: "slcttm"
+        prefix: "selectitem"
         body: """
         #selectitem ${1:0}
             $2
@@ -80,7 +80,7 @@
         """
 
     "newitem":
-        prefix: "nwtm"
+        prefix: "newitem"
         body: """
         #newmonster ${1:0}
             #name ${2:"Item Name"}
@@ -92,7 +92,7 @@
         """
 
     "selectsite":
-        prefix: "slctst"
+        prefix: "selectsite"
         body: """
         #selectsite ${1:0}
             $2
@@ -100,7 +100,7 @@
         """
 
     "newsite":
-        prefix: "nwst"
+        prefix: "newsite"
         body: """
         #newsite ${1:0}
             #name ${2:"Item Name"}
