@@ -15,6 +15,6 @@ The syntax highlighting was tested not only on my mods, but also on the latest v
 
 ## Future Plans.
 
-There are still a couple of things that could be done to ease editing Dominions 5 files. One example is an easy and handy way of inserting all those magic values that **lots** of commands use, say by symbolic name instead of number. Maybe I will get around to doing that -- if I first set myself to learn CoffeeScript.
+There are still a couple of things that could be done to ease editing Dominions 5 files. One example is an easy and handy way of inserting all those magic values that **lots** of commands use, say by symbolic name instead of number.
 
-Another goal, is to hook up the grammar to the linter so that you can jump to an error by clicking (or a keybindind). Need to learn CoffeeScript and the linter API first, though.
+Another goal, is to hook up the grammar to the linter so that you can jump to an error by clicking (or a keybindind). Need to learn the linter API first, though.
