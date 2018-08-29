@@ -1,0 +1,4675 @@
+scopeName: "source.dominions"
+name: "Dominions"
+fileTypes: ["dm"]
+limitLineLength: false
+patterns: [
+    #Repositories.
+    {
+        include: "#comment"
+    },
+
+    {
+        include: "#mod"
+    },
+
+    {
+        include: "#record"
+    }
+]
+
+repository:
+    comment:
+        patterns: [
+            {
+                match: "--(.*)$"
+                name: "comment.line.double-dash.dominions"
+            }
+        ]
+
+    #A. Global mod commands.
+    mod:
+        patterns: [
+            {
+                match: '^\\s*(#modname)\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.mod.modname.dominions"
+                    2:
+                        name: "string.quoted.double.mod.modname.dominions"
+                name: "meta.mod.modname.dominions"
+            },
+
+            {
+                begin: '^\\s*(#description)\\s+(")'
+                captures:
+                    1:
+                        name: "keyword.control.mod.description.dominions"
+                    2:
+                        name: "punctuation.definition.string.begin.dominions"
+                end: '"'
+                contentName: "string.quoted.double.mod.description.dominions"
+                endCaptures:
+                    0:
+                        name: "punctuation.definition.string.end.dominions"
+                name: "meta.mod.description.dominions"
+            },
+
+            {
+                match: "^\\s*(#(version|domversion))\\s+(\\d+\\.(?:\\d+{1,2}))"
+                captures:
+                    1:
+                        name: "keyword.control.mod.$2.dominions"
+                    3:
+                        name: "constant.other.mod.$2.dominions"
+                name: "meta.mod.$2.dominions"
+            },
+
+            {
+                match: '^\\s*(#icon)\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.mod.icon.dominions"
+                    2:
+                        name: "string.quoted.double.mod.icon.dominions"
+                name: "meta.mod.icon.dominions"
+            },
+
+            #Repositories.
+            {
+                include: "#mod_nation"
+            },
+
+            {
+                include: "#mod_spell"
+            },
+
+            {
+                include: "#mod_item"
+            },
+
+            {
+                include: "#mod_global"
+            },
+
+            {
+                include: "#mod_merc"
+            }
+        ]
+
+    #Global record-like definitions.
+    record:
+        patterns: [
+            #A. Weapons.
+            {
+                comment: "As of v5.24, selection weapon numbers vary between 0 and 1999."
+                begin: '^\\s*(#selectweapon)\\s+(?:("[^"]+")|(1[0-9]{3}|[1-9][0-9]{0,2}|0))'
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.selectweapon.dominions"
+                    2:
+                        name: "string.quoted.double.record.selectweapon.dominions"
+                    3:
+                        name: "constant.numeric.record.selectweapon.dominions"
+                end: "^\\s*(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.selectweapon.end.dominions"
+                contentName: "meta.record.selectweapon.body.dominions"
+                name: "meta.record.selectweapon.dominions"
+                patterns: [
+                    #Repositories.
+                    {
+                        include: "#weapon"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            {
+                comment: "As of v5.24, new weapon numbers vary between 800 and 1999."
+                begin: "^\\s*(#newweapon)\\s+(1[0-9]{3}|[8-9][0-9]{2})"
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.newweapon.dominions"
+                    2:
+                        name: "constant.numeric.record.newweapon.dominions"
+                end: "^\\s*(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.newweapon.end.dominions"
+                contentName: "meta.record.newweapon.body.dominions"
+                name: "meta.record.newweapon.dominions"
+                patterns: [
+                    #Repositories.
+                    {
+                        include: "#weapon"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            #B. Armors.
+            {
+                comment: "As of v5.24, selection armor numbers vary between 0 and 999."
+                begin: '^\\s*(#selectarmor)\\s+(?:("[^"]+")|([1-9][0-9]{0,2}|0))'
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.selectarmor.dominions"
+                    2:
+                        name: "string.quoted.double.record.selectarmor.dominions"
+                    3:
+                        name: "constant.numeric.record.selectarmor.dominions"
+                end: "^\\s*(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.selectarmor.end.dominions"
+                contentName: "meta.record.selectarmor.body.dominions"
+                name: "meta.record.selectarmor.dominions"
+                patterns: [
+                    #Repositories.
+                    {
+                        include: "#armor"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            {
+                comment: "As of v5.24, new armor numbers vary between 300 and 999."
+                begin: "^\\s*(#newarmor)\\s+([3-9][0-9]{2})"
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.newarmor.dominions"
+                    2:
+                        name: "constant.numeric.record.newarmor.dominions"
+                end: "^\\s*(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.newarmor.end.dominions"
+                contentName: "meta.record.newarmor.body.dominions"
+                name: "meta.record.newarmor.dominions"
+                patterns: [
+                    #Repositories.
+                    {
+                        include: "#armor"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            #C. Monsters.
+            {
+                comment: "As of v5.24, selection monster numbers vary between 0 and 8999."
+                begin: '^\\s*(#selectmonster)\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.selectmonster.dominions"
+                    2:
+                        name: "string.quoted.double.record.selectmonster.dominions"
+                    3:
+                        name: "constant.numeric.record.selectmonster.dominions"
+                end: "^\\s*(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.selectmonster.end.dominions"
+                contentName: "meta.record.selectmonster.body.dominions"
+                name: "meta.record.selectmonster.dominions"
+                patterns: [
+                    #Repositories.
+                    {
+                        include: "#monster_item"
+                    },
+
+                    {
+                        include: "#monster"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            {
+                comment: "As of v5.24, new monster numbers vary between 3500 and 8999."
+                begin: "^\\s*(#newmonster)(?:\\s+([4-8][0-9]{3}|3[5-9][0-9]{2}))?"
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.newmonster.dominions"
+                    2:
+                        name: "constant.numeric.record.newmonster.dominions"
+                end: "^\\s*(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.newmonster.end.dominions"
+                contentName: "meta.record.newmonster.body.dominions"
+                name: "meta.record.newmonster.dominions"
+                patterns: [
+                    #Repositories.
+                    {
+                        include: "#monster_item"
+                    },
+
+                    {
+                        include: "#monster"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            #D. Nametypes.
+            {
+                comment: "As of v5.24, nametype numbers vary between 100 and 299. Usable numbers start at 165."
+                begin: "^\\s*(#selectnametype)\\s+([1-2][0-9][0-9])"
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.selectnametype.dominions"
+                    2:
+                        name: "constant.numeric.record.selectnametype.dominions"
+                end: "^(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.selectnametype.end.dominions"
+                contentName: "meta.record.selectnametype.body.dominions"
+                name: "meta.record.selectnametype.dominions"
+                patterns: [
+                    #Repositories.
+                    {
+                        include: "#nametype"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            #E. Sites.
+            {
+                comment: "As of v5.24, site numbers vary between 0 and 1999."
+                begin: '^\\s*(#selectsite)\\s+(?:("[^"]+")|(1[0-9]{3}|[1-9][0-9]{0,2}|0))'
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.selectsite.dominions"
+                    2:
+                        name: "string.quoted.double.record.selectsite.dominions"
+                    3:
+                        name: "constant.numeric.record.selectsite.dominions"
+                end: "^\\s*(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.selectsite.end.dominions"
+                contentName: "meta.record.selectsite.body.dominions"
+                name: "meta.record.selectsite.dominions"
+                patterns: [
+                    #Repositories.
+                    {
+                        include: "#site_nation"
+                    },
+
+                    {
+                        include: "#site"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            {
+                comment: "As of v5.24, site numbers vary between 1500 and 1999."
+                begin: "^\\s*(#newsite)(?:\\s+(1[5-9][0-9]{2}))?"
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.newsite.dominions"
+                    2:
+                        name: "constant.numeric.record.newsite.dominions"
+                end: "^\\s*(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.newsite.end.dominions"
+                contentName: "meta.record.newsite.body.dominions"
+                name: "meta.record.newsite.dominions"
+                patterns: [
+                    #Repositories.
+                    {
+                        include: "#site_nation"
+                    },
+
+                    {
+                        include: "#site"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            #F. Nations.
+            {
+                comment: "As of v5.24, nation numbers vary between 5 and 249, with numbers 0-4 hardcoded for independents."
+                begin: "^\\s*(#(selectnation))\\s+(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9])"
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.selectnation.dominions"
+                    3:
+                        name: "constant.numeric.record.selectnation.dominions"
+                end: "^\\s*(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.selectnation.end.dominions"
+                contentName: "meta.record.selectnation.body.dominions"
+                name: "meta.record.selectnation.dominions"
+                patterns: [
+                    #Repositories.
+                    {
+                        include: "#site_nation"
+                    },
+
+                    {
+                        include: "#nation_poptype"
+                    },
+
+                    {
+                        include: "#nation"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            {
+                comment: "To make new nation with fixed number, use #selectnation with an id higher than 120."
+                begin: "^\\s*(#newnation)"
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.newnation.dominions"
+                end: "^\\s*(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.newnation.end.dominions"
+                contentName: "meta.record.newnation.body.dominions"
+                name: "meta.record.newnation.dominions"
+                patterns: [
+                    #Repositories.
+                    {
+                        include: "#site_nation"
+                    },
+
+                    {
+                        include: "#nation_poptype"
+                    },
+
+                    {
+                        include: "#nation"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            #G. Spells.
+            {
+                comment: "As of v5.24, spell numbers vary between 0 and 3999."
+                begin: '^\\s*(#selectspell)\\s+(?:("[^"]+")|([1-3][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.selectspell.dominions"
+                    2:
+                        name: "string.quoted.double.record.selectspell.dominions"
+                    3:
+                        name: "constant.numeric.record.selectspell.dominions"
+                end: "^\\s*(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.selectspell.end.dominions"
+                contentName: "meta.record.selectspell.body.dominions"
+                name: "meta.record.selectspell.dominions"
+                patterns: [
+                    {
+                        include: "#spell"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            {
+                comment: "As of v5.24, new spell numbers vary between 1300 and 3999."
+                begin: "^\\s*(#newspell)(?:\\s+([2-3][0-9]{3}|1[3-9][0-9]{2}))?"
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.newspell.dominions"
+                    2:
+                        name: "constant.numeric.record.newspell.dominions"
+                end: "^\\s*(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.newspell.end.dominions"
+                name: "meta.record.newspell.dominions"
+                patterns: [
+                    {
+                        include: "#spell"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            #H. Items.
+            {
+                comment: "As of v5.24, item numbers vary between 0 and 999."
+                begin: '^\\s*(#selectitem)\\s+(?:("[^"]+")|([1-9][0-9]{0,2}|0))'
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.selectitem.dominions"
+                    2:
+                        name: "string.quoted.double.record.selectitem.dominions"
+                    3:
+                        name: "constant.numeric.record.selectitem.dominions"
+                end: "^\\s*(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.selectitem.end.dominions"
+                contentName: "meta.record.selectitem.body.dominions"
+                name: "meta.record.selectitem.dominions"
+                patterns: [
+                    {
+                        include: "#monster_item"
+                    },
+
+                    {
+                        include: "#item"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            {
+                comment: "As of v5.24, new item numbers vary between 500 and 999."
+                begin: "^\\s*(#newitem)(?:\\s+([5-9][0-9]{2}))?"
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.newitem.dominions"
+                    2:
+                        name: "constant.numeric.record.newitem.dominions"
+                end: "^\\s*(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.newitem.end.dominions"
+                contentName: "meta.record.newitem.body.dominions"
+                name: "meta.record.newitem.dominions"
+                patterns: [
+                    {
+                        include: "#monster_item"
+                    },
+
+                    {
+                        include: "#item"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            #I. Poptypes.
+            #note: as of v5.24, *known* poptype numbers vary between 25 and 99.
+            {
+                begin: "^\\s*(#selectpoptype)\\s+(\\d+)"
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.selectpoptype.dominions"
+                    2:
+                        name: "constant.numeric.record.selectpoptype.dominions"
+                end: "^\\s*(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.selectpoptype.end.dominions"
+                contentName: "meta.record.selectpoptype.body.dominions"
+                name: "meta.record.selectpoptype.dominions"
+                patterns: [
+                    #Repositories.
+                    {
+                        include: "#nation_poptype"
+                    },
+
+                    {
+                        include: "#poptype"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            #J. Mercenaries.
+            {
+                begin: "^\\s*(#newmerc)"
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.newmerc.dominions"
+                end: "^(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.newmerc.end.dominions"
+                contentName: "meta.record.newmerc.body.dominions"
+                name: "meta.record.newmerc.dominions"
+                patterns: [
+                    #Repositories.
+                    {
+                        include: "#merc"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            },
+
+            #K. Events.
+            {
+                begin: "^\\s*(#newevent)"
+                beginCaptures:
+                    1:
+                        name: "keyword.control.record.newevent.dominions"
+                end: "^\\s*(#end)"
+                endCaptures:
+                    1:
+                        name: "keyword.control.record.newevent.end.dominions"
+                contentName: "meta.record.newevent.body.dominions"
+                name: "meta.record.newevent.dominions"
+                patterns: [
+                    #Repositories.
+                    {
+                        include: "#event"
+                    },
+
+                    {
+                        include: "#comment"
+                    }
+                ]
+            }
+        ]
+
+    weapon:
+        patterns: [
+            #Basic commands.
+            {
+                match: "^\\s*(#copyweapon)\\s+(1[0-9]{3}|[1-9][0-9]{0,2}|0)"
+                captures:
+                    1:
+                        name: "keyword.control.weapon.copyweapon.dominions"
+                    2:
+                        name: "constant.numeric.weapon.copyweapon.dominions"
+                name: "meta.weapon.copyweapon.dominions"
+            },
+
+            #A. Basic properties.
+            {
+                match: '^\\s*(#name)\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.weapon.name.dominions"
+                    2:
+                        name: "string.quoted.double.weapon.name.dominions"
+                name: "meta.weapon.name.dominions"
+            },
+
+            {
+                match: "^\\s*(#(twohanded|natural))"
+                captures:
+                    1:
+                        name: "keyword.control.weapon.$2.dominions"
+                name: "meta.weapon.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(dmg|nratt|att|def|prec|range))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.weapon.$2.dominions"
+                    3:
+                        name: "constant.numeric.weapon.$2.dominions"
+                name: "meta.weapon.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#len)\\s+([0-6])"
+                captures:
+                    1:
+                        name: "keyword.control.weapon.len.dominions"
+                    2:
+                        name: "constant.numeric.weapon.len.dominions"
+                name: "meta.weapon.len.dominions"
+            },
+
+            {
+                comment: "As of v5.24, maximum ammo value is 30."
+                match: "^\\s*(#ammo)\\s+(30|[1-2][0-9]|[0-9])"
+                captures:
+                    1:
+                        name: "keyword.control.weapon.ammo.dominions"
+                    2:
+                        name: "constant.numeric.weapon.ammo.dominions"
+                name: "meta.weapon.ammo.dominions"
+            },
+
+            {
+                match: "^\\s*(#rcost)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.weapon.rcost.dominions"
+                    2:
+                        name: "constant.numeric.weapon.rcost.dominions"
+                name: "meta.weapon.rcost.dominions"
+            },
+
+            #Sound properties.
+            {
+                match: '^\\s*(#sample)\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.weapon.sample.dominions"
+                    2:
+                        name: "string.quoted.double.weapon.sample.dominions"
+                name: "meta.weapon.sample.dominions"
+            },
+
+            {
+                match: "^\\s*(#sound)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.weapon.sound.dominions"
+                    2:
+                        name: "constant.numeric.weapon.sound.dominions"
+                name: "meta.weapon.sound.dominions"
+            },
+
+            #B. Damtypes.
+            {
+                match: "^\\s*(#(dt_normal|dt_poison|dt_demon|dt_small|dt_magic|dt_large|dt_constructonly|dt_raise|dt_cap|dt_weakness|dt_holy|dt_drain|dt_sizestun|dt_weapondrain|dt_stun|dt_realstun|dt_interrupt|dt_bouncekill|dt_paralyze|dt_aff))"
+                captures:
+                    1:
+                        name: "keyword.control.weapon.damtype.$2.dominions"
+                name: "meta.weapon.damtype.$2.dominions"
+            },
+
+            #C. Damage qualifiers.
+            {
+                match: "^\\s*(#(poison|acid|slash|pierce|blunt|cold|fire|shock|magic|armorpiercing|armornegating|nostr|bowstr|halfstr|fullstr|mrnegates|mrnegateseasily|hardmrneg|sizeresist|mind|undeadimmune|inanimateimmune|flyingimmune|enemyimmune|friendlyimmune|undeadonly|demononly|sacredonly|demonundead|internal))"
+                captures:
+                    1:
+                        name: "keyword.control.weapon.damqualifier.$2.dominions"
+                name: "meta.weapon.damqualifier.$2.dominions"
+            },
+
+            #D. Other properties.
+            {
+                match: "^\\s*(#(bonus|ironweapon|woodenweapon|iceweapon|charge|flail|norepel|unrepel|beam|range050|range0|melee50|skip|skip2|uwok|nouw))"
+                captures:
+                    1:
+                        name: "keyword.control.weapon.other.$2.dominions"
+                name: "meta.weapon.other.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#aoe)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.weapon.other.aoe.dominions"
+                    2:
+                        name: "constant.numeric.weapon.other.aoe.dominions"
+                name: "meta.weapon.other.aoe.dominions"
+            },
+
+            {
+                match: "^\\s*(#(secondaryeffect|secondaryeffectalways))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.weapon.other.$2.dominions"
+                    3:
+                        name: "constant.numeric.weapon.effect.dominions"
+                name: "meta.weapon.other.$2.dominions"
+            },
+
+            #Visuals.
+            {
+                comment: "As of v5.24, explspr values vary between 10000 and 10317."
+                match: "^\\s*(#explspr)\\s+(-1|10(?:[0-2][0-9][0-9]|30[0-9]|31[0-7]))"
+                captures:
+                    1:
+                        name: "keyword.control.weapon.other.explspr.dominions"
+                    2:
+                        name: "constant.numeric.weapon.other.explspr.dominions"
+                name: "meta.weapon.other.explspr.dominions"
+            },
+
+            {
+                match: "^\\s*(#flyspr)\\s+(-1|\\d+)\\s+(\\d+)?"
+                captures:
+                    1:
+                        name: "keyword.control.weapon.other.flyspr.dominions"
+                    2:
+                        name: "constant.numeric.weapon.other.flyspr.dominions"
+                    3:
+                        name: "constant.numeric.weapon.other.animlen.dominions"
+                name: "meta.weapon.other.flyspr.dominions"
+            }
+        ]
+
+    armor:
+        patterns: [
+            #Basic commands.
+            {
+                match: "^\\s*(#copyarmor)\\s+([1-9][0-9]{0,2}|0)"
+                captures:
+                    1:
+                        name: "keyword.control.armor.copyarmor.dominions"
+                    2:
+                        name: "constant.numeric.armor.copyarmor.dominions"
+                name: "meta.armor.copyarmor.dominions"
+            },
+
+            #A. Basic Properties.
+            {
+                match: '^\\s*(#name)\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.armor.name.dominions"
+                    2:
+                        name: "string.quoted.double.armor.name.dominions"
+                name: "meta.armor.name.dominions"
+            },
+
+            {
+                match: "^\\s*(#type)\\s+([4-6]|9)"
+                captures:
+                    1:
+                        name: "keyword.control.armor.type.dominions"
+                    2:
+                        name: "constant.numeric.armor.type.dominions"
+                name: "meta.armor.type.dominions"
+            },
+
+            {
+                match: "^\\s*(#(magic|iron|wooden)armor)"
+                captures:
+                    1:
+                        name: "keyword.control.armor.$2.dominions"
+                name: "meta.armor.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(def|prot|enc))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.armor.$2.dominions"
+                    3:
+                        name: "constant.numeric.armor.$2.dominions"
+                name: "meta.armor.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#rcost)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.armor.rcost.dominions"
+                    2:
+                        name: "constant.numeric.rcost.dominions"
+                name: "meta.armor.rcost.dominions"
+            }
+        ]
+
+    monster_item:
+        patterns: [
+            #A. Attribute modifiers.
+            {
+                match: "^\\s*(#(str|att|def|prec|prot|mr|enc|ap|voidsanity))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            #B. Abilities.
+            #B. 1. Movement.
+            {
+                match: "^\\s*(#(float|stormimmune|unteleportable|noriverpass|nomovepen))"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                comment: "Argument is in size points."
+                match: "^\\s*(#giftofwater)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.giftofwater.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.giftofwater.dominions"
+                name: "meta.monster_item.giftofwater.dominions"
+            },
+
+            {
+                match: "^\\s*(#farsail)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.farsail.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.farsail.dominions"
+                name: "meta.monster_item.farsail.dominions"
+            },
+
+            #B. 2. Stealthy.
+            {
+                match: "^\\s*(#scalewalls)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.scalewalls.dominions"
+                name: "meta.monster_item.scalewalls.dominions"
+            },
+
+            {
+                match: "^\\s*(#(seduce|succubus|stealthy|patience|beckon|falsearmy|foolscouts))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            #B. 3. Age, healing and afflictions
+            {
+                match: "^\\s*(#hpoverflow)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.hpoverflow.dominions"
+                name: "meta.monster_item.hpoverflow.dominions"
+            },
+
+            #Note: #regeneration is listed in the damage reduction section of the manual.
+            {
+                match: "^\\s*(#(healer|homesick|diseaseres|uwdamage|landdamage|regeneration))\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#reform)\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.reform.dominions"
+                    2:
+                        name: "constant.numeric.monster.reform.dominions"
+                name: "meta.monster.reform.dominions"
+            },
+
+            {
+                comment: "Argument is a percentage capped at 1000%."
+                match: "^\\s*(#hpoverslow)\\s+(1000|[0-9]{1,3})"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.hpoverslow.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.hpoverslow.dominions"
+                name: "meta.monster_item.hpoverslow.dominions"
+            },
+
+            {
+                match: "^\\s*(#(autohealer|autodishealer|autodisgrinder|woundfend))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#reinvigoration)\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.reinvigoration.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.reinvigoration.dominions"
+                name: "meta.monster_item.reinvigoration.dominions"
+            },
+
+            #In this order to let the parser catch healer first.
+            {
+                match: "^\\s*(#heal)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.heal.dominions"
+                name: "meta.monster_item.heal.dominions"
+            },
+
+            #B. 4. Damage reduction.
+            {
+                match: "^\\s*(#(bluntres|pierceres|slashres|ethereal))"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#airshield)\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.airshield.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.airshield.dominions"
+                name: "meta.monster_item.airshield.dominions"
+            },
+
+            {
+                match: "^\\s*(#invulnerable)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.invulnerable.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.invulnerable.dominions"
+                name: "meta.monster_item.invulnerable.dominions"
+            },
+
+            {
+                match: "^\\s*(#(coldres|fireres|poisonres|shockres|iceprot))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            #B. 5. Auras.
+            {
+                match: "^\\s*(#(entangle|eyeloss|horrormark))"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                #TODO: the exact semantics of the arguments varies; need to straighten it out.
+                match: "^\\s*(#(heat|cold|poisoncloud|diseasecloud|animalawe|awe|fear|fireshield|uwfireshield|banefireshield|acidshield|damagerev|bloodvengeance|slimer|poisonarmor|mindslime|overcharged))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#uwheat)\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.uwheat.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.uwheat.dominions"
+                name: "meta.monster_item.uwheat.dominions"
+            },
+
+            {
+                match: "^\\s*(#poisonskin)\\s+([1-5][0,9]{2}|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.poisonskin.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.poisonskin.dominions"
+                name: "meta.monster_item.poisonskin.dominions"
+            },
+
+            #B. 6. Powers.
+            {
+                match: "^\\s*(#(springpower|summerpower|fallpower|winterpower))\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(chaospower|coldpower|firepower|deathpower|darkpower|stormpower|magicpower|slothpower))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            #B. 7. Combat.
+            {
+                match: "^\\s*(#(blessbers|blessfly|deathcurse|trampswallow|trample))"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(ambidextrous|berserk|deathdisease|deathparalyze|deathfire|guardspiritbonus||digest|aciddigest|incorporate|haltheretic))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(darkvision|raiseonkill))\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#unsurr)\\s+(1000|[1-9][0-9]{0,2}|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.unsurr.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.unsurr.dominions"
+                name: "meta.monster_item.unsurr.dominions"
+            },
+
+            {
+                match: '^\\s*(#raiseshape)\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.raiseshape.dominions"
+                    2:
+                        name: "string.quoted.double.monster_item.raiseshape.dominions"
+                    3:
+                        name: "constant.numeric.id.monster_item.raiseshape.dominions"
+                    4:
+                        name: "constant.numeric.montag.monster_item.raiseshape.dominions"
+                name: "meta.monster_item.raiseshape.dominions"
+            },
+
+            #B. 8. Support.
+            {
+                match: "^\\s*(#(inquisitor|taxcollector))"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(castledef|siegebonus|elegist|spreaddom|addupkeep|popkill|xploss))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                comment: "#incprovdef can only improve pd to 19 max, so we cap the accepted value to it."
+                match: "^\\s*(#incprovdef)\\s+(1[0-9]|[1-9])"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.incprovdef.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.incprovdef.dominions"
+                name: "meta.monster_item.incprovdef.dominions"
+            },
+
+            {
+                match: "^\\s*(#(shatteredsoul|nobadevents|leper|insane|insanify))\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#heretic)\\s+([0-5])"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.heretic.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.heretic.dominions"
+                name: "meta.monster_item.heretic.dominions"
+            },
+
+            {
+                match: "^\\s*(#(patrolbonus|pillagebonus|supplybonus|resources|iceforging|incunrest|gold))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            #B. 9. Summoning.
+            {
+                comment: "Summoning commands take montag values."
+                match:               '\\s*(#(domsummon2|domsummon20|domsummon|raredomsummon|templetrainer|(?:makemonsters[1-5])|(?:summon[1-5])|(?:battlesum[1-5])|(?:batstartsum[1-9]d6)|(?:batstartsum[1-5])))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "string.quoted.double.monster_item.$2.dominions"
+                    4:
+                        name: "constant.numeric.id.monster_item.$2.dominions"
+                    5:
+                        name: "constant.numeric.montag.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            #B. 10. Leadership.
+            {
+                match: "^\\s*(#(command|magiccommand|undcommand))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            #B. 11. Morale properties.
+            {
+                match: "^\\s*(#(slave|undisciplined))"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(inspirational|beastmaster|taskmaster|bodyguard))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#skirmisher)\\s+(-?(?:2[0-5]|1?[0-9]))"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.skirmisher.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.skirmisher.dominions"
+                name: "meta.monster_item.skirmisher.dominions"
+            },
+
+            {
+                match: "^\\s*(#(formationfighter|standard))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            #B. 12. Magic.
+            {
+                match:"^\\s*(#magicboost)\\s+([0-8]|5[0-3])\\s+(-?[0-5])"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.magicboost.dominions"
+                    2:
+                        name: "constant.numeric.path.magicboost.dominions"
+                    3:
+                        name: "constant.numeric.boost.magicboost.dominions"
+                name: "meta.monster_item.magicboost.dominions"
+            },
+
+            #B. 13. Rituals.
+            {
+                match:"^\\s*(#masterrit)\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.masterrit.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.masterrit.dominions"
+                name: "meta.monster_item.masterrit.dominions"
+            },
+
+            {
+                match:"^\\s*(#(firerange|airrange|waterrange|earthrange|astralrange|deathrange|naturerange|bloodrange|elementrange|sorceryrange|allrange))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            #B. 14. Research.
+            {
+                match: "^\\s*(#(drainimmune|magicimmune|divineins))"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#(researchbonus|slothresearch))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#inspiringres)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.inspiringres.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.inspiringres.dominions"
+                name: "meta.monster_item.inspiringres.dominions"
+            },
+
+            #B. 15. Gem production.
+            {
+                match:"^\\s*(#gemprod)\\s+([0-7])\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.gemprod.dominions"
+                    2:
+                        name: "constant.numeric.path.monster_item.gemprod.dominions"
+                    3:
+                        name: "constant.numeric.amount.monster_item.gemprod.dominions"
+                name: "meta.monster_item.gemprod.dominions"
+            },
+
+            {
+                match:"^\\s*(#(tmpfiregems|tmpairgems|tmpwatergems|tmpearthgems|tmpastralgems|tmpdeathgems|tmpnaturegems|tmpbloodslaves|douse|makepearls))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            #B. 16. Other magic abilities.
+            {
+                match:"^\\s*(#(bonusspells|crossbreeder))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#(kokytosret|infernoret|voidret|allret|tainted|randomspell|forgebonus))\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#deathbanish)\\s+(-1[1-3])"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.deathbanish.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.deathbanish.dominions"
+                name: "meta.monster_item.deathbanish.dominions"
+            },
+
+            {
+                match:"^\\s*(#(mastersmith|fixforgebonus))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#(comslave|commaster))"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            #B. 17. Undocumented dom5 abilities.
+            {
+                match:"^\\s*(#(mason|spiritsight|invisible|doheal|spellsinger|reanimpriest|norange|polyimmune|combatcaster))"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#(onisummon|curseluckshield|sunawe|fastcast|undregen|magicstudy|yearturn|fortkill|thronekill|farthronekill))\\s+(-?(?:1000|[1-9][0-9]{0,2}|0))"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#bringeroffortune)\\s+(-?(?:100|[1-9][0-9]?|0))"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.bringeroffortune.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.bringeroffortune.dominions"
+                name: "meta.monster_item.bringeroffortune.dominions"
+            },
+
+        ]
+
+    monster:
+        patterns: [
+            #A. Commands.
+            {
+                match: "^\\s*(#(clearweapons|cleararmor|clearmagic|clearspec|clear))"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(copystats|copyspr))\\s+([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            #B. Basic Properties.
+            {
+                match: '^\\s*(#(name|fixedname))\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    3:
+                        name: "string.quoted.double.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            {
+                begin: '^\\s*(#descr)\\s+(")'
+                captures:
+                    1:
+                        name: "keyword.control.monster.descr.dominions"
+                    2:
+                        name: "punctuation.definition.string.begin.dominions"
+                end: '"'
+                endCaptures:
+                    0:
+                        name: "punctuation.definition.string.end.dominions"
+                contentName: "string.quoted.double.monster.descr.dominions"
+                name: "meta.monster.descr.dominions"
+            }
+
+            #Visual properties.
+            {
+                match: '^\\s*(#(spr1|spr2))\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    3:
+                        name: "string.quoted.double.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#speciallook)\\s+(1[0-9]{2}|[1-3])"
+                captures:
+                    1:
+                        name: "keyword.control.monster.speciallook.dominions"
+                    2:
+                        name: "constant.numeric.monster.speciallook.dominions"
+                name: "meta.monster.speciallook.dominions"
+            },
+
+            #C. Pretender god properties.
+            {
+                match: "^\\s*(#pathcost)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.pathcost.dominions"
+                    2:
+                        name: "constant.numeric.monster.pathcost.dominions"
+                name: "meta.monster.pathcost.dominions"
+            },
+
+            {
+                match: "^\\s*(#startdom)\\s+(10|[1-9])"
+                captures:
+                    1:
+                        name: "keyword.control.monster.startdom.dominions"
+                    2:
+                        name: "constant.numeric.monster.startdom.dominions"
+                name: "meta.monster.startdom.dominions"
+            },
+
+            {
+                match: "^\\s*(#homerealm)\\s+(10|[0-9])"
+                captures:
+                    1:
+                        name: "keyword.control.monster.homerealm.dominions"
+                    2:
+                        name: "constant.numeric.monster.homerealm.dominions"
+                name: "meta.monster.homerealm.dominions"
+            },
+
+            #D. Recruitment rules.
+            {
+                match: "^\\s*(#(slowrec|noslowrec|reqlab|reqtemple|aisinglerec|ainorec))"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            {
+                comment: "#reclimit argument is number of units per turn and for #enchrebate50, it is enchantment id."
+                match: "^\\s*(#(reclimit|enchrebate50))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            {
+                match: '^\\s*(#(monpresentrec|ownsmonrec))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    3:
+                        name: "string.quoted.double.monster.$2.dominions"
+                    4:
+                        name: "constant.numeric.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(heatrec|coldrec))\\s+([0-3])"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(chaosrec|deathrec))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            #E. Desertion rules.
+            {
+                match: "^\\s*(#(singlebattle|nowish))"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(deserter|horrordeserter|defector))\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            #F. Cost properties.
+            {
+                match: "^\\s*(#(gcost|rcost|rpcost))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            #G. Attributes.
+            #note: see monster_items for other attributes.
+            {
+                match: "^\\s*(#(hp|mor|mapmove|eyes))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            {
+                #Note: ressize is really a cost property.
+                match: "^\\s*(#(size|ressize))\\s+([1-6])"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(incscale|decscale))\\s+([0-5])"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            #H. Weapons and armor.
+            {
+                match: '^\\s*(#weapon)\\s+(?:("[^"]+")|(1[0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.monster.weapon.dominions"
+                    2:
+                        name: "string.quoted.double.monster.weapon.dominions"
+                    3:
+                        name: "constant.numeric.monster.weapon.dominions"
+                name: "meta.monster.weapon.dominions"
+            },
+
+            {
+                match: '^\\s*(#armor)\\s+(?:("[^"]+")|([1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.monster.armor.dominions"
+                    2:
+                        name: "string.quoted.double.monster.armor.dominions"
+                    3:
+                        name: "constant.numeric.monster.armor.dominions"
+                name: "meta.monster.armor.dominions"
+            },
+
+            #L. 4. Tattoos.
+            #note: #snaketattoo has to be before #snake, so parser can pick it up.
+            {
+                match: "^\\s*(#(beartattoo|horsetattoo|wolftattoo|boartattoo|snaketattoo))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            #I. Bodytype.
+            {
+                match: "^\\s*(#(humanoid|mountedhumanoid|quadruped|lizard|naga|snake|bird|djinn|troglodyte|miscshape))"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            #J. Item slots.
+            {
+                match: "^\\s*(#noitem)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.noitem.dominions"
+                name: "meta.monster.noitem.dominions"
+            },
+
+            {
+                comment: "the #itemslots argument is a bitmask."
+                match: "^\\s*(#itemslots)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.itemslots.dominions"
+                    2:
+                        name: "constant.numeric.monster.itemslots.dominions"
+                name: "meta.monster.itemslots.dominions"
+            },
+
+            {
+                comment: "As of v5.24, userestricted numbers vary between 1 and 10000."
+                match: "^\\s*(#userestricteditem)\\s+(10000|[1-9][0-9]{0,3})"
+                captures:
+                    1:
+                        name: "keyword.control.monster.userestricteditem.dominions"
+                    2:
+                        name: "constant.numeric.monster.userestricteditem.dominions"
+                name: "meta.monster.userestricteditem.dominions"
+            },
+
+            #BUG: 5.09 startitem does not work with names.
+            {
+                match: '^\\s*(#startitem)\\s+(?:("[^"]+")|([1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.monster.startitem.dominions"
+                    2:
+                        name: "string.quoted.double.monster.startitem.dominions"
+                    3:
+                        name: "constant.numeric.monster.startitem.dominions"
+                name: "meta.monster.startitem.dominions"
+            },
+
+            #L. Abilities.
+            #L. 1. Type and Status.
+            {
+                match: "^\\s*(#(female|coldblood|immortal|domimmortal|drake|plant|lesserhorror|greaterhorror|doomhorror|mounted|holy|animal|unique|undead|bug|demon|magicbeing|autocompete|blind|uwbug|stonebeing|inanimate|dungeon))"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            #L. 2. Movement.
+            #note: see monster_items for other movement properties shared with items.
+            {
+                match: "^\\s*(#(immobile|aquatic|amphibian|pooramphibian|float|flying|swimming|snow|stormimmune|teleport|mapteleport|blink|unteleportable|noriverpass|forestsurvival|mountainsurvival|swampsurvival|wastesurvival))"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            {
+                comment: "Argument for #indepmove is a percentage capped at 100."
+                match: "^\\s*(#indepmove)\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.indepmove.dominions"
+                    2:
+                        name: "constant.numeric.monster.indepmove.dominions"
+                name: "meta.monster.indepmove.dominions"
+            },
+
+            {
+                comment: "First argument is the number of size points the commander can transport."
+                match: "^\\s*(#sailing)\\s+(\\d+)\\s+([1-6])"
+                captures:
+                    1:
+                        name: "keyword.control.monster.sailing.dominions"
+                    2:
+                        name: "constant.numeric.monster.sailing.shipsize.dominions"
+                    3:
+                        name: "constant.numeric.monster.sailing.maxunitsize.dominions"
+                name: "meta.monster.sailing.dominions"
+            },
+
+            #L. 3. Stealth.
+            #note: see monster_items for other stealth properties shared with items.
+            {
+                match: "^\\s*(#(illusion|spy|assassin))"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            #L. 4. Age, healing and afflictions.
+            #note: see monster_items for other age and healing properties shared with items.
+
+            #L. 4. 1. Healing.
+            {
+                match: "^\\s*(#noheal)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.noheal.dominions"
+                name: "meta.monster.noheal.dominions"
+            },
+
+            #L. 4. 2. Age.
+            {
+                match: "^\\s*(#startage)\\s+(-1|\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.startage.dominions"
+                    2:
+                        name: "constant.numeric.monster.startage.dominions"
+                name: "meta.monster.startage.dominions"
+            },
+
+            {
+                match: "^\\s*(#(maxage|addrandomage))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#older)\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.older.dominions"
+                    2:
+                        name: "constant.numeric.monster.older.dominions"
+                name: "meta.monster.older.dominions"
+            },
+
+            #L. 4. 3. Afflictions.
+            {
+                match: "^\\s*(#startaff)\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.startaff.dominions"
+                    2:
+                        name: "constant.numeric.monster.startaff.dominions"
+                name: "meta.monster.startaff.dominions"
+            },
+
+            {
+                match:"^\\s*(#startmajoraff)\\s+(1000|[1-9][0-9]{0,2}|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.startmajoraff.dominions"
+                    2:
+                        name: "constant.numeric.monster.startmajoraff.dominions"
+                name: "meta.monster.startmajoraff.dominions"
+            },
+
+            {
+                comment: "Argument is an affliction bitmask converted to an integer by taking a power of 2."
+                match: "^\\s*(#startingaff)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.startingaff.dominions"
+                    2:
+                        name: "constant.numeric.monster.startingaff.dominions"
+                name: "meta.monster.startingaff.dominions"
+            },
+
+            #L. 6. Support.
+            {
+                match: "^\\s*(#(neednoteat|nohof))"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            #L. 7. Shapechanging.
+            {
+                match: "^\\s*(#cleanshape)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.cleanshape.dominions"
+                name: "meta.monster.cleanshape.dominions"
+            },
+
+            {
+                match: "^\\s*(#transformation)\\s+(-1|0|1)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.transformation.dominions"
+                    2:
+                        name: "constant.numeric.monster.transformation.dominions"
+                name: "meta.monster.transformation.dominions"
+            },
+
+            {
+                match: "^\\s*(#((?:fire|air|water|earth|astral|death|nature|blood|holy)attuned))\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    4:
+                        name: "constant.numeric.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            {
+                comment: "Argument is number of hps at which transformation occurs."
+                match: "^\\s*(#(growhp|shrinkhp))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            {
+                comment: "Argument is number of xp points at which transformation occurs."
+                match: "^\\s*(#xpshape)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.xpshape.dominions"
+                    2:
+                        name: "constant.numeric.monster.xpshape.dominions"
+                name: "meta.monster.xpshape.dominions"
+            },
+
+            {
+                comment: "There are still not many details on #twiceborn, so giving it a general argument form."
+                match: '^\\s*(#twiceborn)\\s+(?:("[^"]+")|(-?\\d+))'
+                captures:
+                    1:
+                        name: "keyword.control.monster.twiceborn.dominions"
+                    2:
+                        name: "string.quoted.double.monster.twiceborn.dominions"
+                    3:
+                        name: "constant.numeric.monster.twiceborn.dominions"
+                name: "meta.monster.twiceborn.dominions"
+            },
+
+            {
+                comment: "Taking all shapechanging commands to accept montag values."
+                match: '^\\s*(#(shapechange|firstshape|secondshape|secondtmpshape|forestshape|plainshape|foreignshape|homeshape|springshape|summershape|autumnshape|wintershape|landshape|watershape|prophetshape))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                    3:
+                        name: "string.quoted.double.monster.$2.dominions"
+                    4:
+                        name: "constant.numeric.id.monster.$2.dominions"
+                    5:
+                        name: "constant.numeric.montag.monster.$2.dominions"
+                name: "meta.monster.property.shape.dominions"
+            },
+
+            #L. 8. Summoning.
+            #note: see monster_items for other summoning properties shared with items.
+            {
+                match: "^\\s*(#reanimator)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.reanimator.dominions"
+                    2:
+                        name: "constant.numeric.monster.reanimator.dominions"
+                name: "meta.monster.reanimator.dominions"
+            },
+
+            {
+                comment: "New montag values vary between 1000 and 100000."
+                match: "^\\s*(#montag)\\s+(100000|[1-9][0-9]{3}[0-9]?)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.montag.dominions"
+                    2:
+                        name: "constant.numeric.monster.montag.dominions"
+                name: "meta.monster.montag.dominions"
+            },
+
+            #L. 9. Nametypes.
+            {
+                comment: "Nametype values vary between 100 and 299. Moddable values start at 161."
+                match: "^\\s*(#nametype)\\s+([1-2][0-9]{2})"
+                captures:
+                    1:
+                        name: "keyword.control.monster.nametype.dominions"
+                    2:
+                        name: "constant.numeric.monster.nametype.dominions"
+                name: "meta.monster.nametype.dominions"
+            },
+
+            #L. 10. Leadership.
+            #note: see monster_items for other leadership properties shared with items.
+            {
+                match: "^\\s*(#(noleader|poorleader|okleader|goodleader|expertleader|superiorleader|nomagicleader|poormagicleader|okmagicleader|goodmagicleader|expertmagicleader|superiormagicleader|noundeadleader|poorundeadleader|okundeadleader|goodundeadleader|expertundeadleader|superiorundeadleader|almostundead|almostliving))"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            #L. 11. Morale.
+            #note: see monster_items for other leadership properties shared with items.
+
+            #L. 12. Magic.
+            #note: see monster_items for other magic properties shared with items.
+            {
+                match:"^\\s*(#magicskill)\\s+([0-8]|5[0-3])\\s+(10|[1-9])"
+                captures:
+                    1:
+                        name: "keyword.control.monster.magicskill.dominions"
+                    2:
+                        name: "constant.numeric.school.monster.magicskill.dominions"
+                    3:
+                        name: "constant.numeric.level.monster.magicskill.dominions"
+                name: "meta.monster.magicskill.dominions"
+            },
+
+            {
+                match:"^\\s*(#custommagic)\\s+(\\d+)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.custommagic.dominions"
+                    2:
+                        name: "constant.numeric.pathmask.monster.custommagic.dominions"
+                    3:
+                        name: "constant.numeric.chance.monster.custommagic.dominions"
+                name: "meta.monster.custommagic.dominions"
+            },
+
+            #L. 13. Research.
+            #note: see monster_items for other research properties shared with items.
+            {
+                match:"^\\s*(#fixedresearch)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.fixedresearch.dominions"
+                    2:
+                        name: "constant.numeric.monster.fixedresearch.dominions"
+                name: "meta.monster.fixedresearch.dominions"
+            },
+
+            #L. 14. Other magic abilities.
+            #note: see monster_items for other magic ability properties shared with items.
+            {
+                comment: "Argument for #onebattlespell must be a vanilla spell."
+                match: '^\\s*(#onebattlespell)\\s+(?:("[^"]+")|(1300|1[0-2][0-9]{2}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.monster.onebattlespell.dominions"
+                    2:
+                        name: "string.quoted.double.monster.onebattlespell.dominions"
+                    3:
+                        name: "constant.numeric.monster.onebattlespell.dominions"
+                name: "meta.monster.onebattlespell.dominions"
+            },
+
+            #L. 15. Trinity abilities.
+            #note: see monster_items for other dom5 undocumented properties shared with items.
+            {
+                match:"^\\s*(#(unify|triple3mon))"
+                captures:
+                    1:
+                        name: "keyword.control.monster.$2.dominions"
+                name: "meta.monster.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#triplegodmag)\\s+(-?(?:10|[0-9]))"
+                captures:
+                    1:
+                        name: "keyword.control.monster.triplegodmag.dominions"
+                    2:
+                        name: "constant.numeric.monster.triplegodmag.dominions"
+                name: "meta.monster.triplegodmag.dominions"
+            },
+
+            {
+                match:"^\\s*(#triplegod)\\s+(10|[0-9])"
+                captures:
+                    1:
+                        name: "keyword.control.monster.triplegod.dominions"
+                    2:
+                        name: "constant.numeric.monster.triplegod.dominions"
+                name: "meta.monster.triplegod.dominions"
+            },
+
+            #L. 16. Undocumented dom5 abilities.
+            {
+                match:"^\\s*(#indepstay)\\s+(10|[0-9])"
+                captures:
+                    1:
+                        name: "keyword.control.monster.indepstay.dominions"
+                    2:
+                        name: "constant.numeric.monster.indepstay.dominions"
+                name: "meta.monster.indepstay.dominions"
+            },
+
+            {
+                match:"^\\s*(#indepmove)\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.indepmove.dominions"
+                    2:
+                        name: "constant.numeric.monster.indepmove.dominions"
+                name: "meta.monster.indepmove.dominions"
+            },
+
+            {
+                match:"^\\s*(#minprison)\\s+([0-2])"
+                captures:
+                    1:
+                        name: "keyword.control.monster.minprison.dominions"
+                    2:
+                        name: "constant.numeric.monster.minprison.dominions"
+                name: "meta.monster.minprison.dominions"
+            },
+
+            {
+                match:"^\\s*(#minsizeleader)\\s+([0-6])"
+                captures:
+                    1:
+                        name: "keyword.control.monster.minsizeleader.dominions"
+                    2:
+                        name: "constant.numeric.monster.minsizeleader.dominions"
+                name: "meta.monster.minsizeleader.dominions"
+            }
+        ]
+
+    nametype:
+        patterns: [
+            #Commands.
+            {
+                match: "^\\s*(#clear)"
+                captures:
+                    1:
+                        "keyword.control.nametype.clear.dominions"
+                name: "meta.nametype.clear.dominions"
+            },
+
+            {
+                match: '^\\s*(#addname)\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.nametype.addname.dominions"
+                    2:
+                        name: "string.quoted.double.nametype.addname.dominions"
+                name: "meta.nametype.addname.dominions"
+            }
+        ]
+
+    site_nation:
+        patterns: [
+            {
+                match: '^\\s*(#(wallunit|wallcom|uwwallunit|uwwallcom))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.site_nation.$2.dominions"
+                    3:
+                        name: "string.quoted.double.site_nation.$2.dominions"
+                    4:
+                        name: "constant.numeric.positive.dominions"
+                name: "meta.site_nation.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(wallmult|uwwallmult))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.site_nation.$2.dominions"
+                    3:
+                        name: "constant.numeric.site_nation.$2.dominions"
+                name: "meta.site_nation.$2.dominions"
+            }
+        ]
+
+    site:
+        patterns: [
+            #A. Commands.
+            {
+                match: "^\\s*(#clear)"
+                captures:
+                    1:
+                        name: "keyword.control.site.clear.dominions"
+                name: "meta.site.clear.dominions"
+            },
+
+            #B. Basic properties.
+            {
+                match: '^\\s*(#name)\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.site.name.dominions"
+                    2:
+                        name: "string.quoted.double.site.name.dominions"
+                name: "meta.site.name.dominions"
+            },
+
+            {
+                match: "^\\s*(#path)\\s+([0-8])"
+                captures:
+                    1:
+                        name: "keyword.control.site.path.dominions"
+                    2:
+                        name: "constant.numeric.site.path.dominions"
+                name: "meta.site.path.dominions"
+            },
+
+            {
+                comment: "Arguments 5 and 6 do not seem to have a known use."
+                match: "^\\s*(#level)\\s+([0-6])"
+                captures:
+                    1:
+                        name: "keyword.control.site.level.dominions"
+                    2:
+                        name: "constant.numeric.site.level.dominions"
+                name: "meta.site.level.dominions"
+            },
+
+            {
+                match: "^\\s*(#rarity)\\s+(0|2|5|11|12|13|1)"
+                captures:
+                    1:
+                        name: "keyword.control.site.rarity.dominions"
+                    2:
+                        name: "constant.numeric.site.rarity.dominions"
+                name: "meta.site.rarity.dominions"
+            },
+
+            {
+                comment: "The argument is a location bitmask viewed as a positive integer."
+                match: "^\\s*(#loc)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.site.loc.dominions"
+                    2:
+                        name: "constant.numeric.site.loc.dominions"
+                name: "meta.site.loc.dominions"
+            },
+
+            {
+                match: "^\\s*(#(gold|res|supply|decunrest))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.site.$2.dominions"
+                    3:
+                        name: "constant.numeric.site.$2.dominions"
+                name: "meta.site.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#gems)\\s+([0-7])\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.site.gems.dominions"
+                    2:
+                        name: "constant.numeric.path.site.gems.dominions"
+                    3:
+                        name: "constant.numeric.amount.site.gems.dominions"
+                name: "meta.site.gems.dominions"
+            },
+
+            #C. Buildings and recruits.
+            {
+                match: "^\\s*(#(lab|temple))"
+                captures:
+                    1:
+                        name: "keyword.control.site.$2.dominions"
+                name: "meta.site.$2.dominions"
+            },
+
+            {
+                comment: "As of v5.24, fort numbers vary between 0 and 30."
+                match: "^\\s*(#fort)\\s+(30|[1-2]?[0-9])"
+                captures:
+                    1:
+                        name: "keyword.control.site.fort.dominions"
+                    2:
+                        name: "constant.numeric.site.fort.dominions"
+                name: "meta.site.fort.dominions"
+            },
+
+            {
+                match: "^\\s*(#(wallmult|uwwallmult))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.site.$2.dominions"
+                    3:
+                        name: "constant.numeric.site.$2.dominions"
+                name: "meta.site.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#voidgate)\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.site.voidgate.dominions"
+                    2:
+                        name: "constant.numeric.site.voidgate.dominions"
+                name: "meta.site.voidgate.dominions"
+            },
+
+            #TODO: these commands take montag values.
+            {
+                match: '^\\s*(#(homecom|homemon|com|mon|summonlvl[2-4]|summon))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.site.$2.dominions"
+                    3:
+                        name: "string.quoted.double.site.$2.dominions"
+                    4:
+                        name: "constant.numeric.site.$2.dominions"
+                name: "meta.site.$2.dominions"
+            },
+
+            #D. Scales.
+            {
+                match: "^\\s*(#(incscale|decscale))\\s+([0-5])"
+                captures:
+                    1:
+                        name: "keyword.control.site.$2.dominions"
+                    3:
+                        name: "constant.numeric.site.$2.dominions"
+                name: "meta.site.$2.dominions"
+            },
+
+            #E. Rituals.
+            {
+                match: "^\\s*(#(conjcost|altcost|evocost|constcost|enchcost|thaucost|bloodcost))\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.site.$2.dominions"
+                    3:
+                        name: "constant.numeric.site.$2.dominions"
+                name: "meta.site.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(firerange|airrange|waterrange|earthrange|astralrange|deathrange|naturerange|bloodrange|elementrange|sorceryrange|allrange))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.site.$2.dominions"
+                    3:
+                        name: "constant.numeric.site.$2.dominions"
+                name: "meta.site.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#scry)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.site.scry.dominions"
+                    3:
+                        name: "constant.numeric.site.scry.dominions"
+                name: "meta.site.scry.dominions"
+            },
+
+            #F. Effects.
+            {
+                match: "^\\s*(#(heal|curse|disease|horrormark|holyfire|holypower|adventureruin))\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.site.$2.dominions"
+                    3:
+                        name: "constant.numeric.site.$2.dominions"
+                name: "meta.site.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#xp)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.site.xp.dominions"
+                    2:
+                        name: "constant.numeric.site.xp.dominions"
+                name: "meta.site.xp.dominions"
+            },
+
+            #G. Throne effects.
+            {
+                match: "^\\s*(#claim)"
+                captures:
+                    1:
+                        name: "keyword.control.site.claim.dominions"
+                name: "meta.site.claim.dominions"
+            },
+
+            {
+                comment: "As of v5.24, cluster values vary between 1 and 32000."
+                match: "^\\s*(#cluster)\\s+(32000|3[0-1][0-9]{3}|[1-2][0-9]{4}|[1-9][0-9]{0,3})"
+                captures:
+                    1:
+                        name: "keyword.control.site.cluster.dominions"
+                    2:
+                        name: "constant.numeric.site.cluster.dominions"
+                name: "meta.site.cluster.dominions"
+            },
+
+            {
+                match: "^\\s*(#(evil|wild))"
+                captures:
+                    1:
+                        name: "keyword.control.site.$2.dominions"
+                name: "meta.site.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#dominion)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.site.dominion.dominions"
+                    2:
+                        name: "constant.numeric.site.dominion.dominions"
+                name: "meta.site.dominion.dominions"
+            },
+
+            {
+                comment: "Given the possible scale values, 6 in either direction is the highest meaningful value."
+                match: "^\\s*(#(goddomchaos|goddomlazy|goddomcold|goddomdeath|goddommisfortune|goddomdrain))\\s+(-?[1-6])"
+                captures:
+                    1:
+                        name: "keyword.control.site.$2.dominions"
+                    3:
+                        name: "constant.numeric.site.$2.dominions"
+                name: "meta.site.$2.dominions"
+            },
+
+            #H. Throne bless effects.
+            {
+                match: "^\\s*(#(blesshp|blessanimawe|blessmr|blessawe|blessmor|blessstr|blessdarkvis|blessatt|blessdef|blessprec|blessfireres|blesscoldres|blessshockres|blesspoisres|blessairshld|blessreinvig|blessdtv))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.site.$2.dominions"
+                    3:
+                        name: "constant.numeric.site.$2.dominions"
+                name: "meta.site.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(recallgod|domwar))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.site.$2.dominions"
+                    3:
+                        name: "constant.numeric.site.$2.dominions"
+                name: "meta.site.$2.dominions"
+            }
+        ]
+
+    mod_nation:
+        patterns: [
+            {
+                match: "^\\s*(#disableoldnations)"
+                captures:
+                    1:
+                        name: "keyword.control.mod.disableoldnations.dominions"
+                name: "meta.mod.disableoldnations.dominions"
+            },
+
+            {
+                match: '^\\s*(#indepflag)\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.mod.indepflag.dominions"
+                    2:
+                        name: "string.quoted.double.mod.indepflag.dominions"
+                name: "meta.mod.indepflag.dominions"
+            }
+        ]
+
+    nation_poptype:
+        patterns: [
+            #A. Commands.
+            {
+                match: "^\\s*(#clearrec)"
+                captures:
+                    1:
+                        name: "keyword.control.nation_poptype.clearrec.dominions"
+                name: "meta.nation_poptype.clearrec.dominions"
+            },
+
+            {
+                match: '^\\s*(#(addrecunit|addreccom))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.nation_poptype.$2.dominions"
+                    3:
+                        name: "string.quoted.double.nation_poptype.$2.dominions"
+                    4:
+                        name: "constant.numeric.nation_poptype.$2.dominions"
+                name: "meta.nation_poptype.$2.dominions"
+            },
+
+            {
+                match: '^\\s*(#(defcom1|defunit(?:1b|1c|1d|1)))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.nation_poptype.$2.dominions"
+                    3:
+                        name: "string.quoted.double.nation_poptype.$2.dominions"
+                    4:
+                        name: "constant.numeric.nation_poptype.$2.dominions"
+                name: "meta.nation_poptype.$2.dominions"
+            },
+
+            {
+                match: '^\\s*(#(defmult(?:1b|1c|1d|1)))\\s+(\\d+)'
+                captures:
+                    1:
+                        name: "keyword.control.nation_poptype.$2.dominions"
+                    3:
+                        name: "constant.numeric.nation_poptype.$2.dominions"
+                name: "meta.nation_poptype.$2.dominions"
+            }
+        ]
+
+    nation:
+        patterns: [
+            #A. General commands.
+            {
+                match: "^\\s*(#clearnation)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.clearnation.dominions"
+                name: "meta.nation.clearnation.dominions"
+            },
+
+            #B. Basic properties.
+            {
+                match: '^\\s*(#name)\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.nation.name.dominions"
+                    2:
+                        name: "string.quoted.double.nation.name.dominions"
+                name: "meta.nation.name.dominions"
+            },
+
+            {
+                begin: '^\\s*(#(descr|summary))\\s+(")'
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "punctuation.definition.string.begin.dominions"
+                end: '"'
+                contentName: "string.quoted.double.nation.$2.dominions"
+                endCaptures:
+                    0:
+                        name: "punctuation.definition.string.end.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                match: '^\\s*(#(epithet|brief))\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "string.quoted.double.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                match: '^\\s*(#era)\\s+([0-4])'
+                captures:
+                    1:
+                        name: "keyword.control.nation.era.dominions"
+                    2:
+                        name: "constant.nation.era.dominions"
+                name: "meta.nation.era.dominions"
+            },
+
+            #Visuals.
+            {
+                match: '^\\s*(#flag)\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.nation.flag.dominions"
+                    2:
+                        name: "string.quoted.double.nation.flag.dominions"
+                name: "meta.nation.flag.dominions"
+            },
+
+            {
+                match: "^\\s*(#(color|secondarycolor))\\s+((?:0|1)\\.(?:\\d{1,2}))\\s+((?:0|1)\\.(?:\\d{1,2}))\\s+((?:0|1)\\.(?:\\d{1,2}))"
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "constant.numeric.red.nation.$2.dominions"
+                    4:
+                        name: "constant.numeric.green.nation.$2.dominions"
+                    5:
+                        name: "constant.numeric.blue.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            #C. Sites, terrain and temperature.
+            {
+                match: "^\\s*(#clearsites)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.clearsites.dominions"
+                name: "meta.nation.clearsites.dominions"
+            },
+
+            {
+                match: '^\\s*(#(startsite|islandsite))\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "string.quoted.double.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(uwnation|coastnation|riverstart|islandnation))"
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                comment: "Argument is a terrain mask viewed as a positive integer."
+                match: "^\\s*(#(likesterr|hatesterr))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "constant.numeric.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#killcappop)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.killcappop.dominions"
+                    2:
+                        name: "constant.numeric.nation.killcappop.dominions"
+                name: "meta.nation.killcappop.dominions"
+            },
+
+            {
+                match: "^\\s*(#idealcold)\\s+(-?[0-3])"
+                captures:
+                    1:
+                        name: "keyword.control.nation.idealcold.dominions"
+                    2:
+                        name: "constant.numeric.nation.idealcold.dominions"
+                name: "meta.nation.idealcold.dominions"
+            },
+
+            {
+                match: "^\\s*(#cavenation)\\s+([0-2])"
+                captures:
+                    1:
+                        name: "keyword.control.nation.cavenation.dominions"
+                    2:
+                        name: "constant.numeric.nation.cavenation.dominions"
+                name: "meta.nation.cavenation.dominions"
+            },
+
+            #C. AI hints.
+            {
+                match: "^\\s*(#(aiholdgold|aifirenation|aiairnation|aiwaternation|aiearthnation|aiastralnation|aideathnation|ainaturenation|aibloodnation|bloodnation|aicheapholy|aiholyranged))"
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(aiawake|aigoodbless))\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "constant.numeric.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                match: '^\\s*(#aimusthavemag)\\s+([0-7])'
+                captures:
+                    1:
+                        name: "keyword.control.nation.aimusthavemag.dominions"
+                    2:
+                        name: "constant.numeric.nation.aimusthavemag.dominions"
+                name: "meta.nation.aimusthavemag.dominions"
+            },
+
+            #D. Recruitment.
+            #Some commands are in poptypes repository.
+            {
+                match: '^\\s*(#(startcom|(?:coastcom(?:1|2))|addforeignunit|addforeigncom|(?:forest|mountain|swamp|waste|cave)rec|(?:forest|mountain|swamp|waste|cave)com|startscout|(?:startunittype(?:1|2))|uwrec|uwcom|(?:coastunit(?:[1-3]))|landrec|landcom|domrec))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "string.quoted.double.nation.$2.dominions"
+                    4:
+                        name: "constant.numeric.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                match: '^\\s*(#(hero(?:10|[1-9])|multihero(?:[1-7])))\\s+([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)'
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "constant.numeric.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(startunitnbrs(?:1|2)))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "constant.numeric.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                comment: "Argument is a signed percentage, but not capped."
+                match: "^\\s*(#merccost)\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.merccost.dominions"
+                    2:
+                        name: "constant.numeric.nation.merccost.dominions"
+                name: "meta.nation.merccost.dominions"
+            },
+
+            #E. PD.
+            #Some pd commands are in common with poptypes, and are in poptypes_nation.
+            #Some pd commands are in common with sites, and are in site_nation.
+            {
+                match: '^\\s*(#(defcom2|(?:uwdefcom(?:1|2))|(?:defunit(?:2b|2))|(?:uwdefunit(?:1b|1c|1d|2b|1|2))))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "string.quoted.double.nation.$2.dominions"
+                    4:
+                        name: "constant.numeric.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(defmult(?:2b|2)|uwdefmult(?:1b|1c|1d|2b|1|2)))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "constant.numeric.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            #F. Gods.
+            {
+                match: "^\\s*(#cleargods)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.cleargods.dominions"
+                name: "meta.nation.cleargods.dominions"
+            },
+
+            {
+                match: "^\\s*(#homerealm)\\s+(10|[1-9])"
+                captures:
+                    1:
+                        name: "keyword.control.nation.homerealm.dominions"
+                    2:
+                        name: "constant.numeric.nation.homerealm.dominions"
+                name: "meta.nation.homerealm.dominions"
+            },
+
+            {
+                match: '^\\s*(#(addgod|delgod))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "string.quoted.double.nation.$2.dominions"
+                    4:
+                        name: "constant.numeric.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                match: '^\\s*(#(cheapgod(?:20|40)))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "string.quoted.double.nation.$2.dominions"
+                    4:
+                        name: "constant.numeric.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(godrebirth|noundeadgods))"
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            #Blesses.
+            {
+                match: "^\\s*(#(fireblessbonus|airblessbonus|waterblessbonus|earthblessbonus|astralblessbonus|deathblessbonus|natureblessbonus|bloodblessbonus))\\s+([0-9])"
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "constant.numeric.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            #Poptypes.
+            {
+                comment: "Argument is a poptype id. No info is available on the poptype id range."
+                match: "^\\s*(#likespop)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.likespop.dominions"
+                    2:
+                        name: "constant.numeric.nation.likespop.dominions"
+                name: "meta.nation.likespop.dominions"
+            },
+
+            #G. Buildings.
+            {
+                match: "^\\s*(#uwbuild)\\s+(0|1)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.uwbuild.dominions"
+                    2:
+                        name: "constant.numeric.nation.uwbuild.dominions"
+                name: "meta.nation.uwbuild.dominions"
+            },
+
+            {
+                match: "^\\s*(#fortera)\\s+([0-4])"
+                captures:
+                    1:
+                        name: "keyword.control.nation.fortera.dominions"
+                    2:
+                        name: "constant.numeric.nation.fortera.dominions"
+                name: "meta.nation.fortera.dominions"
+            },
+
+            {
+                comment: "#fortcost argument is a percentage, but not capped."
+                match: "^\\s*(#(fortcost|labcost|templecost|foresttemplecost|forestlabcost))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "constant.numeric.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#templegems)\\s+([0-7])"
+                captures:
+                    1:
+                        name: "keyword.control.nation.templegems.dominions"
+                    2:
+                        name: "constant.numeric.nation.templegems.dominions"
+                name: "meta.nation.templegems.dominions"
+            },
+
+            #Visuals.
+            {
+                comment: "Argument is a picture id. No info available on the range."
+                match: "^\\s*(#templepic)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.templepic.dominions"
+                    2:
+                        name: "constant.numeric.nation.templepic.dominions"
+                name: "meta.nation.templepic.dominions"
+            },
+
+            #Fort commands.
+            {
+                match: "^\\s*(#(homefort|buildfort|builduwfort|buildcoastfort))\\s+(30|[1-2][0-9]|[1-9])"
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "constant.numeric.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#fortunrest)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.fortunrest.dominions"
+                    2:
+                        name: "constant.numeric.nation.fortunrest.dominions"
+                name: "meta.nation.fortunrest.dominions"
+            },
+
+            #H. Dominion.
+            {
+                match: "^\\s*(#(nodeathsupply|halfdeathinc|halfdeathpop|domdeathsense|nopreach|dyingdom|sacrificedom|autoundead))"
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(spreadcold|spreadheat|spreadlazy|spreadchaos|spreaddeath))\\s+([1-3])"
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "constant.numeric.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                comment: "Argument is a signed percentage, not capped."
+                match: "^\\s*(#(nationinc|castleprod|tradecoast|golemhp))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "constant.numeric.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(recallgod|domkill|domwar))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                    3:
+                        name: "constant.numeric.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#domunrest)\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.domunrest.dominions"
+                    2:
+                        name: "constant.numeric.nation.domunrest.dominions"
+                name: "meta.nation.domunrest.dominions"
+            },
+
+            {
+                match: "^\\s*(#syncretism)\\s+(0|1)"
+                captures:
+                    1:
+                        name: "keyword.control.nation.syncretism.dominions"
+                    2:
+                        name: "constant.numeric.nation.syncretism.dominions"
+                name: "meta.nation.syncretism.dominions"
+            },
+
+            {
+                match: '^\\s*(#guardspirit)\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.nation.guardspirit.dominions"
+                    2:
+                        name: "string.quoted.double.nation.guardspirit.dominions"
+                    3:
+                        name: "constant.numeric.nation.guardspirit.dominions"
+                name: "meta.nation.guardspirit.dominions"
+            },
+
+            #I. Reanimation.
+            {
+                match: "^\\s*(#(priestreanim|undeadreanim|horsereanim|wightreanim|tombwyrmnreanim|manikinreanim|supayareanim|greekreanim|ghostreanim))"
+                captures:
+                    1:
+                        name: "keyword.control.nation.$2.dominions"
+                name: "meta.nation.$2.dominions"
+            }
+        ]
+
+    mod_spell:
+        patterns: [
+            {
+                match: "^\\s*(#clearallspells)"
+                captures:
+                    1:
+                        name: "keyword.control.mod.clearallspells.dominions"
+                name: "meta.mod.clearallspells.dominions"
+            }
+        ]
+
+    spell:
+        patterns: [
+            #A. Commands.
+            {
+                match: "^\\s*(#clear)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.clear.dominions"
+                name: "meta.spell.clear.dominions"
+            },
+
+            {
+                match: '^\\s*(#copyspell)\\s+(?:("[^"]+")|([1-3][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.spell.copyspell.dominions"
+                    2:
+                        name: "string.quoted.double.spell.copyspell,dominions"
+                    3:
+                        name: "constant.numeric.spell.copyspell.dominions"
+                name: "meta.spell.copyspell.dominions"
+            },
+
+            #B. Basic properties.
+            {
+                match: '^\\s*(#name)\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.spell.name.dominions"
+                    2:
+                        name: "string.quoted.double.spell.name.dominions"
+                name: "meta.spell.name.dominions"
+            },
+
+            {
+                begin: '^\\s*(#descr)\\s+(")'
+                captures:
+                    1:
+                        name: "keyword.control.spell.descr.dominions"
+                    2:
+                        name: "punctuation.definition.string.begin.dominions"
+                end: '"'
+                contentName: "string.quoted.double.spell.descr.dominions"
+                endCaptures:
+                    0:
+                        name: "punctuation.definition.string.end.dominions"
+                name: "meta.spell.descr.dominions"
+            },
+
+            {
+                match:"^\\s*(#school)\\s+(-1|[0-7])"
+                captures:
+                    1:
+                        name: "keyword.control.spell.school.dominions"
+                    2:
+                        name: "constant.numeric.spell.school.dominions"
+                name: "meta.spell.school.dominions"
+            },
+
+            {
+                match:"^\\s*(#researchlevel)\\s+([0-9])"
+                captures:
+                    1:
+                        name: "keyword.control.spell.researchlevel.dominions"
+                    2:
+                        name: "constant.numeric.spell.researchlevel.dominions"
+                name: "meta.spell.researchlevel.dominions"
+            },
+
+            {
+                match:"^\\s*(#path)\\s+(0|1)\\s+(-1|[0-8])"
+                captures:
+                    1:
+                        name: "keyword.control.spell.path.dominions"
+                    2:
+                        name: "constant.numeric.reqnr.spell.path.dominions"
+                    3:
+                        name: "constant.numeric.path.spell.path.dominions"
+                name: "meta.spell.path.dominions"
+            },
+
+            {
+                match:"^\\s*(#pathlevel)\\s+(0|1)\\s+(10|[0-9])"
+                captures:
+                    1:
+                        name: "keyword.control.spell.pathlevel.dominions"
+                    2:
+                        name: "constant.numeric.reqnr.spell.pathlevel.dominions"
+                    3:
+                        name: "constant.numeric.level.spell.pathlevel.dominions"
+                name: "meta.spell.pathlevel.dominions"
+            },
+
+            {
+                match:"^\\s*(#fatiguecost)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.fatiguecost.dominions"
+                    2:
+                        name: "constant.numeric.spell.fatiguecost.dominions"
+                name: "meta.spell.spell.fatiguecost.dominions"
+            },
+
+            #C. Spell effects.
+            {
+                match:"^\\s*(#damage)\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.damage.dominions"
+                    2:
+                        name: "constant.numeric.spell.damage.dominions"
+                name: "meta.spell.damage.dominions"
+            },
+
+            {
+                comment: "Argument is a positive integer interpreted as an effect enum."
+                match:"^\\s*(#effect)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.effect.dominions"
+                    2:
+                        name: "constant.numeric.spell.effect.dominions"
+                name: "meta.spell.effect.dominions"
+            },
+
+            {
+                match: '^\\s*(#damagemon)\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.spell.damagemon.dominions"
+                    2:
+                        name: "string.quoted.double.spell.damagemon.dominions"
+                name: "meta.spell.damagemon.dominions"
+            },
+
+            {
+                comment: "Argument is a positive number interpreted as a battlefield area."
+                match:"^\\s*(#aoe)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.aoe.dominions"
+                    2:
+                        name: "constant.numeric.spell.aoe.dominions"
+                name: "meta.spell.spell.aoe.dominions"
+            },
+
+            {
+                comment: "Argument is a positive number interpreted as a terrain mask."
+                match:"^\\s*(#nextingeo)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.nextingeo.dominions"
+                    2:
+                        name: "constant.numeric.spell.nextingeo.dominions"
+                name: "meta.spell.spell.nextingeo.dominions"
+            },
+
+            {
+                match:"^\\s*(#(nreff|range))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.$2.dominions"
+                    3:
+                        name: "constant.numeric.spell.$2.dominions"
+                name: "meta.spell.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#precision)\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.precision.dominions"
+                    2:
+                        name: "constant.numeric.spell.precision.dominions"
+                name: "meta.spell.precision.dominions"
+            },
+
+            {
+                match: '^\\s*(#nextspell)\\s+(?:("[^"]+")|([1-3][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.spell.nextspell.dominions"
+                    2:
+                        name: "string.quoted.double.spell.nextspell.dominions"
+                    3:
+                        name: "constant.numeric.spell.nextspell.dominions"
+                name: "meta.spell.nextspell.dominions"
+            },
+
+            #D. Sound and visuals.
+            {
+                comment: "Argument is a sound effect number."
+                match:"^\\s*(#sound)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.sound.dominions"
+                    2:
+                        name: "constant.numeric.spell.sound.dominions"
+                name: "meta.spell.sound.dominions"
+            },
+
+            {
+                comment: "Argument is a flight sprite number."
+                match:"^\\s*(#flightspr)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.flightspr.dominions"
+                    2:
+                        name: "constant.numeric.spell.flightspr.dominions"
+                name: "meta.spell.flightspr.dominions"
+            },
+
+            {
+                comment: "Argument is a particle effect number or -1 for none."
+                match:"^\\s*(#explspr)\\s+(-1|(?:\\d+))"
+                captures:
+                    1:
+                        name: "keyword.control.spell.explspr.dominions"
+                    2:
+                        name: "constant.numeric.spell.explspr.dominions"
+                name: "meta.spell.explspr.dominions"
+            },
+
+            {
+                match: '^\\s*(#sample)\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.spell.sample.dominions"
+                    2:
+                        name: "string.quoted.double.spell.sample.dominions"
+                name: "meta.spell.sample.dominions"
+            },
+
+            #E. Range and targeting.
+            {
+                comment: "Argument is a terrain mask."
+                match:"^\\s*(#(onlygeosrc|nogeosrc|onlygeodst|nogeodst))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.$2.dominions"
+                    3:
+                        name: "constant.numeric.spell.$2.dominions"
+                name: "meta.spell.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#provrange)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.provrange.dominions"
+                    2:
+                        name: "constant.numeric.spell.provrange.dominions"
+                name: "meta.spell.provrange.dominions"
+            },
+
+            {
+                match: '^\\s*(#onlyatsite)\\s+(?:("[^"]+")|(1[0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.spell.onlyatsite.dominions"
+                    2:
+                        name: "string.quoted.double.spell.onlyatsite.dominions"
+                    3:
+                        name: "constant.numeric.spell.onlyatsite.dominions"
+                name: "meta.spell.onlyatsite.dominions"
+            },
+
+            {
+                match:"^\\s*(#(onlycoastsrc|onlyfriendlydst|onlyowndst|nowatertrace|nolandtrace|walkable))\\s+(0|1)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.$2.dominions"
+                    3:
+                        name: "constant.numeric.spell.$2.dominions"
+                name: "meta.spell.$2.dominions"
+            },
+
+            #E. Spell special attributes.
+            {
+                comment: "Argument is a positive integer interpreted as a spell mask."
+                match:"^\\s*(#spec)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.property.dominions"
+                    2:
+                        name: "constant.numeric.positive.dominions"
+                name: "meta.spell.property.dominions"
+            },
+
+            {
+                match:"^\\s*(#casttime)\\s+(1000|[1-9][0-9]{0,2})"
+                captures:
+                    1:
+                        name: "keyword.control.spell.property.dominions"
+                    2:
+                        name: "constant.numeric.positive.dominions"
+                name: "meta.spell.property.dominions"
+            },
+
+            {
+                match:"^\\s*(#maxbounces)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.spell.maxbounces.dominions"
+                    2:
+                        name: "constant.numeric.spell.maxbounces.dominions"
+                name: "meta.spell.maxbounces.dominions"
+            },
+
+            {
+                match: '^\\s*(#restricted)\\s+(?:("[^"]+")|(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9]))'
+                captures:
+                    1:
+                        name: "keyword.control.spell.restricted.dominions"
+                    2:
+                        name: "string.quoted.double.spell.restricted.dominions"
+                    3:
+                        name: "constant.numeric.spell.restricted.dominions"
+                name: "meta.spell.restricted.dominions"
+            },
+
+            {
+                match:"^\\s*(#notfornation)\\s+(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9])"
+                captures:
+                    1:
+                        name: "keyword.control.spell.notfornation.dominions"
+                    2:
+                        name: "constant.numeric.spell.notfornation.dominions"
+                name: "meta.spell.notfornation.dominions"
+            },
+
+            {
+                match: '^\\s*(#(farsumcom|onlymnr))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.spell.$2.dominions"
+                    3:
+                        name: "string.quoted.double.spell.$2.dominions"
+                    4:
+                        name: "constant.numeric.spell.$2.dominions"
+                name: "meta.spell.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#godpathspell)\\s+(-1|[0-7])"
+                captures:
+                    1:
+                        name: "keyword.control.spell.godpathspell.dominions"
+                    2:
+                        name: "constant.numeric.spell.godpathspell.dominions"
+                name: "meta.spell.godpathspell.dominions"
+            },
+
+            {
+                match:"^\\s*(#(friendlyench|hiddenench|nocastmindless|spellreqfly|polygetmagic))\\s+([0-1])"
+                captures:
+                    1:
+                        name: "keyword.control.spell.$2.dominions"
+                    3:
+                        name: "constant.numeric.spell.$2.dominions"
+                name: "meta.spell.$2.dominions"
+            }
+        ]
+
+    mod_item:
+        patterns: [
+            {
+                match: "^\\s*(#clearallitems)"
+                captures:
+                    1:
+                        name: "keyword.control.mod.clearallitems.dominions"
+                name: "meta.mod.clearallitems.dominions"
+            }
+        ]
+
+    item:
+        patterns: [
+            #A. Commands.
+            {
+                match: "^\\s*(#clear)"
+                captures:
+                    1:
+                        name: "keyword.control.item.clear.dominions"
+                name: "meta.item.clear.dominions"
+            },
+
+            {
+                match: '^\\s*(#copyitem)\\s+(?:("[^"]+")|([1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.item.copyitem.dominions"
+                    2:
+                        name: "string.quoted.double.item.copyitem.dominions"
+                    3:
+                        name: "constant.numeric.item.copyitem.dominions"
+                name: "meta.item.copyitem.dominions"
+            },
+
+            {
+                match: "^\\s*(#copyspr)\\s+([1-9][0-9]{0,2}|0)"
+                captures:
+                    1:
+                        name: "keyword.control.item.copyspr.dominions"
+                    2:
+                        name: "constant.numeric.item.copyspr.dominions"
+                name: "meta.item.copyspr.dominions"
+            },
+
+            #B. Basic properties.
+            {
+                match: '^\\s*(#name)\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.item.name.dominions"
+                    2:
+                        name: "string.quoted.double.item.name.dominions"
+                name: "meta.item.name.dominions"
+            },
+
+            {
+                begin: '^\\s*(#descr)\\s+(")'
+                captures:
+                    1:
+                        name: "keyword.control.item.descr.dominions"
+                    2:
+                        name: "punctuation.definition.string.begin.dominions"
+                end: '"'
+                contentName: "string.quoted.double.item.descr.dominions"
+                endCaptures:
+                    0:
+                        name: "punctuation.definition.string.end.dominions"
+                name: "meta.item.descr.dominions"
+            },
+
+            {
+                match: '^\\s*(#spr)\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.item.spr.dominions"
+                    2:
+                        name: "string.quoted.double.item.spr.dominions"
+                name: "meta.item.spr.dominions"
+            },
+
+            {
+                match:"^\\s*(#constlevel)\\s+(0|2|4|6|8|12)"
+                captures:
+                    1:
+                        name: "keyword.control.item.constlevel.dominions"
+                    2:
+                        name: "constant.numeric.item.constlevel.dominions"
+                name: "meta.item.constlevel.dominions"
+            },
+
+            {
+                match:"^\\s*(#mainpath)\\s+([0-7])"
+                captures:
+                    1:
+                        name: "keyword.control.item.mainpath.dominions"
+                    2:
+                        name: "constant.numeric.item.mainpath.dominions"
+                name: "meta.item.mainpath.dominions"
+            },
+
+            {
+                match:"^\\s*(#secondarypath)\\s+(-1|[0-7])"
+                captures:
+                    1:
+                        name: "keyword.control.item.secondarypath.dominions"
+                    2:
+                        name: "constant.numeric.item.secondarypath.dominions"
+                name: "meta.item.secondarypath.dominions"
+            },
+
+            {
+                match:"^\\s*(#(mainlevel|secondarylevel))\\s+([1-8])"
+                captures:
+                    1:
+                        name: "keyword.control.item.$2.dominions"
+                    3:
+                        name: "constant.numeric.item.$2.dominions"
+                name: "meta.item.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#type)\\s+([1-9])"
+                captures:
+                    1:
+                        name: "keyword.control.item.type.dominions"
+                    2:
+                        name: "constant.numeric.item.type.dominions"
+                name: "meta.item.type.dominions"
+            },
+
+            {
+                match: '^\\s*(#weapon)\\s+(?:("[^"]+")|(1[0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.item.weapon.dominions"
+                    2:
+                        name: "string.quoted.double.item.weapon.dominions"
+                    3:
+                        name: "constant.numeric.item.weapon.dominions"
+                name: "meta.item.weapon.dominions"
+            },
+
+            {
+                match: '^\\s*(#armor)\\s+(?:("[^"]+")|([1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.item.armor.dominions"
+                    2:
+                        name: "string.quoted.double.item.armor.dominions"
+                    3:
+                        name: "constant.numeric.item.armor.dominions"
+                name: "meta.item.armor.dominions"
+            },
+
+            #C. Magic and spells.
+            #note: see monster_items for other magic and spell properties shared with items.
+            {
+                comment: "Argument is cycle turn length."
+                match: "^\\s*(#autospellrepeat)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.item.autospellrepeat.dominions"
+                    2:
+                        name: "constant.numeric.item.autospellrepeat.dominions"
+                name: "meta.item.autospellrepeat.dominions"
+            },
+
+            {
+                comment: "If autospellrepeat is not set, autospell is only cast once."
+                match: '^\\s*(#(spell|autospell))\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.item.$2.dominions"
+                    3:
+                        name: "string.quoted.double.item.$2.dominions"
+                name: "meta.item.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#pen)\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.item.pen.dominions"
+                    2:
+                        name: "constant.numeric.item.pen.dominions"
+                name: "meta.item.pen.magic.dominions"
+            },
+
+            #D. Attributes.
+            {
+                match:"^\\s*(#(luck|quickness|bless|barkskin|stoneskin|ironskin|bers|extralife|autobless))"
+                captures:
+                    1:
+                        name: "keyword.control.item.$2.dominions"
+                name: "meta.item.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#morale)\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.item.morale.dominions"
+                    2:
+                        name: "constant.numeric.item.morale.dominions"
+                name: "meta.item.morale.magic.dominions"
+            },
+
+            #E. Movement.
+            {
+                match:"^\\s*(#(waterbreathing|fly|run))"
+                captures:
+                    1:
+                        name: "keyword.control.item.$2.dominions"
+                name: "meta.item.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#mapspeed)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.item.mapspeed.dominions"
+                    2:
+                        name: "constant.numeric.item.mapspeed.dominions"
+                name: "meta.item.mapspeed.dominions"
+            },
+
+            #TODO: this probably should move elsewhere? Just following the manual.
+            {
+                match:"^\\s*(#sneakunit)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.item.sneakunit.dominions"
+                    2:
+                        name: "constant.numeric.item.sneakunit.dominions"
+                name: "meta.item.sneakunit.dominions"
+            },
+
+            #F. Arena.
+            {
+                match:"^\\s*(#(champprize|autocompete))"
+                captures:
+                    1:
+                        name: "keyword.control.item.$2.dominions"
+                name: "meta.item.$2.dominions"
+            },
+
+            #G. Restrictions.
+            {
+                match:"^\\s*(#(reqeyes|nofind))"
+                captures:
+                    1:
+                        name: "keyword.control.item.$2.dominions"
+                name: "meta.item.$2.dominions"
+            },
+
+            {
+                match:"^\\s*(#restricteditem)\\s+(10000|[1-9][0-9]{0,3})"
+                captures:
+                    1:
+                        name: "keyword.control.item.restricteditem.dominions"
+                    2:
+                        name: "constant.numeric.item.restricteditem.dominions"
+                name: "meta.item.restricteditem.dominions"
+            },
+
+            {
+                match: '^\\s*(#(restricted|nationrebate))\\s+(?:("[^"]+")|(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9]))'
+                captures:
+                    1:
+                        name: "keyword.control.item.$2.dominions"
+                    3:
+                        name: "string.quoted.double.item.$2.dominions"
+                    4:
+                        name: "constant.numeric.item.$2.dominions"
+                name: "meta.item.$2.dominions"
+            }
+
+            #H. Curses and afflictions.
+            {
+                match:"^\\s*(#(cursed|nomounted|curse|nocoldblood|disease|nodemon|chestwound|noundead|noinanim|noimmobile|feeblemind|mute|onlymounted|onlycoldblood|nhwound|onlydemon|crippled|onlyundead|loseeye|onlyinanim|immobileonly))"
+                captures:
+                    1:
+                        name: "keyword.control.item.$2.dominions"
+                name: "meta.item.$2.dominions"
+            },
+
+            #I. Undocumented dom5 commands.
+            {
+                match:"^\\s*(#swift)\\s+(-?(?:1000|[0-9]{1,3}))"
+                captures:
+                    1:
+                        name: "keyword.control.item.swift.dominions"
+                    2:
+                        name: "constant.numeric.item.swift.dominions"
+                name: "meta.item.swift.dominions"
+            },
+
+            {
+                match:"^\\s*(#(itemcost[1-2]))\\s+((?:-(?:100|[1-9][0-9]?))|(?:10000|[0-9]{1,4}))"
+                captures:
+                    1:
+                        name: "keyword.control.item.$2.dominions"
+                    3:
+                        name: "constant.numeric.item.$2.dominions"
+                name: "meta.item.$2.dominions"
+            }
+        ]
+
+    poptype:
+        patterns: [
+            #A. Commands.
+            {
+                match: "^\\s*(#cleardef)"
+                captures:
+                    1:
+                        name: "keyword.control.poptype.cleardef.dominions"
+                name: "meta.poptype.cleardef.dominions"
+            }
+        ]
+
+    mod_global:
+        patterns: [
+            {
+                match: '^\\s*(#(poppergold|unresthalfinc|unresthalfres|deathdeath|tempscalecap|researchscale))\\s+(\\d+)'
+                captures:
+                    1:
+                        name: "keyword.control.mod.$2.dominions"
+                    3:
+                        name: "constant.numeric.mod.$2.dominions"
+                name: "meta.mod.$2.dominions"
+            },
+
+            {
+                comment: "Arguments are percentages but some may be uncapped."
+                match: '^\\s*(#(resourcemult|supplymult|eventisrare|turmoilincome|turmoilevents|deathincome|deathsupply|slothincome|slothresources|coldincome|coldsupply|misfortune|luckevents))\\s+(\\d+)'
+                captures:
+                    1:
+                        name: "keyword.control.mod.$2.dominions"
+                    3:
+                        name: "constant.numeric.mod.$2.dominions"
+                name: "meta.mod.$2.dominions"
+            }
+        ]
+
+    mod_merc:
+        patterns: [
+            {
+                match: "^\\s*(#clearmercs)"
+                captures:
+                    1:
+                        name: "keyword.control.mod.clearmercs.dominions"
+                name: "meta.mod.clearmercs.dominions"
+            }
+        ]
+
+    merc:
+        patterns: [
+            {
+                match: '^\\s*(#(name|bossname|com|unit|item))\\s+("[^"]+")'
+                captures:
+                    1:
+                        name: "keyword.control.merc.$2.dominions"
+                    3:
+                        name: "string.quoted.merc.$2.dominions"
+                name: "meta.merc.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(nrunits|minmen|minpay|xp|recrate))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.merc.$2.dominions"
+                    3:
+                        name: "constant.numeric.merc.$2.dominions"
+                name: "meta.merc.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#level)\\s+([0-2])"
+                captures:
+                    1:
+                        name: "keyword.control.merc.level.dominions"
+                    2:
+                        name: "constant.numeric.merc.level.dominions"
+                name: "meta.merc.level.dominions"
+            },
+
+            {
+                match: "^\\s*(#randequip)\\s+([0-3])"
+                captures:
+                    1:
+                        name: "keyword.control.merc.randequip.dominions"
+                    2:
+                        name: "constant.numeric.merc.randequip.dominions"
+                name: "meta.merc.randequip.dominions"
+            },
+
+            {
+                match: "^\\s*(#eramask)\\s+([1-7])"
+                captures:
+                    1:
+                        name: "keyword.control.merc.eramask.dominions"
+                    2:
+                        name: "constant.numeric.merc.eramask.dominions"
+                name: "meta.merc.eramask.dominions"
+            }
+        ]
+
+    event:
+        patterns: [
+            #A. Basic.
+            {
+                match: "^\\s*(#rarity)\\s+(10|11|12|13|-2|-1|0|1|2|5)"
+                captures:
+                    1:
+                        name: "keyword.control.event.rarity.dominions"
+                    2:
+                        name: "constant.numeric.event.rarity.dominions"
+                name: "meta.event.rarity.dominions"
+            },
+
+            #B. Requirements.
+            #B. 1. Generic.
+            {
+                #Note: does pregame really need a value?
+                match: "^\\s*(#(req_unique|req_turn|req_maxturn|req_pregame))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#req_rare)\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_rare.dominions"
+                    2:
+                        name: "constant.numeric.event.req_rare.dominions"
+                name: "meta.event.req_rare.dominions"
+            },
+
+            {
+                match: "^\\s*(#(req_story|req_indepok))\\s+(0|1)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(req_era|req_noera))\\s+([1-3])"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                comment: "Manual lists an extra argument 4."
+                match: "^\\s*(#(req_season|req_noseason))\\s+([0-3])"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            #B. 2. Nation.
+            {
+                match: "^\\s*(#(req_nation|req_nonation|req_fornation|req_notfornation|req_notnation|req_notforally))\\s+(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9])"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            #B. 3. Treasury.
+            {
+                match: "^\\s*(#req_gem)\\s+([0-7])"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_gem.dominions"
+                    2:
+                        name: "constant.numeric.event.req_gem.dominions"
+                name: "meta.event.req_gem.dominions"
+            },
+
+            {
+                match: "^\\s*(#req_gold)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_gold.dominions"
+                    2:
+                        name: "constant.numeric.event.req_gold.dominions"
+                name: "meta.event.req_gold.dominions"
+            },
+
+            #B. 4. Province.
+            {
+                match: "^\\s*(#req_pop0ok)"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_pop0ok.dominions"
+                name: "meta.event.req_pop0ok.dominions"
+            },
+
+            {
+                match: "^\\s*(#(req_capital|req_owncapital|req_lab|req_temple|req_fort))\\s+(0|1)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            #Terrain.
+            {
+                match: "^\\s*(#(req_land|req_coast|req_mountain|req_forest|req_farm|req_swamp|req_waste|req_cave|req_freshwater))\\s+(0|1)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                comment: "Argument is a poptype id."
+                match: "^\\s*(#req_poptype)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_poptype.dominions"
+                    2:
+                        name: "constant.numeric.event.req_poptype.dominions"
+                name: "meta.event.req_poptype.dominions"
+            },
+
+            {
+                comment: "Argument units are in dekapop = 10 population points."
+                match: "^\\s*(#(req_maxpop|req_minpop))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(req_mindef|req_maxdef|req_minunrest|req_maxunrest))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            #B. 5. Site.
+            {
+                match: "^\\s*(#(req_foundsite|req_hiddensite|req_site|req_nearbysite|req_claimedthrone|req_unclaimedthrone))\\s+(0|1)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#req_freesites)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_freesites.dominions"
+                    2:
+                        name: "constant.numeric.event.req_freesites.dominions"
+                name: "meta.event.req_freesites.dominions"
+            },
+
+            {
+                match: "^\\s*(#req_nositenbr)\\s+(1[0-9]{3}|[1-9][0-9]{0,2}|0)"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_nositenbr.dominions"
+                    2:
+                        name: "constant.numeric.event.req_nositenbr.dominions"
+                name: "meta.event.req_nositenbr.dominions"
+            },
+
+            #B. 6. Dominion.
+            {
+                comment: "Argument is a nation number."
+                match: "^\\s*(#(req_fullowner|req_domowner))\\s+(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9])"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#req_mydominion)\\s+(0|1)"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_mydominion.dominions"
+                    2:
+                        name: "constant.numeric.event.req_mydominion.dominions"
+                name: "meta.event.req_mydominion.dominions"
+            },
+
+            {
+                match: "^\\s*(#req_dominion)\\s+(10|[0-9])"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_dominion.dominions"
+                    2:
+                        name: "constant.numeric.event.req_dominion.dominions"
+                name: "meta.event.req_dominion.dominions"
+            },
+
+            {
+                match: "^\\s*(#req_maxdominion)\\s+(-?(?:10|[0-9]))"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_maxdominion.dominions"
+                    2:
+                        name: "constant.numeric.event.req_maxdominion.dominions"
+                name: "meta.event.req_maxdominion.dominions"
+            },
+
+            {
+                match: "^\\s*(#req_domchance)\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_domchance.dominions"
+                    2:
+                        name: "constant.numeric.event.req_domchance.dominions"
+                name: "meta.event.req_domchance.dominions"
+            },
+
+            #B. 7. Scales.
+            {
+                match: "^\\s*(#(req_chaos|req_lazy|req_cold|req_death|req_unluck|req_unmagic|req_order|req_prod|req_heat|req_growth|req_luck|req_magic))\\s+(-?[0-3])"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            #B. 8. Monster.
+            {
+                match: "^\\s*(#(req_humanoidres|req_researcher))"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#req_commander)\\s+(0|1)"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_commander.dominions"
+                    2:
+                        name: "constant.numeric.event.req_commander.dominions"
+                name: "meta.event.req_commander.dominions"
+            },
+
+            {
+                match: "^\\s*(#(req_mintroops|req_maxtroops))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#req_preach)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_preach.dominions"
+                    2:
+                        name: "constant.numeric.event.req_preach.dominions"
+                name: "meta.event.req_preach.dominions"
+            },
+
+            {
+                match: '^\\s*(#(req_monster|req_2monsters|req_5monsters|req_nomonster|req_mnr|req_nomnr|req_deadmnr))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "string.quoted.double.event.$2.dominions"
+                    4:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            #B. 9. Mage.
+            {
+                match: "^\\s*(#(req_pathfire|req_pathair|req_pathwater|req_pathearth|req_pathastral|req_pathdeath|req_pathnature|req_pathblood|req_pathholy|req_nopathfire|req_nopathair|req_nopathwater|req_nopathearth|req_nopathastral|req_nopathdeath|req_nopathnature|req_nopathblood|req_nopathholy|req_nopathall))\\s+(10|[0-9])"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            #B. 10. Target requirements.
+            {
+                match: "^\\s*(#(req_targgod|req_targhumanoid|req_targmale|req_targundead|req_targdemon|req_targanimal|req_targinanimate|req_targmindless|req_targimmobile|req_targmagicbeing))\\s+(0|1)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(req_targpath[1-4]))\\s+([0-8]|5[0-3])"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: '^\\s*(#req_targmnr)\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.event.req_targmnr.dominions"
+                    2:
+                        name: "string.quoted.double.event.req_targmnr.dominions"
+                    3:
+                        name: "constant.numeric.event.req_targmnr.dominions"
+                name: "meta.event.req_targmnr.dominions"
+            },
+
+            {
+                match: '^\\s*(#(req_targitem|req_targnoitem))\\s+(?:("[^"]+")|([1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "string.quoted.double.event.$2.dominions"
+                    4:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(req_targminmorale|req_targmaxmorale))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                comment: "Argument is an affliction id."
+                match: "^\\s*(#req_targaff)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_targaff.dominions"
+                    2:
+                        name: "constant.numeric.event.req_targaff.dominions"
+                name: "meta.event.req_targaff.dominions"
+            },
+
+            {
+                comment: "See orders table for the correspondence between orders and numbers."
+                match: "^\\s*(#req_targorder)\\s+(20|44|45|0|2|3|4|6|7|8|14|17|18|19|50|52)"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_targorder.dominions"
+                    2:
+                        name: "constant.numeric.event.req_targorder.dominions"
+                name: "meta.event.req_targorder.dominions"
+            },
+
+            {
+                match: "^\\s*(#req_targowner)\\s+(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9])"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_targowner.dominions"
+                    2:
+                        name: "constant.numeric.event.req_targowner.dominions"
+                name: "meta.event.req_targowner.dominions"
+            },
+
+            {
+                match: "^\\s*(#req_targforeignok)"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_targforeignok.dominions"
+                name: "meta.event.req_targforeignok.dominions"
+            },
+
+            #B. 11. Event code.
+            {
+                comment: "Argument is an event code. Should only use 0 or below -300."
+                match: "^\\s*(#(req_code|req_anycode|req_notanycode|req_nearbycode|req_nearowncode))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            #B. 12. Enchantments.
+            {
+                match: "^\\s*(#req_permonth)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.req_permonth.dominions"
+                    2:
+                        name: "constant.numeric.event.req_permonth.dominions"
+                name: "meta.event.req_permonth.dominions"
+            },
+
+            {
+                comment: "Argument is an active enchantment number."
+                match: "^\\s*(#(req_noench|req_ench|req_myench|req_friendlyench|req_hostileench|req_enchdom))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            #C. Effects.
+            #C. 1. Generic.
+            {
+                match: "^\\s*(#(notext|nolog))"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                comment: "Argument is a nation number with -1 and -2 special cased. Default is independents."
+                match: "^\\s*(#nation)\\s+(-1|-2|2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9])"
+                captures:
+                    1:
+                        name: "keyword.control.event.nation.dominions"
+                    2:
+                        name: "constant.numeric.event.nation.dominions"
+                name: "meta.event.nation.dominions"
+            },
+
+            {
+                comment: "Argument is an active global enchantment number."
+                match: "^\\s*(#nationench)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.nationench.dominions"
+                    2:
+                        name: "constant.numeric.event.nationench.dominions"
+                name: "meta.event.nationench.dominions"
+            },
+
+            {
+                begin: '^\\s*(#(msg|extramsg))\\s+(")'
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "punctuation.definition.string.begin.dominions"
+                end: '(?:\\[(.+)\\])?(")'
+                contentName: "string.quoted.double.dominions"
+                endCaptures:
+                    1:
+                        name: "variable.language.event.msg.dominions"
+                    2:
+                        name: "punctuation.definition.string.end.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            #C. 2. Treasure.
+            {
+                match: "^\\s*(#magicitem)\\s+([0-4]|9)"
+                captures:
+                    1:
+                        name: "keyword.control.event.magicitem.dominions"
+                    2:
+                        name: "constant.numeric.event.magicitem.dominions"
+                name: "meta.event.magicitem.dominions"
+            },
+
+            {
+                match: "^\\s*(#(gold|exactgold))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#gemloss)\\s+([0-7]|5[0-3]|56)"
+                captures:
+                    1:
+                        name: "keyword.control.event.gemloss.dominions"
+                    2:
+                        name: "constant.numeric.event.gemloss.dominions"
+                name: "meta.event.gemloss.dominions"
+            },
+
+            {
+                match: "^\\s*(#((?:1d3|1d6|2d4|2d6|3d6|4d6)vis))\\s+([0-7])"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            #C. 3. Scales.
+            {
+                match: "^\\s*(#((?:inc|dec)scale(?:2|3)?))\\s+([0-5])"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            #C. 4. Province.
+            {
+                match: "^\\s*(#(landgold|landprod|defence|unrest))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                comment: "Argument is a signed percentage, naturally capped below at -100%."
+                match: "^\\s*(#taxboost)\\s+((?:-(?:100|[1-9][0-9]?))|\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.taxboost.dominions"
+                    2:
+                        name: "constant.numeric.event.taxboost.dominions"
+                name: "meta.event.taxboost.dominions"
+            },
+
+            {
+                match: "^\\s*(#(kill|emigration))\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                comment: "Argument for #killpop and #incpop are in dekapops."
+                match: "^\\s*(#(killpop|incpop|inccorpses))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#fort)\\s+(30|[1-2]?[0-9])"
+                captures:
+                    1:
+                        name: "keyword.control.event.fort.dominions"
+                    2:
+                        name: "constant.numeric.event.fort.dominions"
+                name: "meta.event.fort.dominions"
+            },
+
+            {
+                match: "^\\s*(#(incdom|newdom))\\s+(-?(?:10|[1-9]))"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(temple|lab))\\s+(0|1)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(addsite|hiddensite|removesite))\\s+(-1|1[0-9]{3}|[1-9][0-9]{0,2}|0)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(revealsite|visitors|revolt|revealprov|claimthrone))"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            #C. 5. Monster.
+            {
+                match: "^\\s*(#cleartag)"
+                captures:
+                    1:
+                        name: "keyword.control.event.cleartag.dominions"
+                name: "meta.event.cleartag.dominions"
+            },
+
+            {
+                match: '^\\s*(#((?:(?:2|4|5)?com)|stealthcom|killcom|assassin))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "string.quoted.double.event.$2.dominions"
+                    4:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: '^\\s*(#transform)\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
+                captures:
+                    1:
+                        name: "keyword.control.event.transform.dominions"
+                    2:
+                        name: "string.quoted.double.event.transform.dominions"
+                    3:
+                        name: "constant.numeric.id.event.transform.dominions"
+                    4:
+                        name: "constant.numeric.montag.event.transform.dominions"
+                name: "meta.event.transform.dominions"
+            },
+
+            {
+                match: "^\\s*(#tempunits)\\s+(0|1)"
+                captures:
+                    1:
+                        name: "keyword.control.event.tempunits.dominions"
+                    2:
+                        name: "constant.numeric.event.tempunits.dominions"
+                name: "meta.event.tempunits.dominions"
+            },
+
+            {
+                #TODO: command accepts montag values.
+                match: '^\\s*(#((?:1d3|(?:(?:1)?[0-9]d6))units|1unit|killmon|kill2d6mon))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "string.quoted.double.event.$2.dominions"
+                    4:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(strikeunits|poison|xp))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                comment: "Argument is a positive integer affliction bitmask."
+                match: "^\\s*(#(researchaff|gainaff))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(curse|disease))\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#gainmark)"
+                captures:
+                    1:
+                        name: "keyword.control.event.gainmark.dominions"
+                name: "meta.event.gainmark.dominions"
+            },
+
+            {
+                match: "^\\s*(#banished)\\s+(-11|-12|-13)"
+                captures:
+                    1:
+                        name: "keyword.control.event.banished.dominions"
+                    2:
+                        name: "constant.numeric.event.banished.dominions"
+                name: "meta.event.banished.dominions"
+            },
+
+            {
+                match: "^\\s*(#addequip)\\s+([1-4]|9)"
+                captures:
+                    1:
+                        name: "keyword.control.event.addequip.dominions"
+                    2:
+                        name: "constant.numeric.event.addequip.dominions"
+                name: "meta.event.addequip.dominions"
+            },
+
+            #C. 6. Magic boosts.
+            {
+                match: '^\\s*(#((?:fire|air|water|earth|astral|death|nature|blood|holy)boost))(?:\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))?)'
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "string.quoted.double.event.$2.dominions"
+                    4:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#pathboost)\\s+([0-8])"
+                captures:
+                    1:
+                        name: "keyword.control.event.pathboost.dominions"
+                    2:
+                        name: "constant.numeric.event.pathboost.dominions"
+                name: "meta.event.pathboost.dominions"
+            },
+
+            #C. 7. Global.
+            {
+                match: "^\\s*(#(world(?:inc|dec)scale(?:(?:2|3)?)))\\s+([0-5])"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#worldritrebate)\\s+([0-7])"
+                captures:
+                    1:
+                        name: "keyword.control.event.worldritrebate.dominions"
+                    2:
+                        name: "constant.numeric.event.worldritrebate.dominions"
+                name: "meta.event.worldritrebate.dominions"
+            },
+
+            {
+                match: "^\\s*(#(worldunrest|worldage))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#worldincdom)\\s+(-?(?:10|[1-9]))"
+                captures:
+                    1:
+                        name: "keyword.control.event.worldincdom.dominions"
+                    2:
+                        name: "constant.numeric.event.worldincdom.dominions"
+                name: "meta.event.worldincdom.dominions"
+            },
+
+            {
+                match: "^\\s*(#linger)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.linger.dominions"
+                    2:
+                        name: "constant.numeric.event.linger.dominions"
+                name: "meta.event.linger.dominions"
+            },
+
+            {
+                match: "^\\s*(#(worldcurse|worlddisease|worldmark|worldheal))\\s+(100|[1-9][0-9]?|0)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#worlddarkness)"
+                captures:
+                    1:
+                        name: "keyword.control.event.worlddarkness.dominions"
+                name: "meta.event.worlddarkness.dominions"
+            },
+
+            #C. 8. Special event.
+            {
+                match: "^\\s*(#flagland)\\s+(0|1)"
+                captures:
+                    1:
+                        name: "keyword.control.event.flagland.dominions"
+                    2:
+                        name: "constant.numeric.event.flagland.dominions"
+                name: "meta.event.flagland.dominions"
+            },
+
+            {
+                match: "^\\s*(#(delay(?:25|50)?))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                comment: "Argument is an order bitmask."
+                match: "^\\s*(#order)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.order.dominions"
+                    2:
+                        name: "constant.numeric.event.order.dominions"
+                name: "meta.event.order.dominions"
+            },
+
+            #C. 9. Event code.
+            {
+                match: "^\\s*(#((?:code2?)|resetcode|id))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(purgecalendar|purgedelayed))\\s+(-1|0|1)"
+                captures:
+                    1:
+                        name: "keyword.control.event.$2.dominions"
+                    3:
+                        name: "constant.numeric.event.$2.dominions"
+                name: "meta.event.$2.dominions"
+            }
+        ]
