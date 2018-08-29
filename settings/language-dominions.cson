@@ -1,0 +1,12 @@
+".source.dominions":
+    "editor":
+        "softTabs": true
+        "tabLength": 4
+        "softWrap": true
+        "commentStart": "--"
+    "bracket-matcher":
+        "autocompleteCharacters": [
+                "()",
+                "[]",
+                '""'
+            ]
