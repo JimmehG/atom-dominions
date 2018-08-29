@@ -23,7 +23,7 @@
         #end
         """
 
-    "newweapon":
+    "newarmor":
         prefix: "newarmor"
         body: """
         #newweapon${1}
