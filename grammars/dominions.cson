@@ -2346,7 +2346,7 @@ repository:
                 captures:
                     1:
                         name: "keyword.control.site.scry.dominions"
-                    3:
+                    2:
                         name: "constant.numeric.site.scry.dominions"
                 name: "meta.site.scry.dominions"
             },

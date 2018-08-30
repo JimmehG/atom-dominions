@@ -17,3 +17,6 @@
 * Added language settings file.
 * Readme improvements.
 * Snippets improvements.
+
+## v0.3.1
+* Fix error in #scry.
