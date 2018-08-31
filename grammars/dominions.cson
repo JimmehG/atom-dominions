@@ -4426,7 +4426,7 @@ repository:
 
             {
                 comment: "These commands accept montag values."
-                match: '^\\s*(#((?:(?:2|3|4|5)?com)|stealthcom|killcom|assassin))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
+                match: '^\\s*(#((?:(?:[2-5])?com)|stealthcom|killcom|assassin))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
