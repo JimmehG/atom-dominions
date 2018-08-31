@@ -4245,7 +4245,7 @@ repository:
             },
 
             {
-                begin: '^\\s*(#msg))\\s+(")'
+                begin: '^\\s*(#msg)\\s+(")'
                 captures:
                     1:
                         name: "keyword.control.event.msg.dominions"
