@@ -20,3 +20,10 @@
 
 ## v0.3.1
 * Fix error in #scry.
+* Clarify size issue in readme.
+* Fix nations regexp.
+* Fix montag regexps.
+* Fix #flyspr, #hpoverslow, #poisonskin, #flightspr, #swift, #itemcost, #extramsg regexps.
+* rewrite #reform rule.
+* added montag arguments to various site recruit and summon commands.
+* added montag arguments to various event recruit and summon commands.
