@@ -1114,7 +1114,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#raiseshape)\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{3,5})))'
+                match: '^\\s*(#raiseshape)\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
                 captures:
                     1:
                         name: "keyword.control.monster_item.raiseshape.dominions"
@@ -1190,7 +1190,7 @@ repository:
             #B. 9. Summoning.
             {
                 comment: "Summoning commands take montag values."
-                match:               '\\s*(#(domsummon2|domsummon20|domsummon|raredomsummon|templetrainer|(?:makemonsters[1-5])|(?:summon[1-5])|(?:battlesum[1-5])|(?:batstartsum[1-9]d6)|(?:batstartsum[1-5])))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{3,5})))'
+                match:               '\\s*(#(domsummon2|domsummon20|domsummon|raredomsummon|templetrainer|(?:makemonsters[1-5])|(?:summon[1-5])|(?:battlesum[1-5])|(?:batstartsum[1-9]d6)|(?:batstartsum[1-5])))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
@@ -1540,7 +1540,7 @@ repository:
 
             {
                 comment: "Commands accept montag values."
-                match: '^\\s*(#(monpresentrec|ownsmonrec))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{3,5})))'
+                match: '^\\s*(#(monpresentrec|ownsmonrec))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
                 captures:
                     1:
                         name: "keyword.control.monster.$2.dominions"
@@ -1928,7 +1928,7 @@ repository:
 
             {
                 comment: "Taking all shapechanging commands to accept montag values."
-                match: '^\\s*(#(shapechange|firstshape|secondshape|secondtmpshape|forestshape|plainshape|foreignshape|homeshape|springshape|summershape|autumnshape|wintershape|landshape|watershape|prophetshape))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{3,5})))'
+                match: '^\\s*(#(shapechange|firstshape|secondshape|secondtmpshape|forestshape|plainshape|foreignshape|homeshape|springshape|summershape|autumnshape|wintershape|landshape|watershape|prophetshape))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
                 captures:
                     1:
                         name: "keyword.control.monster.$2.dominions"
@@ -1955,7 +1955,7 @@ repository:
 
             {
                 comment: "New montag values vary between 1000 and 100000."
-                match: "^\\s*(#montag)\\s+(100000|[1-9][0-9]{3,5})"
+                match: "^\\s*(#montag)\\s+(100000|[1-9][0-9]{3,4})"
                 captures:
                     1:
                         name: "keyword.control.monster.montag.dominions"
@@ -2288,7 +2288,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#(homecom|homemon|com|mon|summonlvl[2-4]|summon))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{3,5})))'
+                match: '^\\s*(#(homecom|homemon|com|mon|summonlvl[2-4]|summon))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
                 captures:
                     1:
                         name: "keyword.control.site.$2.dominions"
@@ -4426,7 +4426,7 @@ repository:
 
             {
                 comment: "These commands accept montag values."
-                match: '^\\s*(#((?:(?:2|4|5)?com)|stealthcom|killcom|assassin))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{3,5})))'
+                match: '^\\s*(#((?:(?:2|4|5)?com)|stealthcom|killcom|assassin))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -4440,7 +4440,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#transform)\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{3,5})))'
+                match: '^\\s*(#transform)\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
                 captures:
                     1:
                         name: "keyword.control.event.transform.dominions"
@@ -4464,7 +4464,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#((?:1d3|(?:(?:1)?[0-9]d6))units|1unit|killmon|kill2d6mon))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{3,5})))'
+                match: '^\\s*(#((?:1d3|(?:(?:1)?[0-9]d6))units|1unit|killmon|kill2d6mon))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
