@@ -27,3 +27,4 @@
 * rewrite #reform rule.
 * added montag arguments to various site recruit and summon commands.
 * added montag arguments to various event recruit and summon commands.
+* added missing #3com command.
