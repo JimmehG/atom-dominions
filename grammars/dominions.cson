@@ -626,6 +626,14 @@ repository:
         patterns: [
             #Basic commands.
             {
+                match: "^\\s*(#clear)"
+                captures:
+                    1:
+                        name: "keyword.control.weapon.clear.dominions"
+                name: "meta.weapon.clear.dominions"
+            },
+
+            {
                 match: "^\\s*(#copyweapon)\\s+(1[0-9]{3}|[1-9][0-9]{0,2}|0)"
                 captures:
                     1:
@@ -791,6 +799,14 @@ repository:
     armor:
         patterns: [
             #Basic commands.
+            {
+                match: "^\\s*(#clear)"
+                captures:
+                    1:
+                        name: "keyword.control.armor.clear.dominions"
+                name: "meta.armor.clear.dominions"
+            },
+
             {
                 match: "^\\s*(#copyarmor)\\s+([1-9][0-9]{0,2}|0)"
                 captures:
