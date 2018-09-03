@@ -28,3 +28,6 @@
 * added montag arguments to various site recruit and summon commands.
 * added montag arguments to various event recruit and summon commands.
 * added missing #3com command.
+
+## v0.3.2
+* Added 0 as possible argument for #secondarylevel.

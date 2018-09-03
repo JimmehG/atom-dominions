@@ -3468,13 +3468,23 @@ repository:
             },
 
             {
-                match:"^\\s*(#(mainlevel|secondarylevel))\\s+([1-8])"
+                match:"^\\s*(#mainpath)\\s+([0-7])"
                 captures:
                     1:
-                        name: "keyword.control.item.$2.dominions"
-                    3:
-                        name: "constant.numeric.item.$2.dominions"
-                name: "meta.item.$2.dominions"
+                        name: "keyword.control.item.mainpath.dominions"
+                    2:
+                        name: "constant.numeric.item.mainpath.dominions"
+                name: "meta.item.mainpath.dominions"
+            },
+
+            {
+                match:"^\\s*(#secondarypath)\\s+(-1|[0-7])"
+                captures:
+                    1:
+                        name: "keyword.control.item.secondarypath.dominions"
+                    2:
+                        name: "constant.numeric.item.secondarypath.dominions"
+                name: "meta.item.secondarypath.dominions"
             },
 
             {
