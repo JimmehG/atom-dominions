@@ -2977,7 +2977,8 @@ repository:
             },
 
             {
-                match: '^\\s*(#guardspirit)\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                comments: "Command takes montag values as argument."
+                match: '^\\s*(#guardspirit)\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(?:-(?:100000|[1-9][0-9]{0,4})))'
                 captures:
                     1:
                         name: "keyword.control.nation.guardspirit.dominions"
@@ -4490,7 +4491,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#((?:1d3|(?:(?:1)?[0-9]d6))units|1unit|killmon|kill2d6mon))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
+                match: '^\\s*(#((?:[1-4]d3|(?:(?:1)?[0-9]d6))units|1unit|killmon|kill2d6mon))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"

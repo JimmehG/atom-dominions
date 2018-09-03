@@ -33,3 +33,5 @@
 * Added 0 as possible argument for #secondarylevel.
 * Added #clear command for weapons and armor.
 * #incscale and #decscale also work for items.
+* Added #[2-4]d3units event commands.
+* #guardspirit takes montag values as argument.
