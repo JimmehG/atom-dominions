@@ -61,7 +61,7 @@
     "newspell":
         prefix: "newspell"
         body: """
-        #newmonster ${1:0}
+        #newspell ${1:0}
             #name ${2:"Spell Name"}
             #descr ${3:"Spell Description"}
             #school ${4:-1}

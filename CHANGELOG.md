@@ -36,3 +36,4 @@
 * Added #[2-4]d3units event commands.
 * #guardspirit takes montag values as argument.
 * Added #limitedregen command.
+* Fix #newspell snippet.
