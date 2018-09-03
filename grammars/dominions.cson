@@ -1069,7 +1069,7 @@ repository:
                 name: "meta.monster_item.poisonskin.dominions"
             },
 
-            #B. 6. Powers.
+            #B. 6. Powers and scales.
             {
                 match: "^\\s*(#(springpower|summerpower|fallpower|winterpower))\\s+(100|[1-9][0-9]?|0)"
                 captures:
@@ -1082,6 +1082,16 @@ repository:
 
             {
                 match: "^\\s*(#(chaospower|coldpower|firepower|deathpower|darkpower|stormpower|magicpower|slothpower))\\s+(-?\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "constant.numeric.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            },
+
+            {
+                match: "^\\s*(#(incscale|decscale))\\s+([0-5])"
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
@@ -1632,16 +1642,6 @@ repository:
             {
                 #Note: ressize is really a cost property.
                 match: "^\\s*(#(size|ressize))\\s+([1-6])"
-                captures:
-                    1:
-                        name: "keyword.control.monster.$2.dominions"
-                    3:
-                        name: "constant.numeric.monster.$2.dominions"
-                name: "meta.monster.$2.dominions"
-            },
-
-            {
-                match: "^\\s*(#(incscale|decscale))\\s+([0-5])"
                 captures:
                     1:
                         name: "keyword.control.monster.$2.dominions"

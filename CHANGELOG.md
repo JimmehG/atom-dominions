@@ -32,3 +32,4 @@
 ## v0.3.2
 * Added 0 as possible argument for #secondarylevel.
 * Added #clear command for weapons and armor.
+* #incscale and #decscale also work for items.
