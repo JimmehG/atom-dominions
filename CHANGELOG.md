@@ -35,3 +35,4 @@
 * #incscale and #decscale also work for items.
 * Added #[2-4]d3units event commands.
 * #guardspirit takes montag values as argument.
+* Added #limitedregen command.

@@ -3582,13 +3582,13 @@ repository:
             },
 
             {
-                match:"^\\s*(#morale)\\s+(-?\\d+)"
+                match:"^\\s*(#(morale|limitedregen))\\s+(-?\\d+)"
                 captures:
                     1:
-                        name: "keyword.control.item.morale.dominions"
-                    2:
-                        name: "constant.numeric.item.morale.dominions"
-                name: "meta.item.morale.magic.dominions"
+                        name: "keyword.control.item.$2.dominions"
+                    3:
+                        name: "constant.numeric.item.$2.dominions"
+                name: "meta.item.$2.dominions"
             },
 
             #E. Movement.
