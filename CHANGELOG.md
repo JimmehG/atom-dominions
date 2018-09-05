@@ -37,3 +37,4 @@
 * #guardspirit takes montag values as argument.
 * Added #limitedregen command.
 * Fix #newspell snippet.
+* Fix #newitem regexp.
