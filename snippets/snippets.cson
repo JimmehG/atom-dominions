@@ -110,3 +110,11 @@
             #loc ${6:223}
         #end
         """
+
+    "newevent":
+        prefix: "newevent"
+        body: """
+        #newevent
+            #msg ${1:""}
+        #end
+        """

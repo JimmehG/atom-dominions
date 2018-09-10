@@ -38,3 +38,4 @@
 * Added #limitedregen command.
 * Fix #newspell snippet.
 * Fix #newitem regexp.
+* Add #newevent snippet.
