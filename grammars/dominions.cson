@@ -670,7 +670,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#len)\\s+([0-6])"
+                match: "^\\s*(#len)\\s+(-1|[0-6])"
                 captures:
                     1:
                         name: "keyword.control.weapon.len.dominions"

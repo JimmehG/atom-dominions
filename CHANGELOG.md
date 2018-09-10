@@ -31,11 +31,12 @@
 
 ## v0.3.2
 * Added 0 as possible argument for #secondarylevel.
+* Added -1 as possible argument for #len.
 * Added #clear command for weapons and armor.
 * #incscale and #decscale also work for items.
 * Added #[2-4]d3units event commands.
 * #guardspirit takes montag values as argument.
 * Added #limitedregen command.
-* Fix #newspell snippet.
 * Fix #newitem regexp.
+* Fix #newspell snippet.
 * Add #newevent snippet.
