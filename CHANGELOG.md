@@ -41,3 +41,6 @@
 * Fix #newitem regexp.
 * Fix #newspell snippet.
 * Add #newevent snippet.
+
+## v0.3.3
+* Fixed #mainlevel and #secondarylevel commands.

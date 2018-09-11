@@ -3482,23 +3482,23 @@ repository:
             },
 
             {
-                match:"^\\s*(#mainpath)\\s+([0-7])"
+                match:"^\\s*(#mainlevel)\\s+([1-8])"
                 captures:
                     1:
-                        name: "keyword.control.item.mainpath.dominions"
+                        name: "keyword.control.item.mainlevel.dominions"
                     2:
-                        name: "constant.numeric.item.mainpath.dominions"
-                name: "meta.item.mainpath.dominions"
+                        name: "constant.numeric.item.mainlevel.dominions"
+                name: "meta.item.mainlevel.dominions"
             },
 
             {
-                match:"^\\s*(#secondarypath)\\s+(-1|[0-7])"
+                match:"^\\s*(#secondarylevel)\\s+([0-8])"
                 captures:
                     1:
-                        name: "keyword.control.item.secondarypath.dominions"
+                        name: "keyword.control.item.secondarylevel.dominions"
                     2:
-                        name: "constant.numeric.item.secondarypath.dominions"
-                name: "meta.item.secondarypath.dominions"
+                        name: "constant.numeric.item.secondarylevel.dominions"
+                name: "meta.item.secondarylevel.dominions"
             },
 
             {
