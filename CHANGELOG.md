@@ -32,6 +32,7 @@
 ## v0.3.2
 * Added 0 as possible argument for #secondarylevel.
 * Added -1 as possible argument for #len.
+* Extended argument of #magicboost to -10.
 * Added #clear command for weapons and armor.
 * #incscale and #decscale also work for items.
 * Added #[2-4]d3units event commands.
