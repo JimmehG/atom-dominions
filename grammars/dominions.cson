@@ -3637,15 +3637,14 @@ repository:
                 name: "meta.item.mapspeed.dominions"
             },
 
-            #TODO: this probably should move elsewhere? Just following the manual.
             {
-                match:"^\\s*(#sneakunit)\\s+(\\d+)"
+                match:"^\\s*(#(sneakunit|stealthboost))\\s+(\\d+)"
                 captures:
                     1:
-                        name: "keyword.control.item.sneakunit.dominions"
-                    2:
-                        name: "constant.numeric.item.sneakunit.dominions"
-                name: "meta.item.sneakunit.dominions"
+                        name: "keyword.control.item.$2.dominions"
+                    3:
+                        name: "constant.numeric.item.$2.dominions"
+                name: "meta.item.$2.dominions"
             },
 
             #F. Arena.
@@ -3659,7 +3658,7 @@ repository:
 
             #G. Restrictions.
             {
-                match:"^\\s*(#(reqeyes|nofind))"
+                match:"^\\s*(#(reqeyes|nofind|noforgebonus))"
                 captures:
                     1:
                         name: "keyword.control.item.$2.dominions"

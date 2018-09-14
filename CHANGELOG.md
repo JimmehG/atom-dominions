@@ -48,3 +48,4 @@
 * Add new monster & item commands #alchemy, #warning, #deadhp.
 * Add monster commands #indepspells, #corpseeater.
 * Add item commands #hp, #recuperation, #yearaging, #noaging, #noagingland.
+* Add item commands #noforgebonus, #stealthboost.
