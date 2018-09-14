@@ -1226,6 +1226,16 @@ repository:
                 name: "meta.monster_item.$2.dominions"
             },
 
+            {
+                match: "\\s*(#((?:ivy|dragon|lamia|corpse)lord))\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.$2.dominions"
+                    3:
+                        name: "string.quoted.double.monster_item.$2.dominions"
+                name: "meta.monster_item.$2.dominions"
+            }
+
             #B. 10. Leadership.
             {
                 match: "^\\s*(#(command|magiccommand|undcommand))\\s+(-?\\d+)"
