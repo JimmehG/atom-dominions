@@ -46,3 +46,4 @@
 * Fixed #mainlevel and #secondarylevel commands.
 * Add new monster & item commands #ivylord, #dragonlord, #lamialord, #corpselord.
 * Add new monster & item commands #alchemy, #warning, #deadhp.
+* Add monster commands #indepspells, #corpseeater.

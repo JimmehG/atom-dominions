@@ -1213,7 +1213,7 @@ repository:
             #B. 9. Summoning.
             {
                 comment: "Summoning commands take montag values."
-                match:               '\\s*(#(domsummon2|domsummon20|domsummon|raredomsummon|templetrainer|(?:makemonsters[1-5])|(?:summon[1-5])|(?:battlesum[1-5])|(?:batstartsum[1-9]d6)|(?:batstartsum[1-5])))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
+                match:               '^\\s*(#(domsummon2|domsummon20|domsummon|raredomsummon|templetrainer|(?:makemonsters[1-5])|(?:summon[1-5])|(?:battlesum[1-5])|(?:batstartsum[1-9]d6)|(?:batstartsum[1-5])))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)|(-(?:100000|[1-9][0-9]{0,4})))'
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
@@ -1227,7 +1227,7 @@ repository:
             },
 
             {
-                match: "\\s*(#((?:ivy|dragon|lamia|corpse)lord))\\s+(\\d+)"
+                match: "^\\s*(#((?:ivy|dragon|lamia|corpse)lord))\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
@@ -1813,6 +1813,16 @@ repository:
                 name: "meta.monster.noheal.dominions"
             },
 
+            {
+                match: "^\\s*(#corpseeater)\\s+(\\d+)"
+                captures:
+                    1:
+                        name: "keyword.control.monster.corpseeater.dominions"
+                    2:
+                        name: "constant.numeric.monster.corpseeater.dominions"
+                name: "meta.monster.corpseeater.dominions"
+            },
+
             #L. 4. 2. Age.
             {
                 match: "^\\s*(#startage)\\s+(-1|\\d+)"
@@ -2064,6 +2074,16 @@ repository:
                         name: "constant.numeric.monster.onebattlespell.dominions"
                 name: "meta.monster.onebattlespell.dominions"
             },
+
+            {
+                match:"^\\s*(#indepspells)\\s+([0-9])"
+                captures:
+                    1:
+                        name: "keyword.control.monster.indepspells.dominions"
+                    2:
+                        name: "constant.numeric.monster.indepspells.dominions"
+                name: "meta.monster.indepspells.dominions"
+            }
 
             #L. 15. Trinity abilities.
             #note: see monster_items for other dom5 undocumented properties shared with items.
