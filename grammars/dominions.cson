@@ -959,7 +959,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(autohealer|autodishealer|autodisgrinder|woundfend))\\s+(\\d+)"
+                match: "^\\s*(#(autohealer|autodishealer|autodisgrinder|woundfend|deadhp))\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
@@ -1160,7 +1160,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(castledef|siegebonus|elegist|spreaddom|addupkeep|popkill|xploss))\\s+(\\d+)"
+                match: "^\\s*(#(castledef|siegebonus|elegist|spreaddom|addupkeep|popkill|xploss|alchemy))\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
@@ -1238,7 +1238,7 @@ repository:
 
             #B. 10. Leadership.
             {
-                match: "^\\s*(#(command|magiccommand|undcommand))\\s+(-?\\d+)"
+                match: "^\\s*(#(command|magiccommand|undcommand|warning))\\s+(-?\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"

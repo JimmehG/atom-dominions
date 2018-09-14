@@ -44,4 +44,5 @@
 
 ## v0.3.3
 * Fixed #mainlevel and #secondarylevel commands.
-* Add new monster & item commands ivylord, dragonlord, etc.
+* Add new monster & item commands #ivylord, #dragonlord, #lamialord, #corpselord.
+* Add new monster & item commands #alchemy, #warning, #deadhp.
