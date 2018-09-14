@@ -49,3 +49,4 @@
 * Add monster commands #indepspells, #corpseeater.
 * Add item commands #hp, #recuperation, #yearaging, #noaging, #noagingland.
 * Add item commands #noforgebonus, #stealthboost.
+* Add word boundary to regexps for commands with enum args to tighten error recognition.

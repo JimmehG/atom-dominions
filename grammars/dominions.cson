@@ -130,7 +130,7 @@ repository:
 
             {
                 comment: "As of v5.24, new weapon numbers vary between 800 and 1999."
-                begin: "^\\s*(#newweapon)\\s+(1[0-9]{3}|[8-9][0-9]{2})"
+                begin: "^\\s*(#newweapon)\\s+(1[0-9]{3}|[8-9][0-9]{2})\\b"
                 beginCaptures:
                     1:
                         name: "keyword.control.record.newweapon.dominions"
@@ -185,7 +185,7 @@ repository:
 
             {
                 comment: "As of v5.24, new armor numbers vary between 300 and 999."
-                begin: "^\\s*(#newarmor)\\s+([3-9][0-9]{2})"
+                begin: "^\\s*(#newarmor)\\s+([3-9][0-9]{2})\\b"
                 beginCaptures:
                     1:
                         name: "keyword.control.record.newarmor.dominions"
@@ -275,7 +275,7 @@ repository:
             #D. Nametypes.
             {
                 comment: "As of v5.24, nametype numbers vary between 100 and 299. Usable numbers start at 165."
-                begin: "^\\s*(#selectnametype)\\s+([1-2][0-9]{2})"
+                begin: "^\\s*(#selectnametype)\\s+([1-2][0-9]{2})\\b"
                 beginCaptures:
                     1:
                         name: "keyword.control.record.selectnametype.dominions"
@@ -365,7 +365,7 @@ repository:
             #F. Nations.
             {
                 comment: "As of v5.24, nation numbers vary between 5 and 249, with numbers 0-4 hardcoded for independents."
-                begin: "^\\s*(#(selectnation))\\s+(2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]?|0)"
+                begin: "^\\s*(#(selectnation))\\s+(2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]?|0)\\b"
                 beginCaptures:
                     1:
                         name: "keyword.control.record.selectnation.dominions"
@@ -631,7 +631,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#copyweapon)\\s+(1[0-9]{3}|[1-9][0-9]{0,2}|0)"
+                match: "^\\s*(#copyweapon)\\s+(1[0-9]{3}|[1-9][0-9]{0,2}|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.weapon.copyweapon.dominions"
@@ -670,7 +670,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#len)\\s+(-1|[0-6])"
+                match: "^\\s*(#len)\\s+(-1|[0-6])\\b"
                 captures:
                     1:
                         name: "keyword.control.weapon.len.dominions"
@@ -681,7 +681,7 @@ repository:
 
             {
                 comment: "As of v5.24, maximum ammo value is 30."
-                match: "^\\s*(#ammo)\\s+(30|[1-2][0-9]|[0-9])"
+                match: "^\\s*(#ammo)\\s+(30|[1-2][0-9]|[0-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.weapon.ammo.dominions"
@@ -771,7 +771,7 @@ repository:
             #Visuals.
             {
                 comment: "As of v5.24, explspr values vary between 10000 and 10317."
-                match: "^\\s*(#explspr)\\s+(-1|10(?:[0-2][0-9][0-9]|30[0-9]|31[0-7]))"
+                match: "^\\s*(#explspr)\\s+(-1|10(?:[0-2][0-9][0-9]|30[0-9]|31[0-7]))\\b"
                 captures:
                     1:
                         name: "keyword.control.weapon.other.explspr.dominions"
@@ -805,7 +805,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#copyarmor)\\s+([1-9][0-9]{0,2}|0)"
+                match: "^\\s*(#copyarmor)\\s+([1-9][0-9]{0,2}|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.armor.copyarmor.dominions"
@@ -826,7 +826,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#type)\\s+([4-6]|9)"
+                match: "^\\s*(#type)\\s+([4-6]|9)\\b"
                 captures:
                     1:
                         name: "keyword.control.armor.type.dominions"
@@ -938,7 +938,7 @@ repository:
 
             #Note: #regeneration is listed in the damage reduction section of the manual.
             {
-                match: "^\\s*(#(healer|homesick|diseaseres|uwdamage|landdamage|regeneration|reform))\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#(healer|homesick|diseaseres|uwdamage|landdamage|regeneration|reform))\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
@@ -949,7 +949,7 @@ repository:
 
             {
                 comment: "Argument is a percentage capped at 1000%."
-                match: "^\\s*(#hpoverslow)\\s+(1000|[1-9][0,9]{0,2}|0)"
+                match: "^\\s*(#hpoverslow)\\s+(1000|[1-9][0,9]{0,2}|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.hpoverslow.dominions"
@@ -997,7 +997,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#airshield)\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#airshield)\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.airshield.dominions"
@@ -1047,7 +1047,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#uwheat)\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#uwheat)\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.uwheat.dominions"
@@ -1057,7 +1057,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#poisonskin)\\s+(500|[1-4][0,9]{2}|[1-9][0-9]?|0)"
+                match: "^\\s*(#poisonskin)\\s+(500|[1-4][0,9]{2}|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.poisonskin.dominions"
@@ -1068,7 +1068,7 @@ repository:
 
             #B. 6. Powers and scales.
             {
-                match: "^\\s*(#(springpower|summerpower|fallpower|winterpower))\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#(springpower|summerpower|fallpower|winterpower))\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
@@ -1088,7 +1088,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(incscale|decscale))\\s+([0-5])"
+                match: "^\\s*(#(incscale|decscale))\\s+([0-5])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
@@ -1117,7 +1117,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(darkvision|raiseonkill))\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#(darkvision|raiseonkill))\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
@@ -1127,7 +1127,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#unsurr)\\s+(1000|[1-9][0-9]{0,2}|0)"
+                match: "^\\s*(#unsurr)\\s+(1000|[1-9][0-9]{0,2}|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.unsurr.dominions"
@@ -1171,7 +1171,7 @@ repository:
 
             {
                 comment: "#incprovdef can only improve pd to 19 max, so we cap the accepted value to it."
-                match: "^\\s*(#incprovdef)\\s+(1[0-9]|[1-9])"
+                match: "^\\s*(#incprovdef)\\s+(1[0-9]|[1-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.incprovdef.dominions"
@@ -1181,7 +1181,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(shatteredsoul|nobadevents|leper|insane|insanify))\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#(shatteredsoul|nobadevents|leper|insane|insanify))\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
@@ -1191,7 +1191,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#heretic)\\s+([0-5])"
+                match: "^\\s*(#heretic)\\s+([0-5])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.heretic.dominions"
@@ -1267,7 +1267,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#skirmisher)\\s+(-?(?:2[0-5]|1?[0-9]))"
+                match: "^\\s*(#skirmisher)\\s+(-?(?:2[0-5]|1?[0-9]))\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.skirmisher.dominions"
@@ -1288,7 +1288,7 @@ repository:
 
             #B. 12. Magic.
             {
-                match:"^\\s*(#magicboost)\\s+([0-8]|5[0-3])\\s+([0-5]|(?:-(?:10|[1-9])))"
+                match:"^\\s*(#magicboost)\\s+([0-8]|5[0-3])\\s+([0-5]|(?:-(?:10|[1-9])))\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.magicboost.dominions"
@@ -1384,7 +1384,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#(kokytosret|infernoret|voidret|allret|tainted|randomspell|forgebonus))\\s+(100|[1-9][0-9]?|0)"
+                match:"^\\s*(#(kokytosret|infernoret|voidret|allret|tainted|randomspell|forgebonus))\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
@@ -1394,7 +1394,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#deathbanish)\\s+(-1[1-3])"
+                match:"^\\s*(#deathbanish)\\s+(-1[1-3])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.deathbanish.dominions"
@@ -1431,7 +1431,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#(onisummon|curseluckshield|sunawe|fastcast|undregen|magicstudy|yearturn|fortkill|thronekill|farthronekill))\\s+(-?(?:1000|[1-9][0-9]{0,2}|0))"
+                match:"^\\s*(#(onisummon|curseluckshield|sunawe|fastcast|undregen|magicstudy|yearturn|fortkill|thronekill|farthronekill))\\s+(-?(?:1000|[1-9][0-9]{0,2}|0))\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
@@ -1441,7 +1441,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#bringeroffortune)\\s+(-?(?:100|[1-9][0-9]?|0))"
+                match:"^\\s*(#bringeroffortune)\\s+(-?(?:100|[1-9][0-9]?|0))\\b"
                 captures:
                     1:
                         name: "keyword.control.monster_item.bringeroffortune.dominions"
@@ -1464,7 +1464,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(copystats|copyspr))\\s+([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)"
+                match: "^\\s*(#(copystats|copyspr))\\s+([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.$2.dominions"
@@ -1511,7 +1511,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#speciallook)\\s+(1[0-9]{2}|[1-3])"
+                match: "^\\s*(#speciallook)\\s+(1[0-9]{2}|[1-3])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.speciallook.dominions"
@@ -1532,7 +1532,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#startdom)\\s+(10|[1-9])"
+                match: "^\\s*(#startdom)\\s+(10|[1-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.startdom.dominions"
@@ -1542,7 +1542,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#homerealm)\\s+(10|[0-9])"
+                match: "^\\s*(#homerealm)\\s+(10|[0-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.homerealm.dominions"
@@ -1585,7 +1585,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(heatrec|coldrec))\\s+([0-3])"
+                match: "^\\s*(#(heatrec|coldrec))\\s+([0-3])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.$2.dominions"
@@ -1614,7 +1614,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(deserter|horrordeserter|defector))\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#(deserter|horrordeserter|defector))\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.$2.dominions"
@@ -1648,7 +1648,7 @@ repository:
 
             {
                 #Note: ressize is really a cost property.
-                match: "^\\s*(#(size|ressize))\\s+([1-6])"
+                match: "^\\s*(#(size|ressize))\\s+([1-6])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.$2.dominions"
@@ -1725,7 +1725,7 @@ repository:
 
             {
                 comment: "As of v5.24, userestricted numbers vary between 1 and 10000."
-                match: "^\\s*(#userestricteditem)\\s+(10000|[1-9][0-9]{0,3})"
+                match: "^\\s*(#userestricteditem)\\s+(10000|[1-9][0-9]{0,3})\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.userestricteditem.dominions"
@@ -1769,7 +1769,7 @@ repository:
 
             {
                 comment: "Argument for #indepmove is a percentage capped at 100."
-                match: "^\\s*(#indepmove)\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#indepmove)\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.indepmove.dominions"
@@ -1780,7 +1780,7 @@ repository:
 
             {
                 comment: "First argument is the number of size points the commander can transport."
-                match: "^\\s*(#sailing)\\s+(\\d+)\\s+([1-6])"
+                match: "^\\s*(#sailing)\\s+(\\d+)\\s+([1-6])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.sailing.dominions"
@@ -1856,7 +1856,7 @@ repository:
 
             #L. 4. 3. Afflictions.
             {
-                match: "^\\s*(#startaff)\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#startaff)\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.startaff.dominions"
@@ -1866,7 +1866,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#startmajoraff)\\s+(1000|[1-9][0-9]{0,2}|0)"
+                match:"^\\s*(#startmajoraff)\\s+(1000|[1-9][0-9]{0,2}|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.startmajoraff.dominions"
@@ -1905,7 +1905,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#transformation)\\s+(-1|0|1)"
+                match: "^\\s*(#transformation)\\s+(-1|0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.transformation.dominions"
@@ -1915,7 +1915,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#((?:fire|air|water|earth|astral|death|nature|blood|holy)attuned))\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#((?:fire|air|water|earth|astral|death|nature|blood|holy)attuned))\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.$2.dominions"
@@ -1988,7 +1988,7 @@ repository:
 
             {
                 comment: "New montag values vary between 1000 and 100000."
-                match: "^\\s*(#montag)\\s+(100000|[1-9][0-9]{3,4})"
+                match: "^\\s*(#montag)\\s+(100000|[1-9][0-9]{3,4})\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.montag.dominions"
@@ -2000,7 +2000,7 @@ repository:
             #L. 9. Nametypes.
             {
                 comment: "Nametype values vary between 100 and 299. Moddable values start at 161."
-                match: "^\\s*(#nametype)\\s+([1-2][0-9]{2})"
+                match: "^\\s*(#nametype)\\s+([1-2][0-9]{2})\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.nametype.dominions"
@@ -2025,7 +2025,7 @@ repository:
             #L. 12. Magic.
             #note: see monster_items for other magic properties shared with items.
             {
-                match:"^\\s*(#magicskill)\\s+([0-8]|5[0-3])\\s+(10|[1-9])"
+                match:"^\\s*(#magicskill)\\s+([0-8]|5[0-3])\\s+(10|[1-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.magicskill.dominions"
@@ -2076,7 +2076,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#indepspells)\\s+([0-9])"
+                match:"^\\s*(#indepspells)\\s+([0-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.indepspells.dominions"
@@ -2096,7 +2096,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#triplegodmag)\\s+(-?(?:10|[0-9]))"
+                match:"^\\s*(#triplegodmag)\\s+(-?(?:10|[0-9]))\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.triplegodmag.dominions"
@@ -2106,7 +2106,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#triplegod)\\s+(10|[0-9])"
+                match:"^\\s*(#triplegod)\\s+(10|[0-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.triplegod.dominions"
@@ -2117,7 +2117,7 @@ repository:
 
             #L. 16. Undocumented dom5 abilities.
             {
-                match:"^\\s*(#indepstay)\\s+(10|[0-9])"
+                match:"^\\s*(#indepstay)\\s+(10|[0-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.indepstay.dominions"
@@ -2127,7 +2127,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#indepmove)\\s+(100|[1-9][0-9]?|0)"
+                match:"^\\s*(#indepmove)\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.indepmove.dominions"
@@ -2137,7 +2137,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#minprison)\\s+([0-2])"
+                match:"^\\s*(#minprison)\\s+([0-2])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.minprison.dominions"
@@ -2147,7 +2147,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#minsizeleader)\\s+([0-6])"
+                match:"^\\s*(#minsizeleader)\\s+([0-6])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.minsizeleader.dominions"
@@ -2227,7 +2227,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#path)\\s+([0-8])"
+                match: "^\\s*(#path)\\s+([0-8])\\b"
                 captures:
                     1:
                         name: "keyword.control.site.path.dominions"
@@ -2238,7 +2238,7 @@ repository:
 
             {
                 comment: "Arguments 5 and 6 do not seem to have a known use."
-                match: "^\\s*(#level)\\s+([0-6])"
+                match: "^\\s*(#level)\\s+([0-6])\\b"
                 captures:
                     1:
                         name: "keyword.control.site.level.dominions"
@@ -2248,7 +2248,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#rarity)\\s+(0|2|5|11|12|13|1)"
+                match: "^\\s*(#rarity)\\s+(0|2|5|11|12|13|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.site.rarity.dominions"
@@ -2301,7 +2301,7 @@ repository:
 
             {
                 comment: "As of v5.24, fort numbers vary between 0 and 30."
-                match: "^\\s*(#fort)\\s+(30|[1-2]?[0-9])"
+                match: "^\\s*(#fort)\\s+(30|[1-2]?[0-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.site.fort.dominions"
@@ -2321,7 +2321,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#voidgate)\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#voidgate)\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.site.voidgate.dominions"
@@ -2346,7 +2346,7 @@ repository:
 
             #D. Scales.
             {
-                match: "^\\s*(#(incscale|decscale))\\s+([0-5])"
+                match: "^\\s*(#(incscale|decscale))\\s+([0-5])\\b"
                 captures:
                     1:
                         name: "keyword.control.site.$2.dominions"
@@ -2357,7 +2357,7 @@ repository:
 
             #E. Rituals.
             {
-                match: "^\\s*(#(conjcost|altcost|evocost|constcost|enchcost|thaucost|bloodcost))\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#(conjcost|altcost|evocost|constcost|enchcost|thaucost|bloodcost))\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.site.$2.dominions"
@@ -2388,7 +2388,7 @@ repository:
 
             #F. Effects.
             {
-                match: "^\\s*(#(heal|curse|disease|horrormark|holyfire|holypower|adventureruin))\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#(heal|curse|disease|horrormark|holyfire|holypower|adventureruin))\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.site.$2.dominions"
@@ -2418,7 +2418,7 @@ repository:
 
             {
                 comment: "As of v5.24, cluster values vary between 1 and 32000."
-                match: "^\\s*(#cluster)\\s+(32000|3[0-1][0-9]{3}|[1-2][0-9]{4}|[1-9][0-9]{0,3})"
+                match: "^\\s*(#cluster)\\s+(32000|3[0-1][0-9]{3}|[1-2][0-9]{4}|[1-9][0-9]{0,3})\\b"
                 captures:
                     1:
                         name: "keyword.control.site.cluster.dominions"
@@ -2447,7 +2447,7 @@ repository:
 
             {
                 comment: "Given the possible scale values, 6 in either direction is the highest meaningful value."
-                match: "^\\s*(#(goddomchaos|goddomlazy|goddomcold|goddomdeath|goddommisfortune|goddomdrain))\\s+(-?[1-6])"
+                match: "^\\s*(#(goddomchaos|goddomlazy|goddomcold|goddomdeath|goddommisfortune|goddomdrain))\\s+(-?[1-6])\\b"
                 captures:
                     1:
                         name: "keyword.control.site.$2.dominions"
@@ -2593,7 +2593,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#era)\\s+([0-4])'
+                match: "^\\s*(#era)\\s+([0-4])\\b"
                 captures:
                     1:
                         name: "keyword.control.nation.era.dominions"
@@ -2676,7 +2676,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#idealcold)\\s+(-?[0-3])"
+                match: "^\\s*(#idealcold)\\s+(-?[0-3])\\b"
                 captures:
                     1:
                         name: "keyword.control.nation.idealcold.dominions"
@@ -2686,7 +2686,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#cavenation)\\s+([0-2])"
+                match: "^\\s*(#cavenation)\\s+([0-2])\\b"
                 captures:
                     1:
                         name: "keyword.control.nation.cavenation.dominions"
@@ -2705,7 +2705,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(aiawake|aigoodbless))\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#(aiawake|aigoodbless))\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.nation.$2.dominions"
@@ -2715,7 +2715,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#aimusthavemag)\\s+([0-7])'
+                match: "^\\s*(#aimusthavemag)\\s+([0-7])\\b"
                 captures:
                     1:
                         name: "keyword.control.nation.aimusthavemag.dominions"
@@ -2739,7 +2739,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#(hero(?:10|[1-9])|multihero(?:[1-7])))\\s+([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)'
+                match: "^\\s*(#(hero(?:10|[1-9])|multihero(?:[1-7])))\\s+([1-8][0-9]{3}|[1-9][0-9]{0,2}|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.nation.$2.dominions"
@@ -2804,7 +2804,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#homerealm)\\s+(10|[1-9])"
+                match: "^\\s*(#homerealm)\\s+(10|[1-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.nation.homerealm.dominions"
@@ -2847,7 +2847,7 @@ repository:
 
             #Blesses.
             {
-                match: "^\\s*(#(fireblessbonus|airblessbonus|waterblessbonus|earthblessbonus|astralblessbonus|deathblessbonus|natureblessbonus|bloodblessbonus))\\s+([0-9])"
+                match: "^\\s*(#(fireblessbonus|airblessbonus|waterblessbonus|earthblessbonus|astralblessbonus|deathblessbonus|natureblessbonus|bloodblessbonus))\\s+([0-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.nation.$2.dominions"
@@ -2870,7 +2870,7 @@ repository:
 
             #G. Buildings.
             {
-                match: "^\\s*(#uwbuild)\\s+(0|1)"
+                match: "^\\s*(#uwbuild)\\s+(0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.nation.uwbuild.dominions"
@@ -2880,7 +2880,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#fortera)\\s+([0-4])"
+                match: "^\\s*(#fortera)\\s+([0-4])\\b"
                 captures:
                     1:
                         name: "keyword.control.nation.fortera.dominions"
@@ -2901,7 +2901,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#templegems)\\s+([0-7])"
+                match: "^\\s*(#templegems)\\s+([0-7])\\b"
                 captures:
                     1:
                         name: "keyword.control.nation.templegems.dominions"
@@ -2924,7 +2924,7 @@ repository:
 
             #Fort commands.
             {
-                match: "^\\s*(#(homefort|buildfort|builduwfort|buildcoastfort))\\s+(30|[1-2][0-9]|[1-9])"
+                match: "^\\s*(#(homefort|buildfort|builduwfort|buildcoastfort))\\s+(30|[1-2][0-9]|[1-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.nation.$2.dominions"
@@ -2953,7 +2953,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(spreadcold|spreadheat|spreadlazy|spreadchaos|spreaddeath))\\s+([1-3])"
+                match: "^\\s*(#(spreadcold|spreadheat|spreadlazy|spreadchaos|spreaddeath))\\s+([1-3])\\b"
                 captures:
                     1:
                         name: "keyword.control.nation.$2.dominions"
@@ -2994,7 +2994,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#syncretism)\\s+(0|1)"
+                match: "^\\s*(#syncretism)\\s+(0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.nation.syncretism.dominions"
@@ -3087,7 +3087,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#school)\\s+(-1|[0-7])"
+                match:"^\\s*(#school)\\s+(-1|[0-7])\\b"
                 captures:
                     1:
                         name: "keyword.control.spell.school.dominions"
@@ -3097,7 +3097,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#researchlevel)\\s+([0-9])"
+                match:"^\\s*(#researchlevel)\\s+([0-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.spell.researchlevel.dominions"
@@ -3107,7 +3107,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#path)\\s+(0|1)\\s+(-1|[0-8])"
+                match:"^\\s*(#path)\\s+(0|1)\\s+(-1|[0-8])\\b"
                 captures:
                     1:
                         name: "keyword.control.spell.path.dominions"
@@ -3119,7 +3119,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#pathlevel)\\s+(0|1)\\s+(10|[0-9])"
+                match:"^\\s*(#pathlevel)\\s+(0|1)\\s+(10|[0-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.spell.pathlevel.dominions"
@@ -3305,7 +3305,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#(onlycoastsrc|onlyfriendlydst|onlyowndst|nowatertrace|nolandtrace|walkable))\\s+(0|1)"
+                match:"^\\s*(#(onlycoastsrc|onlyfriendlydst|onlyowndst|nowatertrace|nolandtrace|walkable))\\s+(0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.spell.$2.dominions"
@@ -3327,7 +3327,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#casttime)\\s+(1000|[1-9][0-9]{0,2})"
+                match:"^\\s*(#casttime)\\s+(1000|[1-9][0-9]{0,2})\\b"
                 captures:
                     1:
                         name: "keyword.control.spell.property.dominions"
@@ -3359,7 +3359,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#notfornation)\\s+(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9])"
+                match:"^\\s*(#notfornation)\\s+(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.spell.notfornation.dominions"
@@ -3381,7 +3381,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#godpathspell)\\s+(-1|[0-7])"
+                match:"^\\s*(#godpathspell)\\s+(-1|[0-7])\\b"
                 captures:
                     1:
                         name: "keyword.control.spell.godpathspell.dominions"
@@ -3391,7 +3391,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#(friendlyench|hiddenench|nocastmindless|spellreqfly|polygetmagic))\\s+([0-1])"
+                match:"^\\s*(#(friendlyench|hiddenench|nocastmindless|spellreqfly|polygetmagic))\\s+(0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.spell.$2.dominions"
@@ -3436,7 +3436,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#copyspr)\\s+([1-9][0-9]{0,2}|0)"
+                match: "^\\s*(#copyspr)\\s+([1-9][0-9]{0,2}|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.item.copyspr.dominions"
@@ -3482,7 +3482,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#constlevel)\\s+(0|2|4|6|8|12)"
+                match:"^\\s*(#constlevel)\\s+(0|2|4|6|8|12)\\b"
                 captures:
                     1:
                         name: "keyword.control.item.constlevel.dominions"
@@ -3492,7 +3492,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#mainpath)\\s+([0-7])"
+                match:"^\\s*(#mainpath)\\s+([0-7])\\b"
                 captures:
                     1:
                         name: "keyword.control.item.mainpath.dominions"
@@ -3502,7 +3502,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#secondarypath)\\s+(-1|[0-7])"
+                match:"^\\s*(#secondarypath)\\s+(-1|[0-7])\\b"
                 captures:
                     1:
                         name: "keyword.control.item.secondarypath.dominions"
@@ -3512,7 +3512,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#mainlevel)\\s+([1-8])"
+                match:"^\\s*(#mainlevel)\\s+([1-8])\\b"
                 captures:
                     1:
                         name: "keyword.control.item.mainlevel.dominions"
@@ -3522,7 +3522,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#secondarylevel)\\s+([0-8])"
+                match:"^\\s*(#secondarylevel)\\s+([0-8])\\b"
                 captures:
                     1:
                         name: "keyword.control.item.secondarylevel.dominions"
@@ -3532,7 +3532,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#type)\\s+([1-9])"
+                match:"^\\s*(#type)\\s+([1-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.item.type.dominions"
@@ -3667,7 +3667,7 @@ repository:
 
             {
                 comment: "Restricted values vary between 1 and 10000."
-                match:"^\\s*(#restricteditem)\\s+(10000|[1-9][0-9]{0,3})"
+                match:"^\\s*(#restricteditem)\\s+(10000|[1-9][0-9]{0,3})\\b"
                 captures:
                     1:
                         name: "keyword.control.item.restricteditem.dominions"
@@ -3699,7 +3699,7 @@ repository:
 
             #I. Undocumented dom5 commands.
             {
-                match:"^\\s*(#swift)\\s+(-?(?:1000|[1-9][0-9]{0,2}|0))"
+                match:"^\\s*(#swift)\\s+(-?(?:1000|[1-9][0-9]{0,2}|0))\\b"
                 captures:
                     1:
                         name: "keyword.control.item.swift.dominions"
@@ -3709,7 +3709,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#(itemcost[1-2]))\\s+((?:-(?:100|[1-9][0-9]?))|(?:10000|[1-9][0,9]{0,3}|0))"
+                match:"^\\s*(#(itemcost[1-2]))\\s+((?:-(?:100|[1-9][0-9]?))|(?:10000|[1-9][0,9]{0,3}|0))\\b"
                 captures:
                     1:
                         name: "keyword.control.item.$2.dominions"
@@ -3789,7 +3789,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#level)\\s+([0-2])"
+                match: "^\\s*(#level)\\s+([0-2])\\b"
                 captures:
                     1:
                         name: "keyword.control.merc.level.dominions"
@@ -3799,7 +3799,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#randequip)\\s+([0-3])"
+                match: "^\\s*(#randequip)\\s+([0-3])\\b"
                 captures:
                     1:
                         name: "keyword.control.merc.randequip.dominions"
@@ -3809,7 +3809,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#eramask)\\s+([1-7])"
+                match: "^\\s*(#eramask)\\s+([1-7])\\b"
                 captures:
                     1:
                         name: "keyword.control.merc.eramask.dominions"
@@ -3823,7 +3823,7 @@ repository:
         patterns: [
             #A. Basic.
             {
-                match: "^\\s*(#rarity)\\s+(10|11|12|13|-2|-1|0|1|2|5)"
+                match: "^\\s*(#rarity)\\s+(10|11|12|13|-2|-1|0|1|2|5)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.rarity.dominions"
@@ -3846,7 +3846,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#req_rare)\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#req_rare)\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.req_rare.dominions"
@@ -3856,7 +3856,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(req_story|req_indepok))\\s+(0|1)"
+                match: "^\\s*(#(req_story|req_indepok))\\s+(0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -3866,7 +3866,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(req_era|req_noera))\\s+([1-3])"
+                match: "^\\s*(#(req_era|req_noera))\\s+([1-3])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -3877,7 +3877,7 @@ repository:
 
             {
                 comment: "Manual lists an extra argument 4."
-                match: "^\\s*(#(req_season|req_noseason))\\s+([0-3])"
+                match: "^\\s*(#(req_season|req_noseason))\\s+([0-3])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -3888,7 +3888,7 @@ repository:
 
             #B. 2. Nation.
             {
-                match: "^\\s*(#(req_nation|req_nonation|req_fornation|req_notfornation|req_notnation|req_notforally))\\s+(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9])"
+                match: "^\\s*(#(req_nation|req_nonation|req_fornation|req_notfornation|req_notnation|req_notforally))\\s+(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -3899,7 +3899,7 @@ repository:
 
             #B. 3. Treasury.
             {
-                match: "^\\s*(#req_gem)\\s+([0-7])"
+                match: "^\\s*(#req_gem)\\s+([0-7])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.req_gem.dominions"
@@ -3928,7 +3928,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(req_capital|req_owncapital|req_lab|req_temple|req_fort))\\s+(0|1)"
+                match: "^\\s*(#(req_capital|req_owncapital|req_lab|req_temple|req_fort))\\s+(0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -3939,7 +3939,7 @@ repository:
 
             #Terrain.
             {
-                match: "^\\s*(#(req_land|req_coast|req_mountain|req_forest|req_farm|req_swamp|req_waste|req_cave|req_freshwater))\\s+(0|1)"
+                match: "^\\s*(#(req_land|req_coast|req_mountain|req_forest|req_farm|req_swamp|req_waste|req_cave|req_freshwater))\\s+(0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -3982,7 +3982,7 @@ repository:
 
             #B. 5. Site.
             {
-                match: "^\\s*(#(req_foundsite|req_hiddensite|req_site|req_nearbysite|req_claimedthrone|req_unclaimedthrone))\\s+(0|1)"
+                match: "^\\s*(#(req_foundsite|req_hiddensite|req_site|req_nearbysite|req_claimedthrone|req_unclaimedthrone))\\s+(0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -4002,7 +4002,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#req_nositenbr)\\s+(1[0-9]{3}|[1-9][0-9]{0,2}|0)"
+                match: "^\\s*(#req_nositenbr)\\s+(1[0-9]{3}|[1-9][0-9]{0,2}|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.req_nositenbr.dominions"
@@ -4014,7 +4014,7 @@ repository:
             #B. 6. Dominion.
             {
                 comment: "Argument is a nation number."
-                match: "^\\s*(#(req_fullowner|req_domowner))\\s+(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9])"
+                match: "^\\s*(#(req_fullowner|req_domowner))\\s+(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -4024,7 +4024,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#req_mydominion)\\s+(0|1)"
+                match: "^\\s*(#req_mydominion)\\s+(0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.req_mydominion.dominions"
@@ -4034,7 +4034,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#req_dominion)\\s+(10|[0-9])"
+                match: "^\\s*(#req_dominion)\\s+(10|[0-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.req_dominion.dominions"
@@ -4044,7 +4044,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#req_maxdominion)\\s+(-?(?:10|[0-9]))"
+                match: "^\\s*(#req_maxdominion)\\s+(-?(?:10|[0-9]))\\b"
                 captures:
                     1:
                         name: "keyword.control.event.req_maxdominion.dominions"
@@ -4054,7 +4054,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#req_domchance)\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#req_domchance)\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.req_domchance.dominions"
@@ -4065,7 +4065,7 @@ repository:
 
             #B. 7. Scales.
             {
-                match: "^\\s*(#(req_chaos|req_lazy|req_cold|req_death|req_unluck|req_unmagic|req_order|req_prod|req_heat|req_growth|req_luck|req_magic))\\s+(-?[0-3])"
+                match: "^\\s*(#(req_chaos|req_lazy|req_cold|req_death|req_unluck|req_unmagic|req_order|req_prod|req_heat|req_growth|req_luck|req_magic))\\s+(-?[0-3])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -4084,7 +4084,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#req_commander)\\s+(0|1)"
+                match: "^\\s*(#req_commander)\\s+(0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.req_commander.dominions"
@@ -4127,7 +4127,7 @@ repository:
 
             #B. 9. Mage.
             {
-                match: "^\\s*(#(req_pathfire|req_pathair|req_pathwater|req_pathearth|req_pathastral|req_pathdeath|req_pathnature|req_pathblood|req_pathholy|req_nopathfire|req_nopathair|req_nopathwater|req_nopathearth|req_nopathastral|req_nopathdeath|req_nopathnature|req_nopathblood|req_nopathholy|req_nopathall))\\s+(10|[0-9])"
+                match: "^\\s*(#(req_pathfire|req_pathair|req_pathwater|req_pathearth|req_pathastral|req_pathdeath|req_pathnature|req_pathblood|req_pathholy|req_nopathfire|req_nopathair|req_nopathwater|req_nopathearth|req_nopathastral|req_nopathdeath|req_nopathnature|req_nopathblood|req_nopathholy|req_nopathall))\\s+(10|[0-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -4138,7 +4138,7 @@ repository:
 
             #B. 10. Target requirements.
             {
-                match: "^\\s*(#(req_targgod|req_targhumanoid|req_targmale|req_targundead|req_targdemon|req_targanimal|req_targinanimate|req_targmindless|req_targimmobile|req_targmagicbeing))\\s+(0|1)"
+                match: "^\\s*(#(req_targgod|req_targhumanoid|req_targmale|req_targundead|req_targdemon|req_targanimal|req_targinanimate|req_targmindless|req_targimmobile|req_targmagicbeing))\\s+(0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -4148,7 +4148,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(req_targpath[1-4]))\\s+([0-8]|5[0-3])"
+                match: "^\\s*(#(req_targpath[1-4]))\\s+([0-8]|5[0-3])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -4204,7 +4204,7 @@ repository:
 
             {
                 comment: "See orders table for the correspondence between orders and numbers."
-                match: "^\\s*(#req_targorder)\\s+(20|44|45|0|2|3|4|6|7|8|14|17|18|19|50|52)"
+                match: "^\\s*(#req_targorder)\\s+(20|44|45|0|2|3|4|6|7|8|14|17|18|19|50|52)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.req_targorder.dominions"
@@ -4214,7 +4214,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#req_targowner)\\s+(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9])"
+                match: "^\\s*(#req_targowner)\\s+(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.req_targowner.dominions"
@@ -4277,7 +4277,7 @@ repository:
 
             {
                 comment: "Argument is a nation number with -1 and -2 special cased. We had independent nations 0-4 as default is independents 0."
-                match: "^\\s*(#nation)\\s+(-1|-2|2[0-4][0-9]|[1-9][0-9]{1,2}|[0-9])"
+                match: "^\\s*(#nation)\\s+(-1|-2|2[0-4][0-9]|[1-9][0-9]{1,2}|[0-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.nation.dominions"
@@ -4316,7 +4316,7 @@ repository:
 
             {
                 comment: "Argument is a nation number."
-                match: "^\\s*(#extramsg)\\s+(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9])"
+                match: "^\\s*(#extramsg)\\s+(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.extramsg.dominions"
@@ -4327,7 +4327,7 @@ repository:
 
             #C. 2. Treasure.
             {
-                match: "^\\s*(#magicitem)\\s+([0-4]|9)"
+                match: "^\\s*(#magicitem)\\s+([0-4]|9)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.magicitem.dominions"
@@ -4347,7 +4347,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#gemloss)\\s+([0-7]|5[0-3]|56)"
+                match: "^\\s*(#gemloss)\\s+([0-7]|5[0-3]|56)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.gemloss.dominions"
@@ -4357,7 +4357,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#((?:1d3|1d6|2d4|2d6|3d6|4d6)vis))\\s+([0-7])"
+                match: "^\\s*(#((?:1d3|1d6|2d4|2d6|3d6|4d6)vis))\\s+([0-7])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -4368,7 +4368,7 @@ repository:
 
             #C. 3. Scales.
             {
-                match: "^\\s*(#((?:inc|dec)scale(?:2|3)?))\\s+([0-5])"
+                match: "^\\s*(#((?:inc|dec)scale(?:2|3)?))\\s+([0-5])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -4390,7 +4390,7 @@ repository:
 
             {
                 comment: "Argument is a signed percentage, naturally capped below at -100%."
-                match: "^\\s*(#taxboost)\\s+((?:-(?:100|[1-9][0-9]?))|\\d+)"
+                match: "^\\s*(#taxboost)\\s+((?:-(?:100|[1-9][0-9]?))|\\d+)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.taxboost.dominions"
@@ -4400,7 +4400,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(kill|emigration))\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#(kill|emigration))\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -4421,7 +4421,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#fort)\\s+(30|[1-2]?[0-9])"
+                match: "^\\s*(#fort)\\s+(30|[1-2]?[0-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.fort.dominions"
@@ -4431,7 +4431,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(incdom|newdom))\\s+(-?(?:10|[1-9]))"
+                match: "^\\s*(#(incdom|newdom))\\s+(-?(?:10|[1-9]))\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -4441,7 +4441,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(temple|lab))\\s+(0|1)"
+                match: "^\\s*(#(temple|lab))\\s+(0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -4451,7 +4451,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(addsite|hiddensite|removesite))\\s+(-1|1[0-9]{3}|[1-9][0-9]{0,2}|0)"
+                match: "^\\s*(#(addsite|hiddensite|removesite))\\s+(-1|1[0-9]{3}|[1-9][0-9]{0,2}|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -4507,7 +4507,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#tempunits)\\s+(0|1)"
+                match: "^\\s*(#tempunits)\\s+(0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.tempunits.dominions"
@@ -4552,7 +4552,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(curse|disease))\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#(curse|disease))\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -4570,7 +4570,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#banished)\\s+(-11|-12|-13)"
+                match: "^\\s*(#banished)\\s+(-11|-12|-13)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.banished.dominions"
@@ -4580,7 +4580,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#addequip)\\s+([1-4]|9)"
+                match: "^\\s*(#addequip)\\s+([1-4]|9)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.addequip.dominions"
@@ -4603,7 +4603,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#pathboost)\\s+([0-8])"
+                match: "^\\s*(#pathboost)\\s+([0-8])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.pathboost.dominions"
@@ -4614,7 +4614,7 @@ repository:
 
             #C. 7. Global.
             {
-                match: "^\\s*(#(world(?:inc|dec)scale(?:(?:2|3)?)))\\s+([0-5])"
+                match: "^\\s*(#(world(?:inc|dec)scale(?:(?:2|3)?)))\\s+([0-5])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -4624,7 +4624,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#worldritrebate)\\s+([0-7])"
+                match: "^\\s*(#worldritrebate)\\s+([0-7])\\b"
                 captures:
                     1:
                         name: "keyword.control.event.worldritrebate.dominions"
@@ -4644,7 +4644,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#worldincdom)\\s+(-?(?:10|[1-9]))"
+                match: "^\\s*(#worldincdom)\\s+(-?(?:10|[1-9]))\\b"
                 captures:
                     1:
                         name: "keyword.control.event.worldincdom.dominions"
@@ -4664,7 +4664,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(worldcurse|worlddisease|worldmark|worldheal))\\s+(100|[1-9][0-9]?|0)"
+                match: "^\\s*(#(worldcurse|worlddisease|worldmark|worldheal))\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
@@ -4683,7 +4683,7 @@ repository:
 
             #C. 8. Special event.
             {
-                match: "^\\s*(#flagland)\\s+(0|1)"
+                match: "^\\s*(#flagland)\\s+(0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.flagland.dominions"
@@ -4725,7 +4725,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(purgecalendar|purgedelayed))\\s+(-1|0|1)"
+                match: "^\\s*(#(purgecalendar|purgedelayed))\\s+(-1|0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
