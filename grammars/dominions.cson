@@ -868,7 +868,7 @@ repository:
         patterns: [
             #A. Attribute modifiers.
             {
-                match: "^\\s*(#(str|att|def|prec|prot|mr|enc|ap|voidsanity))\\s+(-?\\d+)"
+                match: "^\\s*(#(hp|str|att|def|prec|prot|mr|enc|ap|voidsanity))\\s+(-?\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
@@ -1637,7 +1637,7 @@ repository:
             #G. Attributes.
             #note: see monster_items for other attributes.
             {
-                match: "^\\s*(#(hp|mor|mapmove|eyes))\\s+(\\d+)"
+                match: "^\\s*(#(mor|mapmove|eyes))\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster.$2.dominions"
@@ -3691,7 +3691,7 @@ repository:
 
             #H. Curses and afflictions.
             {
-                match:"^\\s*(#(cursed|nomounted|curse|nocoldblood|disease|nodemon|chestwound|noundead|noinanim|noimmobile|feeblemind|mute|onlymounted|onlycoldblood|nhwound|onlydemon|crippled|onlyundead|loseeye|onlyinanim|immobileonly))"
+                match:"^\\s*(#(cursed|nomounted|curse|nocoldblood|disease|nodemon|chestwound|noundead|noinanim|noimmobile|feeblemind|mute|onlymounted|onlycoldblood|nhwound|onlydemon|crippled|onlyundead|loseeye|onlyinanim|immobileonly|recuperation|yearaging|noaging|noagingland))"
                 captures:
                     1:
                         name: "keyword.control.item.$2.dominions"
