@@ -3677,7 +3677,7 @@ repository:
             },
 
             {
-                match: '^\\s*(#(restricted|nationrebate))\\s+(?:("[^"]+")|(2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9]))'
+                match: '^\\s*(#(restricted|nationrebate))\\s+(?:("[^"]+")|(-1|2[0-4][0-9]|[1-9][0-9]{1,2}|[5-9]))'
                 captures:
                     1:
                         name: "keyword.control.item.$2.dominions"

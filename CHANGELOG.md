@@ -53,3 +53,6 @@
 
 ## v0.3.4
 * Fix release v.0.3.3 (sigh).
+
+## v0.3.5
+* Add -1 to #restricted and #nationrebate command argument.
