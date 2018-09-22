@@ -60,4 +60,4 @@
 * Add undocumented #latehero command.
 * Add negative arguments to #addupkeep.
 * Add #carcasscollector command.
-* Fixed wrong type of #<monster>lord commands.
+* Fixed wrong type of #<monster>lord command argument.
