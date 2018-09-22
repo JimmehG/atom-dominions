@@ -59,3 +59,4 @@
 * Add negative arguments to #<path>blessbonus.
 * Add undocumented #latehero command.
 * Add negative arguments to #addupkeep.
+* Add #carcasscollector command.

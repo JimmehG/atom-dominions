@@ -1373,7 +1373,7 @@ repository:
             },
 
             {
-                match:"^\\s*(#(tmpfiregems|tmpairgems|tmpwatergems|tmpearthgems|tmpastralgems|tmpdeathgems|tmpnaturegems|tmpbloodslaves|douse|makepearls))\\s+(\\d+)"
+                match:"^\\s*(#(tmpfiregems|tmpairgems|tmpwatergems|tmpearthgems|tmpastralgems|tmpdeathgems|tmpnaturegems|tmpbloodslaves|douse|makepearls|carcasscollector))\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
