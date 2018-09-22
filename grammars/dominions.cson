@@ -2847,7 +2847,7 @@ repository:
 
             #Blesses.
             {
-                match: "^\\s*(#(fireblessbonus|airblessbonus|waterblessbonus|earthblessbonus|astralblessbonus|deathblessbonus|natureblessbonus|bloodblessbonus))\\s+([0-9])\\b"
+                match: "^\\s*(#(fireblessbonus|airblessbonus|waterblessbonus|earthblessbonus|astralblessbonus|deathblessbonus|natureblessbonus|bloodblessbonus))\\s+(-?[0-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.nation.$2.dominions"
