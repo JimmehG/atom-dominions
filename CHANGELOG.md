@@ -57,3 +57,4 @@
 ## v0.3.5
 * Add -1 to #restricted and #nationrebate command argument.
 * Add negative arguments to #<path>blessbonus.
+* Add #latehero command.
