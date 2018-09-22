@@ -1242,7 +1242,7 @@ repository:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
                     3:
-                        name: "string.quoted.double.monster_item.$2.dominions"
+                        name: "constant.numeric.monster_item.$2.dominions"
                 name: "meta.monster_item.$2.dominions"
             }
 
