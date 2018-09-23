@@ -932,7 +932,7 @@ repository:
                 captures:
                     1:
                         name: "keyword.control.monster_item.stealthy.dominions"
-                    2:
+                    3:
                         name: "constant.numeric.monster_item.stealthy.dominions"
                 name: "meta.monster_item.stealthy.dominions"
             },
@@ -4234,7 +4234,7 @@ repository:
 
             {
                 comment: "See orders table for the correspondence between orders and numbers."
-                match: "^\\s*(#req_targorder)\\s+(20|44|45|0|2|3|4|6|7|8|14|17|18|19|50|52)\\b"
+                match: "^\\s*(#req_targorder)\\s+(20|44|45|33|0|2|3|4|6|7|8|14|17|18|19|50|52)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.req_targorder.dominions"
