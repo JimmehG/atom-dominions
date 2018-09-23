@@ -1277,7 +1277,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(inspirational|beastmaster|taskmaster|bodyguard))\\s+(-?\\d+)"
+                match: "^\\s*(#(inspirational|beastmaster|taskmaster|bodyguard|formationfighter))\\s+(-?\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
@@ -1297,23 +1297,13 @@ repository:
             },
 
             {
-                match: "^\\s*(#standard))\\s+(\\d+)"
+                match: "^\\s*(#standard)\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.standard.dominions"
                     2:
                         name: "constant.numeric.monster_item.standard.dominions"
                 name: "meta.monster_item.standard.dominions"
-            },
-
-            {
-                match: "^\\s*(#formationfighter))\\s+(-?\\d+)"
-                captures:
-                    1:
-                        name: "keyword.control.monster_item.formationfighter.dominions"
-                    2:
-                        name: "constant.numeric.monster_item.formationfighter.dominions"
-                name: "meta.monster_item.formationfighter.dominions"
             },
 
             #B. 12. Magic.
