@@ -2045,7 +2045,7 @@ repository:
             #L. 12. Magic.
             #note: see monster_items for other magic properties shared with items.
             {
-                match:"^\\s*(#magicskill)\\s+([0-8]|5[0-3])\\s+(10|[1-9])\\b"
+                match:"^\\s*(#magicskill)\\s+([0-8]|5[0-3])\\s+(10|[0-9])\\b"
                 captures:
                     1:
                         name: "keyword.control.monster.magicskill.dominions"

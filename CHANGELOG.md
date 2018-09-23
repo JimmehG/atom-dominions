@@ -71,3 +71,4 @@
 * new weapon numbers start at 700 not 800.
 * new armor numbers start at 250 not 300.
 * Add blood sacrifice (33) to #req_targorder arguments.
+* Allow #magicskill to take level 0 argument (to clear the magic level).
