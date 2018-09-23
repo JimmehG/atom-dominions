@@ -927,6 +927,16 @@ repository:
                 name: "meta.monster_item.$2.dominions"
             },
 
+            {
+                match: "^\\s*(#stealthy)\\s+(\\d+)?"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.stealthy.dominions"
+                    2:
+                        name: "constant.numeric.monster_item.stealthy.dominions"
+                name: "meta.monster_item.stealthy.dominions"
+            },
+
             #B. 3. Age, healing and afflictions
             {
                 match: "^\\s*(#hpoverflow)"
