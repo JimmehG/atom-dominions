@@ -2911,7 +2911,7 @@ repository:
 
             {
                 comment: "#fortcost argument is a percentage, but not capped."
-                match: "^\\s*(#(fortcost|labcost|templecost|foresttemplecost|forestlabcost))\\s+(\\d+)"
+                match: "^\\s*(#(fortcost|labcost|templecost|foresttemplecost|forestlabcost|mountaintemplecost|mountainlabcost))\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.nation.$2.dominions"

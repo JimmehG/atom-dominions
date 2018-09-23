@@ -61,3 +61,4 @@
 * Add negative arguments to #addupkeep.
 * Add #carcasscollector command.
 * Fixed wrong type of #<monster>lord command argument.
+* Add #mountainlabcost and #mountaintemplecost commands.
