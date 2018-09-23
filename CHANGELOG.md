@@ -69,3 +69,4 @@
 * Fix #hpoverslow and #poisonskin regexps.
 * #stealthy can take no args.
 * new weapon numbers start at 700 not 800.
+* new armor numbers start at 250 not 300.

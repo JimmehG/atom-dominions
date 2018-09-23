@@ -185,7 +185,7 @@ repository:
 
             {
                 comment: "As of v5.24, new armor numbers vary between 300 and 999."
-                begin: "^\\s*(#newarmor)\\s+([3-9][0-9]{2})\\b"
+                begin: "^\\s*(#newarmor)\\s+([3-9][0-9]{2}|2[5-9][0-9])\\b"
                 beginCaptures:
                     1:
                         name: "keyword.control.record.newarmor.dominions"
