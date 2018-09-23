@@ -68,3 +68,4 @@
 * Fix #itemcost regexp.
 * Fix #hpoverslow and #poisonskin regexps.
 * #stealthy can take no args.
+* new weapon numbers start at 700 not 800.
