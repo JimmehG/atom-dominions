@@ -918,7 +918,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(seduce|succubus|stealthy|patience|beckon|falsearmy|foolscouts))\\s+(\\d+)"
+                match: "^\\s*(#(seduce|succubus|patience|beckon|falsearmy|foolscouts))\\s+(\\d+)"
                 captures:
                     1:
                         name: "keyword.control.monster_item.$2.dominions"
@@ -928,11 +928,11 @@ repository:
             },
 
             {
-                match: "^\\s*(#stealthy)\\s+(\\d+)?"
+                match: "^\\s*(#stealthy)(?:\\s+(\\d+))?"
                 captures:
                     1:
                         name: "keyword.control.monster_item.stealthy.dominions"
-                    2:
+                    3:
                         name: "constant.numeric.monster_item.stealthy.dominions"
                 name: "meta.monster_item.stealthy.dominions"
             },
