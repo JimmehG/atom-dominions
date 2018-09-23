@@ -56,9 +56,12 @@
 
 ## v0.3.5
 * Add -1 to #restricted and #nationrebate command argument.
-* Add negative arguments to #<path>blessbonus.
+* Add negative arguments to #(path)blessbonus.
 * Add undocumented #latehero command.
 * Add negative arguments to #addupkeep.
 * Add #carcasscollector command.
-* Fixed wrong type of #<monster>lord command argument.
+* Fixed wrong type of #(monster)lord command argument.
 * Add #mountainlabcost and #mountaintemplecost commands.
+
+## v0.3.6
+* Fix readme typo.
