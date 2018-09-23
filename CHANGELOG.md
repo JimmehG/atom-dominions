@@ -66,3 +66,4 @@
 ## v0.3.6
 * Fix readme typo.
 * Fix #itemcost regexp.
+* Fix #hpoverslow and #poisonskin regexps.
