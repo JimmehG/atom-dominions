@@ -64,7 +64,7 @@
 * Add #mountainlabcost and #mountaintemplecost commands.
 
 ## v0.3.6
-* Fix readme typo.
+* Fix changelog typos.
 * Fix #itemcost regexp.
 * Fix #hpoverslow and #poisonskin regexps.
 * #stealthy can take no args.
