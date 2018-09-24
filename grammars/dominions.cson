@@ -943,7 +943,7 @@ repository:
                 captures:
                     1:
                         name: "keyword.control.monster_item.stealthy.dominions"
-                    3:
+                    2:
                         name: "constant.numeric.monster_item.stealthy.dominions"
                 name: "meta.monster_item.stealthy.dominions"
             },
