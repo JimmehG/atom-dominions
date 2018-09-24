@@ -74,3 +74,4 @@
 * Allow #magicskill to take level 0 argument (to clear the magic level).
 * #formationfighter accepts negative arguments.
 * #speciallook also works for items.
+* Added special orders to #req_targorder (but bitmasking not in yet).
