@@ -75,3 +75,7 @@
 * #formationfighter accepts negative arguments.
 * #speciallook also works for items.
 * Added special orders to #req_targorder (but bitmasking not in yet).
+
+## v0.3.7
+* #killcappop accepts negative arguments.
+* Improve #idealcold regexp.
