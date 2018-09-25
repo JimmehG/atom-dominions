@@ -79,3 +79,4 @@
 ## v0.3.7
 * #killcappop accepts negative arguments.
 * Improve #idealcold regexp.
+* #patience accepts negative arguments.
