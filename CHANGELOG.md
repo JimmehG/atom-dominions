@@ -80,3 +80,4 @@
 * #killcappop accepts negative arguments.
 * Improve #idealcold regexp.
 * #patience accepts negative arguments.
+* Added #req_thronesite from v5.27 patch.

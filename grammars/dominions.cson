@@ -4023,7 +4023,7 @@ repository:
 
             #B. 5. Site.
             {
-                match: "^\\s*(#(req_foundsite|req_hiddensite|req_site|req_nearbysite|req_claimedthrone|req_unclaimedthrone))\\s+(0|1)\\b"
+                match: "^\\s*(#(req_foundsite|req_hiddensite|req_site|req_nearbysite|req_claimedthrone|req_unclaimedthrone|req_thronesite))\\s+(0|1)\\b"
                 captures:
                     1:
                         name: "keyword.control.event.$2.dominions"
