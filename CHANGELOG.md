@@ -81,3 +81,4 @@
 * Improve #idealcold regexp.
 * #patience accepts negative arguments.
 * Added #req_thronesite from v5.27 patch.
+* #version and #domversion regexps accept optional patch number.
