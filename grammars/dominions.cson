@@ -55,7 +55,7 @@ repository:
             },
 
             {
-                match: "^\\s*(#(version|domversion))\\s+(\\d+\\.(?:\\d+{1,2})(?:\\.\\d+{1,2})?)"
+                match: "^\\s*(#(version|domversion))\\s+(\\d+\\.(?:\\d+{1,2})(?:\\.\\d+{1,2})?)\\b"
                 captures:
                     1:
                         name: "keyword.control.mod.$2.dominions"
