@@ -76,7 +76,7 @@
 * #speciallook also works for items.
 * Added special orders to #req_targorder (but bitmasking not in yet).
 
-## v0.3.7
+## v0.3.7: to be released:
 * #killcappop accepts negative arguments.
 * Improve #idealcold regexp.
 * #patience accepts negative arguments.
