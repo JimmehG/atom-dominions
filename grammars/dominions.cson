@@ -130,7 +130,7 @@ repository:
 
             {
                 comment: "As of v5.24, new weapon numbers vary between 700 and 1999."
-                begin: "^\\s*(#newweapon)\\s+(1[0-9]{3}|[7-9][0-9]{2})\\b"
+                begin: "^\\s*(#newweapon)(?:\\s+(1[0-9]{3}|[7-9][0-9]{2}))?"
                 beginCaptures:
                     1:
                         name: "keyword.control.record.newweapon.dominions"
@@ -185,7 +185,7 @@ repository:
 
             {
                 comment: "As of v5.24, new armor numbers vary between 300 and 999."
-                begin: "^\\s*(#newarmor)\\s+([3-9][0-9]{2}|2[5-9][0-9])\\b"
+                begin: "^\\s*(#newarmor)(?:\\s+([3-9][0-9]{2}|2[5-9][0-9]))?"
                 beginCaptures:
                     1:
                         name: "keyword.control.record.newarmor.dominions"
