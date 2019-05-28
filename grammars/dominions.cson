@@ -1251,6 +1251,15 @@ repository:
                 name: "meta.monster_item.$2.dominions"
             },
 
+            {
+                comment: "Commands that have found no better place."
+                match: "^\\s*(#stonebeing)"
+                captures:
+                    1:
+                        name: "keyword.control.monster_item.misc.dominions"
+                name: "meta.monster_item.misc.dominions"
+            },
+
             #B. 9. Summoning.
             {
                 comment: "Summoning commands take montag values."
@@ -1781,7 +1790,7 @@ repository:
             #L. Abilities.
             #L. 1. Type and Status.
             {
-                match: "^\\s*(#(female|coldblood|immortal|domimmortal|drake|plant|lesserhorror|greaterhorror|doomhorror|mounted|holy|animal|unique|undead|bug|demon|magicbeing|autocompete|blind|uwbug|stonebeing|inanimate|dungeon))"
+                match: "^\\s*(#(female|coldblood|immortal|domimmortal|drake|plant|lesserhorror|greaterhorror|doomhorror|mounted|holy|animal|unique|undead|bug|demon|magicbeing|autocompete|blind|uwbug|inanimate|dungeon))"
                 captures:
                     1:
                         name: "keyword.control.monster.$2.dominions"

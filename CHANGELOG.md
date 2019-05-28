@@ -82,4 +82,5 @@
 * #patience accepts negative arguments.
 * Added #req_thronesite from v5.27 patch.
 * #version and #domversion regexps accept optional patch number.
+* #stonebeing also usable on items.
 * v5.32: #newarmor and #newweapon accept optional arguments.
