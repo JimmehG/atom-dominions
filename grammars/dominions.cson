@@ -759,13 +759,15 @@ repository:
             },
 
             {
-                match: "^\\s*(#(secondaryeffect|secondaryeffectalways))\\s+(\\d+)"
+                match: '^\\s*(?:#(secondaryeffect|secondaryeffectalways))\\s+(?:("[^"]+")|(\\d+)'
                 captures:
                     1:
-                        name: "keyword.control.weapon.other.$2.dominions"
+                        name: "keyword.control.weapon.other.$1.dominions"
+                    2:
+                        name: "string.quoted.double.weapon.other.effect.dominions"
                     3:
-                        name: "constant.numeric.weapon.effect.dominions"
-                name: "meta.weapon.other.$2.dominions"
+                        name: "constant.numeric.weapon.other.effect.dominions"
+                name: "meta.weapon.other.$1.dominions"
             },
 
             #Visuals.
