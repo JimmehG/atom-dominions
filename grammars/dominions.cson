@@ -2363,16 +2363,6 @@ repository:
             },
 
             {
-                match: "^\\s*(#(wallmult|uwwallmult))\\s+(\\d+)"
-                captures:
-                    1:
-                        name: "keyword.control.site.$2.dominions"
-                    3:
-                        name: "constant.numeric.site.$2.dominions"
-                name: "meta.site.$2.dominions"
-            },
-
-            {
                 match: "^\\s*(#voidgate)\\s+(100|[1-9][0-9]?|0)\\b"
                 captures:
                     1:
