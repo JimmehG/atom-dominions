@@ -2739,7 +2739,7 @@ repository:
 
             #C. AI hints.
             {
-                match: "^\\s*(#(aiholdgold|aifirenation|aiairnation|aiwaternation|aiearthnation|aiastralnation|aideathnation|ainaturenation|aibloodnation|bloodnation|aicheapholy|aiholyranged))"
+                match: "^\\s*(#(aiholdgod|aifirenation|aiairnation|aiwaternation|aiearthnation|aiastralnation|aideathnation|ainaturenation|aibloodnation|bloodnation|aicheapholy|aiholyranged))"
                 captures:
                     1:
                         name: "keyword.control.nation.$2.dominions"
