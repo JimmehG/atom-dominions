@@ -2769,7 +2769,7 @@ repository:
             #D. Recruitment.
             #Some commands are in poptypes repository.
             {
-                match: '^\\s*(#(startcom|(?:coastcom(?:1|2))|addforeignunit|addforeigncom|(?:forest|mountain|swamp|waste|cave)rec|(?:forest|mountain|swamp|waste|cave)com|startscout|(?:startunittype(?:1|2))|uwrec|uwcom|(?:coastunit(?:[1-3]))|landrec|landcom|domrec))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
+                match: '^\\s*(#(startcom|(?:coastcom(?:1|2))|addforeignunit|addforeigncom|(?:forest|mountain|swamp|waste|cave)rec|(?:forest|mountain|swamp|waste|cave)com|startscout|(?:startunittype(?:1|2))|uwrec|uwcom|(?:coastunit(?:[1-3]))|landrec|landcom))\\s+(?:("[^"]+")|([1-8][0-9]{3}|[1-9][0-9]{0,2}|0))'
                 captures:
                     1:
                         name: "keyword.control.nation.$2.dominions"
